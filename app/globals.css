@@ -17,6 +17,8 @@
   --clay-deep: #943c21;
   --amber: #c99a3c;
   --line: #d9d0bd;
+  --hair: #c6bba2; /* construction hairline for the angle figure */
+  --graphite: #8d9088; /* the dead 90° reading — never a signal colour */
   --success: #2e6e4c;
   --error: #a83226;
   --whatsapp: #1faf57;
@@ -46,6 +48,8 @@
   --color-clay-deep: var(--clay-deep);
   --color-amber: var(--amber);
   --color-line: var(--line);
+  --color-hair: var(--hair);
+  --color-graphite: var(--graphite);
   --color-success: var(--success);
   --color-error: var(--error);
   --color-whatsapp: var(--whatsapp);
