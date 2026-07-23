@@ -24,7 +24,7 @@ const TRUST_ITEMS = [
     ),
   },
   {
-    label: "מתאים לכל אסלה ביתית",
+    label: "מתאים לכל בית",
     icon: (
       <>
         <path d="M6 3h9v7H6z" />

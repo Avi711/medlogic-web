@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import productHero from "@/public/images/product-hero.jpg";
+import heroIllustration from "@/public/images/illu-supported.jpg";
 
 export default function Hero() {
   return (
@@ -13,9 +13,9 @@ export default function Hero() {
             <span className="text-pine">הבעיה אינה בגוף שלכם — אלא בזווית.</span>
           </h1>
           <p className="mt-6 max-w-xl text-xl leading-relaxed text-ink-soft sm:text-[1.375rem]">
-            מתקן הכריעה של MedLogic מאפשר בכל אסלה ביתית התרוקנות טבעית ומלאה
-            בתנוחת כריעה — הפיתוח של ד&quot;ר דב סיקירוב, מומחה ברפואה פנימית
-            והחוקר המוביל בעולם בתחום תנוחת ההתרוקנות.
+            אסלת הכריעה של MedLogic מחזירה לגוף התרוקנות טבעית ומלאה בתנוחת
+            כריעה — הפיתוח של ד&quot;ר דב סיקירוב, מומחה ברפואה פנימית והחוקר
+            המוביל בעולם בתחום תנוחת ההתרוקנות.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -45,14 +45,14 @@ export default function Hero() {
 
         <figure className="mx-auto w-full max-w-xs sm:max-w-md lg:max-w-none">
           <Image
-            src={productHero}
-            alt="מתקן הכריעה של MedLogic מותקן על אסלה ביתית רגילה — שני משטחי דריכה ירוקים ומתקפלים לבנים במרכז"
+            src={heroIllustration}
+            alt="איור: אדם בתנוחת התרוקנות נתמכת, רגליים מוגבהות וידיים על ידית תמיכה"
             priority
             sizes="(min-width: 1024px) 45vw, (min-width: 640px) 28rem, 100vw"
             className="h-auto w-full rounded-sm border border-line"
           />
           <figcaption className="mt-2 text-center text-base text-ink-soft">
-            מתקן הכריעה — על האסלה הרגילה שלכם (הדמיה)
+            התנוחה הטבעית — הקלה כבר מהשימושים הראשונים
           </figcaption>
         </figure>
       </div>
