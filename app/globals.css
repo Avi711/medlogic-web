@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 /*
-  MedLogic design tokens — "Paper & Clinic Green" editorial palette.
+  MedLogic design tokens — "printed health supplement".
+  Ink on newsprint, hairline rules, figure captions.
   Clay (#b24a2a) is reserved exclusively for actionable elements.
 */
 :root {
@@ -27,6 +28,10 @@
   --night-ink-soft: #b8c4b4;
   --night-brand: #8fb8a3;
   --night-amber: #d9ae55;
+
+  /* press furniture */
+  --rule-ink: color-mix(in srgb, var(--ink) 22%, transparent);
+  --font-display-stack: var(--font-display), "Heebo", "Arial Hebrew", sans-serif;
 }
 
 @theme inline {
@@ -71,7 +76,8 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-size: 1.1875rem; /* 19px — older-audience readability */
-  line-height: 1.7;
+  line-height: 1.65;
+  text-rendering: optimizeLegibility;
 }
 
 ::selection {
@@ -86,6 +92,7 @@ body {
 
 /* Pine is near-invisible on the dark "evening clinic" sections */
 .bg-night :focus-visible,
+.bg-ink :focus-visible,
 .bg-night-surface :focus-visible {
   outline-color: var(--night-brand);
 }
@@ -94,6 +101,104 @@ body {
 @utility ltr-isolate {
   direction: ltr;
   unicode-bidi: isolate;
+}
+
+/* ── Press furniture ───────────────────────────────────────────── */
+
+/* The page column. One measure, one gutter, everywhere. */
+@utility shell {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 76rem;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .shell {
+    padding-inline: 2rem;
+  }
+}
+
+/* Small tracked label used as a standing head / kicker. 16px floor. */
+@utility kicker {
+  font-family: var(--font-display-stack);
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.2;
+  letter-spacing: 0.11em;
+}
+
+/* Display scale — the front-page headline down to the standing heads. */
+@utility display-1 {
+  font-family: var(--font-display-stack);
+  font-weight: 900;
+  font-size: clamp(2.45rem, 7.6vw, 5.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.028em;
+  text-wrap: balance;
+}
+
+@utility display-2 {
+  font-family: var(--font-display-stack);
+  font-weight: 900;
+  font-size: clamp(1.85rem, 4.1vw, 3.1rem);
+  line-height: 1.05;
+  letter-spacing: -0.022em;
+  text-wrap: balance;
+}
+
+@utility display-3 {
+  font-family: var(--font-display-stack);
+  font-weight: 700;
+  font-size: clamp(1.35rem, 2.1vw, 1.6rem);
+  line-height: 1.2;
+  letter-spacing: -0.012em;
+}
+
+/* Pull quote — set large, breaks the column. */
+@utility pullquote {
+  font-family: var(--font-display-stack);
+  font-weight: 500;
+  font-size: clamp(1.65rem, 3.6vw, 2.7rem);
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+/* Newspaper text columns, with the rule between them. */
+@utility textcols {
+  column-gap: 2.75rem;
+  column-rule: 1px solid var(--line);
+}
+
+/* Enlarged initial letter. Hebrew has no descenders to fight. */
+@utility dropcap {
+  &::first-letter {
+    float: inline-start;
+    font-family: var(--font-display-stack);
+    font-weight: 900;
+    font-size: 3.3em;
+    line-height: 0.82;
+    color: var(--pine);
+    margin-inline-end: 0.06em;
+    padding-block-start: 0.04em;
+  }
+}
+
+/* Reply coupon — the printed slip you cut out and post back. */
+@utility coupon {
+  border: 2px dashed var(--ink);
+  background: var(--card);
+}
+
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Figure caption / legal type. Small by design, never below 15px. */
+@utility caption {
+  font-size: 0.9375rem;
+  line-height: 1.5;
 }
 
 /* Scroll-driven entrance — progressive enhancement only */

@@ -3,13 +3,14 @@ import StickyMobileBar from "@/components/StickyMobileBar";
 import Hero from "@/components/sections/Hero";
 import TrustBar from "@/components/sections/TrustBar";
 import Problem from "@/components/sections/Problem";
+import Evidence from "@/components/sections/Evidence";
 import HowItWorks from "@/components/sections/HowItWorks";
-import DoctorStory from "@/components/sections/DoctorStory";
-import VideoSection from "@/components/sections/VideoSection";
 import Benefits from "@/components/sections/Benefits";
-import PressStrip from "@/components/sections/PressStrip";
-import Testimonials from "@/components/sections/Testimonials";
+import VideoSection from "@/components/sections/VideoSection";
+import DoctorStory from "@/components/sections/DoctorStory";
 import MidCta from "@/components/sections/MidCta";
+import Testimonials from "@/components/sections/Testimonials";
+import PressStrip from "@/components/sections/PressStrip";
 import ResearchWall from "@/components/sections/ResearchWall";
 import Faq from "@/components/sections/Faq";
 import FinalCta from "@/components/sections/FinalCta";
@@ -23,13 +24,14 @@ export default function Home() {
         <Hero />
         <TrustBar />
         <Problem />
-        <VideoSection />
+        <Evidence />
         <HowItWorks />
-        <DoctorStory />
         <Benefits />
-        <PressStrip />
-        <Testimonials />
+        <VideoSection />
+        <DoctorStory />
         <MidCta />
+        <Testimonials />
+        <PressStrip />
         <ResearchWall />
         <Faq />
         <FinalCta />

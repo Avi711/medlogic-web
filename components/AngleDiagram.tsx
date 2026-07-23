@@ -3,60 +3,67 @@ import sittingIllustration from "@/public/images/illu-sitting.jpg";
 import squatIllustration from "@/public/images/illu-squat.jpg";
 
 /**
- * Two-panel anatomical comparison: sitting (90°, kinked passage, clay/red)
- * vs. full squat (35°, open passage, pine). RTL: the problem panel renders
- * first so it sits on the right and is read first.
+ * Figure 1 — the whole argument in one plate. Two anatomical panels, the
+ * angle set as the largest thing on the page after the headline. RTL: the
+ * problem panel renders first, so it sits on the right and is read first.
  */
 const PANELS = [
   {
     image: sittingIllustration,
-    alt: "איור אנטומי: בישיבה על אסלה צינור היציאה מתקפל בזווית חדה",
+    alt: "איור אנטומי: בישיבה על אסלה בגובה כיסא צינור היציאה מתקפל בזווית חדה",
+    letter: "א",
     angle: "90°",
-    angleClass: "bg-error/10 text-error",
+    angleClass: "text-error",
     title: "בישיבה",
-    titleClass: "text-error",
     caption: "המעבר מקופל — היציאה דורשת מאמץ",
   },
   {
     image: squatIllustration,
     alt: "איור אנטומי: בכריעה מלאה צינור היציאה מתיישר ונפתח",
+    letter: "ב",
     angle: "35°",
-    angleClass: "bg-pine/10 text-pine",
+    angleClass: "text-pine",
     title: "בכריעה",
-    titleClass: "text-pine",
     caption: "המעבר פתוח — היציאה קלה וטבעית",
   },
 ];
 
 export default function AngleDiagram() {
   return (
-    <div className="grid grid-cols-2 gap-4 sm:gap-8">
-      {PANELS.map((panel) => (
-        <figure
-          key={panel.title}
-          className="relative overflow-hidden rounded-sm border border-line bg-card shadow-card"
-        >
-          <span
-            className={`ltr-isolate absolute end-3 top-3 rounded-sm px-2 py-1 font-display text-lg font-black sm:px-2.5 sm:text-2xl ${panel.angleClass}`}
-          >
-            {panel.angle}
-          </span>
-          <Image
-            src={panel.image}
-            alt={panel.alt}
-            sizes="(min-width: 1024px) 25vw, 50vw"
-            className="h-auto w-full"
-          />
-          <figcaption className="px-3 pt-3 pb-5 text-center sm:px-5">
-            <span className={`block font-display text-xl font-bold ${panel.titleClass}`}>
-              {panel.title}
-            </span>
-            <span className="mt-1 block text-base text-ink-soft">
+    <figure>
+      <div className="grid grid-cols-2 gap-5 sm:gap-10">
+        {PANELS.map((panel) => (
+          <div key={panel.title}>
+            <div className="flex items-end justify-between gap-2 border-b-2 border-ink pb-1.5">
+              <h3 className="font-display text-[1.125rem] font-bold leading-none text-ink sm:text-2xl">
+                <span className="text-ink-soft">{panel.letter}.</span>{" "}
+                {panel.title}
+              </h3>
+              <span
+                className={`ltr-isolate font-display text-[2.25rem] font-black leading-[0.8] tracking-[-0.03em] sm:text-[4rem] ${panel.angleClass}`}
+              >
+                {panel.angle}
+              </span>
+            </div>
+            <Image
+              src={panel.image}
+              alt={panel.alt}
+              sizes="(min-width: 1024px) 36vw, 46vw"
+              className="mt-4 h-auto w-full border border-ink/15"
+            />
+            <p className="caption mt-2.5 border-t border-ink/20 pt-2 text-ink-soft">
               {panel.caption}
-            </span>
-          </figcaption>
-        </figure>
-      ))}
-    </div>
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <figcaption className="caption mt-5 max-w-[62ch] border-t border-ink/25 pt-2.5 text-ink-soft">
+        <strong className="font-bold text-ink">איור 1:</strong> זווית הגוף
+        בישיבה לעומת כריעה, והשפעתה על מעבר היציאה. ככל שכיפוף הירך גדול
+        יותר — כך הזווית הרקטואנלית ישרה יותר, ופחות עומס נדרש כדי לרוקן את
+        המעי.
+      </figcaption>
+    </figure>
   );
 }

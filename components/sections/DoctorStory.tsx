@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import SectionHeading from "@/components/SectionHeading";
 import doctorImage from "@/public/images/doctor.jpg";
 
 const TIMELINE = [
@@ -9,48 +10,57 @@ const TIMELINE = [
   },
   { period: "שנות המחקר", event: "מדידות, השוואות ופרסום בכתבי עת רפואיים" },
   { period: "2003", event: "פרסום המחקר המצוטט בעולם" },
-  { period: "היום", event: "מתקן כריעה בפטנט בינלאומי, זמין לכל בית בישראל" },
+  { period: "היום", event: "מתקן כריעה בפטנט בין־לאומי, זמין לכל בית בישראל" },
 ];
 
+/** The profile page: portrait, running text, a ruled chronology. */
 export default function DoctorStory() {
   return (
-    <section id="doctor" className="scroll-mt-20 bg-night py-16 sm:py-24">
-      <div className="mx-auto grid max-w-6xl items-start gap-10 px-4 sm:px-6 lg:grid-cols-[2fr_3fr] lg:gap-16">
-        <figure className="mx-auto w-full max-w-[240px] sm:max-w-sm lg:sticky lg:top-24">
-          <div className="border border-night-amber/40 p-2">
-            <Image
-              src={doctorImage}
-              alt="ד״ר דב סיקירוב, מומחה ברפואה פנימית"
-              className="aspect-[4/5] w-full object-cover object-top"
-              sizes="(min-width: 1024px) 33vw, 24rem"
-            />
-          </div>
-          <figcaption className="mt-4 text-center">
-            <span className="block font-display text-xl font-bold text-night-ink">
+    <section id="doctor" className="shell scroll-mt-24 py-14 sm:py-20">
+      <SectionHeading
+        eyebrow="פרופיל"
+        title="התגלית שהתחילה בשירות מילואים — והפכה למחקר שמצוטט בכל העולם"
+        meta="ד״ר דב (ברקו) סיקירוב"
+        lede={
+          <>
+            מומחה ברפואה פנימית. שישה מאמרים בכתבי עת רפואיים עם ביקורת עמיתים,
+            הראשון ב־<span className="ltr-isolate tnum">1987</span>. על הפיתוח
+            שנולד מהמחקר נרשם פטנט בין־לאומי.
+          </>
+        }
+      />
+
+      <div className="mt-9 grid gap-x-14 gap-y-9 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]">
+        <figure className="max-lg:mx-auto max-lg:max-w-[19rem]">
+          <Image
+            src={doctorImage}
+            alt="ד״ר דב סיקירוב, מומחה ברפואה פנימית"
+            sizes="(min-width: 1024px) 30vw, 19rem"
+            className="h-auto w-full border border-ink/20"
+          />
+          <figcaption className="caption mt-2.5 border-t border-ink/25 pt-2 text-ink-soft">
+            <span className="block font-display text-[1.0625rem] font-bold text-ink">
               ד&quot;ר דב (ברקו) סיקירוב,{" "}
               <span className="ltr-isolate">M.D.</span>
             </span>
-            <span className="block text-night-ink-soft">
-              מומחה ברפואה פנימית · חוקר מוביל בעולם בתחום תנוחת ההתרוקנות
-            </span>
+            מומחה ברפואה פנימית · החוקר המצוטט בעולם בתחום תנוחת ההתרוקנות
           </figcaption>
         </figure>
 
         <div>
-          <h2 className="font-display text-3xl font-bold leading-tight text-night-ink sm:text-[2.5rem]">
-            התגלית שהתחילה בשירות מילואים — והפכה למחקר שמצוטט בכל העולם
-          </h2>
-
-          <div className="mt-8 max-w-[42rem] space-y-5 text-night-ink/90">
-            <p>
+          <div className="max-w-[40rem] text-ink">
+            <p className="dropcap">
               במהלך שירות מילואים בלבנון שם לב ד&quot;ר דב סיקירוב לתופעה מוזרה:
               בשטח, בלי אסלות, כשכולם נאלצו לכרוע — ההתרוקנות הייתה קלה יותר.
               בלי המאמץ המוכר מהבית.
             </p>
-            <p>רופא אחר היה שוכח מזה. ד&quot;ר סיקירוב החליט לבדוק.</p>
-            <p>
-              המחקר המרכזי שלו, שפורסם בשנת 2003 בכתב העת{" "}
-              <span className="ltr-isolate whitespace-nowrap font-semibold">
+            <p className="mt-5 font-display text-[1.375rem] font-medium leading-snug text-pine">
+              רופא אחר היה שוכח מזה. ד&quot;ר סיקירוב החליט לבדוק.
+            </p>
+            <p className="mt-5">
+              המחקר המרכזי שלו, שפורסם בשנת{" "}
+              <span className="ltr-isolate tnum">2003</span> בכתב העת{" "}
+              <span className="ltr-isolate font-semibold">
                 Digestive Diseases and Sciences
               </span>
               , הראה שבכריעה ההתרוקנות אורכת בממוצע כדקה פחות מאשר בישיבה —
@@ -58,34 +68,42 @@ export default function DoctorStory() {
               והוא ההשראה שמאחורי גל שלם של מוצרי תנוחה שנמכרו במיליוני יחידות
               בארה&quot;ב.
             </p>
-            <p>
-              אבל שרפרף פשוט לא הספיק לו. יחד עם מהנדסים פיתח ד&quot;ר סיקירוב
-              מתקן שמאפשר כריעה מלאה ובטוחה מעל אסלה ביתית רגילה — התנוחה
-              שהמחקרים שלו הצביעו עליה. על הפיתוח נרשם פטנט בינלאומי.
+            <p className="mt-5">
+              אבל שרפרף פשוט לא הספיק לו. יחד עם מהנדסים פיתח ד&quot;ר סיקירוב{" "}
+              <strong className="font-bold">
+                ערכה שלמה — אסלה נמוכה ייעודית ומעליה מתקן דריכה
+              </strong>{" "}
+              — שמאפשרת כריעה מלאה ובטוחה בבית. על הפיתוח נרשם פטנט בין־לאומי.
             </p>
           </div>
 
-          <ol className="mt-10 space-y-0 border-s-2 border-night-amber/50">
+          <dl className="mt-10 border-t-2 border-ink">
             {TIMELINE.map((item) => (
-              <li key={item.period} className="relative ps-6 pb-6 last:pb-0">
-                <span
-                  aria-hidden="true"
-                  className="absolute -start-[5px] top-2 h-2 w-2 rounded-full bg-night-amber"
-                />
-                <span className="block font-display text-lg font-bold text-night-amber">
+              <div
+                key={item.period}
+                className="grid grid-cols-[9rem_minmax(0,1fr)] gap-x-5 border-b border-ink/20 py-3 max-sm:grid-cols-1 max-sm:gap-y-0.5"
+              >
+                <dt className="tnum font-display text-[1.0625rem] font-bold text-pine">
                   {item.period}
-                </span>
-                <span className="block text-night-ink/90">{item.event}</span>
-              </li>
+                </dt>
+                <dd className="text-[1.0625rem] leading-snug text-ink">
+                  {item.event}
+                </dd>
+              </div>
             ))}
-          </ol>
+          </dl>
 
-          <Link
-            href="/#form"
-            className="mt-10 inline-block rounded-md bg-clay px-7 py-3.5 text-lg font-bold text-[#fff6ee] transition-colors hover:bg-clay-deep"
-          >
-            השאירו טלפון — נחזור אליכם
-          </Link>
+          <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3">
+            <p className="display-3 text-ink">
+              רוצים לשמוע אם הפיתוח מתאים לכם?
+            </p>
+            <Link
+              href="/#form"
+              className="flex min-h-[3.25rem] items-center bg-clay px-7 text-[1.125rem] font-bold text-[#fff6ee] transition-colors hover:bg-clay-deep"
+            >
+              השאירו פרטים
+            </Link>
+          </div>
         </div>
       </div>
     </section>

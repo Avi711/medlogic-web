@@ -2,57 +2,79 @@ import Image from "next/image";
 import Link from "next/link";
 import productHero from "@/public/images/product-hero.jpg";
 
+/**
+ * The front page. Folio line, a headline set at broadsheet scale, the deck
+ * and the action in the start column, the product photograph large in the
+ * end column with a ruled caption under it.
+ */
 export default function Hero() {
   return (
-    <section id="hero" className="relative overflow-hidden">
-      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[11fr_9fr] lg:gap-14">
+    <section id="hero" className="shell pt-6 pb-12 sm:pt-9 sm:pb-16">
+      <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-ink/30 pb-2.5">
+        <p className="kicker text-pine">בריאות · תנוחת ההתרוקנות</p>
+        <p className="kicker text-ink-soft max-sm:hidden">
+          פותח בישראל · פטנט בין־לאומי רשום
+        </p>
+      </div>
+
+      <h1 className="mt-7 sm:mt-9">
+        <span className="block font-display text-[1.375rem] font-bold text-ink-soft sm:text-[1.75rem]">
+          סובלים מעצירות או טחורים?
+        </span>
+        <span className="display-1 mt-2.5 block text-ink sm:mt-3">
+          הבעיה אינה בגוף שלכם — <span className="text-pine">אלא בזווית.</span>
+        </span>
+      </h1>
+
+      <div className="mt-9 grid items-start gap-x-14 gap-y-10 lg:mt-11 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
         <div>
-          <h1 className="font-display text-[2rem] font-black leading-[1.15] text-ink min-[400px]:text-[2.375rem] sm:text-[3.5rem]">
-            סובלים מעצירות או טחורים?
-            <br />
-            <span className="text-pine">הבעיה אינה בגוף שלכם — אלא בזווית.</span>
-          </h1>
-          <p className="mt-6 max-w-xl text-xl leading-relaxed text-ink-soft sm:text-[1.375rem]">
+          <p className="max-w-[36rem] text-[1.1875rem] leading-[1.6] text-ink-soft sm:text-[1.3125rem]">
             אסלת הכריעה של MedLogic מחזירה לגוף התרוקנות טבעית ומלאה בתנוחת
             כריעה — הפיתוח של ד&quot;ר דב סיקירוב, מומחה ברפואה פנימית והחוקר
             המוביל בעולם בתחום תנוחת ההתרוקנות.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-8 border-2 border-ink p-5">
             <Link
               href="/#form"
-              className="rounded-md bg-clay px-8 py-4 text-xl font-bold text-white shadow-card transition-colors hover:bg-clay-deep"
+              className="flex min-h-[3.75rem] items-center justify-center bg-clay px-6 text-center text-xl font-bold text-[#fff6ee] transition-colors hover:bg-clay-deep"
             >
               רוצה לשמוע אם זה מתאים לי
             </Link>
+            <p className="caption mt-3 text-center text-ink-soft">
+              שיחה קצרה, בלי התחייבות ובלי לחץ.
+            </p>
+          </div>
+
+          <p className="mt-6 border-t border-ink/25 pt-4 text-[1.0625rem] leading-snug text-ink">
+            <strong className="font-bold">
+              מבוסס על <span className="ltr-isolate tnum">6</span> מחקרים
+            </strong>{" "}
+            שפורסמו בכתבי עת רפואיים בין־לאומיים עם ביקורת עמיתים.{" "}
             <Link
               href="/#problem"
-              className="font-semibold text-pine underline-offset-4 hover:underline"
+              className="font-semibold text-pine underline underline-offset-4 hover:text-clay"
             >
               למה זה קורה? ↓
             </Link>
-          </div>
-          <p className="mt-3 text-base text-ink-soft">
-            שיחה קצרה, בלי התחייבות ובלי לחץ.
           </p>
-
-          <div className="mt-8 border-t-2 border-amber/60 pt-4">
-            <p className="text-base font-semibold text-ink-soft">
-              מבוסס על 6 מחקרים שפורסמו בכתבי עת רפואיים בין־לאומיים
-            </p>
-          </div>
         </div>
 
-        <figure className="mx-auto w-full max-w-xs sm:max-w-md lg:max-w-none">
+        <figure className="max-lg:-mx-5 sm:max-lg:-mx-8">
           <Image
             src={productHero}
-            alt="ערכת אסלת הכריעה של MedLogic — האסלה הנמוכה ומעליה מתקן הדריכה עם משטחים ירוקים מונעי החלקה"
+            alt="ערכת אסלת הכריעה של MedLogic — האסלה הקרמית הנמוכה ומעליה מתקן הדריכה עם משטחים ירוקים מונעי החלקה"
             priority
-            sizes="(min-width: 1024px) 45vw, (min-width: 640px) 28rem, 100vw"
-            className="h-auto w-full rounded-sm border border-line"
+            sizes="(min-width: 1024px) 58vw, 100vw"
+            className="h-[15rem] w-full border-y border-ink/15 object-cover sm:h-[22rem] lg:h-[26rem] lg:border"
           />
-          <figcaption className="mt-2 text-center text-base text-ink-soft">
-            הערכה המלאה: האסלה הנמוכה ומתקן הדריכה
+          <figcaption className="caption mt-2.5 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-t border-ink/25 pt-2 text-ink-soft max-lg:px-5 sm:max-lg:px-8">
+            <span className="font-semibold text-ink">
+              הערכה המלאה: האסלה הקרמית הנמוכה (כ־
+              <span className="ltr-isolate tnum">20</span> ס״מ) ומעליה מתקן
+              הדריכה
+            </span>
+            <span>ללא ידיות אחיזה · מתחבר לאינסטלציה הביתית</span>
           </figcaption>
         </figure>
       </div>

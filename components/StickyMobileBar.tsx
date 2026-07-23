@@ -44,7 +44,7 @@ export default function StickyMobileBar() {
   return (
     <div
       inert={!show || undefined}
-      className={`fixed inset-x-0 bottom-0 z-40 border-t border-line bg-paper p-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] transition-transform duration-300 md:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-40 border-t-2 border-ink bg-paper px-3 pt-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))] transition-transform duration-300 md:hidden ${
         show ? "translate-y-0" : "translate-y-full"
       }`}
     >
@@ -56,7 +56,7 @@ export default function StickyMobileBar() {
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 rounded-md bg-whatsapp py-3.5 text-center font-bold text-white"
+            className="flex min-h-[3.25rem] flex-1 items-center justify-center bg-whatsapp font-bold text-white"
           >
             וואטסאפ
           </a>
@@ -64,19 +64,22 @@ export default function StickyMobileBar() {
         {site.phoneE164 ? (
           <a
             href={`tel:${site.phoneE164}`}
-            className="flex-1 rounded-md bg-clay py-3.5 text-center font-bold text-white"
+            className="flex min-h-[3.25rem] flex-1 items-center justify-center bg-clay font-bold text-[#fff6ee]"
           >
             חייגו עכשיו
           </a>
         ) : (
           <Link
             href="/#form"
-            className="flex-1 rounded-md bg-clay py-3.5 text-center font-bold text-white"
+            className="flex min-h-[3.25rem] flex-1 items-center justify-center bg-clay font-bold text-[#fff6ee]"
           >
             השאירו טלפון — נחזור אליכם
           </Link>
         )}
       </div>
+      <p className="mt-1.5 text-center text-[0.875rem] text-ink-soft">
+        שיחה קצרה, בלי התחייבות ובלי לחץ
+      </p>
     </div>
   );
 }

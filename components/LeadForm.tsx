@@ -25,32 +25,33 @@ const FIELD_ERRORS = {
   phone: "מספר הטלפון לא נראה תקין — בדקו אותו שוב רגע",
 } as const;
 
+const INPUT =
+  "w-full border-2 border-ink/35 bg-paper px-4 py-3 text-lg text-ink placeholder:text-ink-soft/55 focus:border-pine focus:outline-none aria-invalid:border-error";
+
 const THEMES = {
   night: {
-    container: "rounded-md bg-night-surface p-6 sm:p-8",
+    container: "bg-night-surface p-6 sm:p-8",
     heading: "text-night-ink",
     label: "text-night-ink",
     labelSoft: "text-night-ink-soft",
-    input:
-      "w-full rounded-md border border-line bg-paper px-4 py-3.5 text-lg text-ink placeholder:text-ink-soft/50 focus:border-pine focus:outline-none focus:ring-2 focus:ring-night-brand/40 aria-invalid:border-error",
+    input: INPUT,
     alert: "text-night-amber",
     microcopy: "text-night-ink-soft",
-    success:
-      "rounded-md border border-night-brand/40 bg-night-surface p-8 text-center",
+    success: "border-2 border-night-brand/50 bg-night-surface p-8",
     successIcon: "text-night-brand",
     successTitle: "text-night-ink",
     successBody: "text-night-ink-soft",
   },
+  /* The reply coupon: a slip of paper with a cut-here rule around it. */
   paper: {
-    container: "rounded-md border border-line bg-card p-6 shadow-card sm:p-8",
+    container: "coupon p-5 sm:p-7",
     heading: "text-ink",
     label: "text-ink",
     labelSoft: "text-ink-soft",
-    input:
-      "w-full rounded-md border border-line bg-paper px-4 py-3.5 text-lg text-ink placeholder:text-ink-soft/50 focus:border-pine focus:outline-none focus:ring-2 focus:ring-pine/20 aria-invalid:border-error",
+    input: INPUT,
     alert: "text-error",
     microcopy: "text-ink-soft",
-    success: "rounded-md border border-success/40 bg-card p-8 text-center",
+    success: "coupon p-8",
     successIcon: "text-success",
     successTitle: "text-ink",
     successBody: "text-ink-soft",
@@ -123,7 +124,7 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
       <div role="status" className={t.success}>
         <svg
           viewBox="0 0 24 24"
-          className={`mx-auto mb-4 h-12 w-12 ${t.successIcon}`}
+          className={`mb-4 h-12 w-12 ${t.successIcon}`}
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
@@ -147,7 +148,16 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
 
   return (
     <form onSubmit={onSubmit} noValidate className={t.container}>
-      <h3 className={`mb-6 font-display text-2xl font-bold ${t.heading}`}>
+      <p
+        className={`kicker border-b pb-2.5 ${
+          theme === "paper"
+            ? "border-ink/25 text-pine"
+            : "border-night-ink/25 text-night-brand"
+        }`}
+      >
+        טופס פנייה
+      </p>
+      <h3 className={`mt-3.5 mb-6 display-3 ${t.heading}`}>
         השאירו פרטים — נחזור אליכם בשעה שתבחרו
       </h3>
 
@@ -252,12 +262,12 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="mt-6 w-full rounded-md bg-clay py-4 text-xl font-bold text-[#fff6ee] transition-colors hover:bg-clay-deep disabled:opacity-60"
+        className="mt-6 min-h-[3.75rem] w-full bg-clay text-xl font-bold text-[#fff6ee] transition-colors hover:bg-clay-deep disabled:opacity-60"
       >
         {status === "sending" ? "שולחים..." : "חזרו אליי לשיחה קצרה"}
       </button>
 
-      <p className={`mt-3 text-center text-base ${t.microcopy}`}>
+      <p className={`mt-3 text-[0.9375rem] leading-relaxed ${t.microcopy}`}>
         אנחנו חוזרים בדרך כלל תוך מספר שעות, בשעות הפעילות.
         <br />
         הפרטים ישמשו אך ורק לחזרה אליכם — בלי דיוור ובלי העברה לגורם שלישי.

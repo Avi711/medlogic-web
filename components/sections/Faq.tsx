@@ -53,45 +53,73 @@ const faqJsonLd = {
 
 export default function Faq() {
   return (
-    <section id="faq" className="scroll-mt-20 bg-paper-deep py-16 sm:py-24">
+    <section
+      id="faq"
+      className="scroll-mt-24 border-y-2 border-ink bg-paper-deep py-14 sm:py-20"
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
-      <div className="mx-auto max-w-[46rem] px-4 sm:px-6">
-        <SectionHeading eyebrow="שאלות ותשובות" title="שאלות ששואלים אותנו בטלפון" />
+      <div className="shell">
+        <div className="grid gap-x-14 gap-y-6 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:items-start">
+          <SectionHeading
+            eyebrow="שאלות ותשובות"
+            title="שאלות ששואלים אותנו בטלפון"
+            meta="7 שאלות"
+            className="lg:sticky lg:top-28"
+          />
 
-        <div className="divide-y divide-line border-y border-line">
-          {FAQ_ITEMS.map((item) => (
-            <details key={item.q} className="group">
-              <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 py-4 font-semibold text-ink [&::-webkit-details-marker]:hidden">
-                {item.q}
-                <svg
-                  viewBox="0 0 24 24"
-                  className="h-5 w-5 shrink-0 text-pine transition-transform duration-200 group-open:rotate-180"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M6 9l6 6 6-6" />
-                </svg>
-              </summary>
-              <div className="pb-5 pe-9">
-                <p className="text-ink-soft">{item.a}</p>
-                {item.cta && (
-                  <Link
-                    href="/#form"
-                    className="mt-4 inline-block rounded-md bg-clay px-5 py-2.5 font-bold text-white transition-colors hover:bg-clay-deep"
+          <div className="border-t-2 border-ink">
+            {FAQ_ITEMS.map((item) => (
+              <details key={item.q} className="group border-b border-ink/25">
+                <summary className="flex min-h-[3.25rem] cursor-pointer list-none items-baseline gap-3 py-3.5 [&::-webkit-details-marker]:hidden">
+                  <span
+                    aria-hidden="true"
+                    className="shrink-0 font-display text-[1.0625rem] font-black text-pine"
                   >
-                    השאירו טלפון — נחזור אליכם עם מחיר מדויק
-                  </Link>
-                )}
-              </div>
-            </details>
-          ))}
+                    ש.
+                  </span>
+                  <span className="font-display text-[1.125rem] font-bold leading-snug text-ink group-hover:text-pine">
+                    {item.q}
+                  </span>
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="ms-auto h-5 w-5 shrink-0 translate-y-1 text-pine transition-transform duration-200 group-open:rotate-180"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </summary>
+                <div className="flex gap-3 pb-5">
+                  <span
+                    aria-hidden="true"
+                    className="shrink-0 font-display text-[1.0625rem] font-black text-ink-soft"
+                  >
+                    ת.
+                  </span>
+                  <div className="max-w-[60ch]">
+                    <p className="text-[1.0625rem] leading-relaxed text-ink-soft">
+                      {item.a}
+                    </p>
+                    {item.cta && (
+                      <Link
+                        href="/#form"
+                        className="mt-4 flex min-h-[3.25rem] w-fit items-center bg-clay px-6 font-bold text-[#fff6ee] transition-colors hover:bg-clay-deep"
+                      >
+                        לקבלת מחיר מדויק בשיחה קצרה ←
+                      </Link>
+                    )}
+                  </div>
+                </div>
+              </details>
+            ))}
+          </div>
         </div>
       </div>
     </section>
