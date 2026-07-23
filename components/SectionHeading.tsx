@@ -1,28 +1,31 @@
 /**
- * Section heading with an oversized ghost index numeral at the RTL start
- * corner — the site's editorial pacing device.
+ * Section heading: a short Hebrew eyebrow over the title, set against a
+ * hairline rule that runs to the edge of the column.
  */
 export default function SectionHeading({
-  index,
+  eyebrow,
   title,
   dark = false,
 }: {
-  index: string;
+  eyebrow: string;
   title: string;
   dark?: boolean;
 }) {
   return (
-    <div className="relative mb-10 sm:mb-14">
-      <span
-        aria-hidden="true"
-        className={`absolute -top-14 sm:-top-16 start-0 font-display font-black leading-none select-none text-[7rem] sm:text-[10rem] ${
-          dark ? "text-night-ink/5" : "text-ink/5"
+    <div
+      className={`mb-10 border-t pt-5 sm:mb-14 ${
+        dark ? "border-night-ink/20" : "border-ink/15"
+      }`}
+    >
+      <p
+        className={`text-base font-bold tracking-wide ${
+          dark ? "text-night-brand" : "text-pine"
         }`}
       >
-        {index}
-      </span>
+        {eyebrow}
+      </p>
       <h2
-        className={`relative font-display font-bold text-3xl sm:text-[2.5rem] leading-tight [text-wrap:balance] ${
+        className={`mt-2 max-w-[22ch] font-display text-3xl font-bold leading-tight [text-wrap:balance] sm:text-[2.5rem] ${
           dark ? "text-night-ink" : "text-ink"
         }`}
       >

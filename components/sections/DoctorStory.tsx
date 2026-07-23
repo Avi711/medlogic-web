@@ -3,7 +3,10 @@ import Link from "next/link";
 import doctorImage from "@/public/images/doctor.jpg";
 
 const TIMELINE = [
-  { period: "שירות המילואים", event: "התצפית הראשונה: בכריעה — ההתרוקנות קלה יותר" },
+  {
+    period: "שירות המילואים",
+    event: "התצפית הראשונה: בכריעה — ההתרוקנות קלה יותר",
+  },
   { period: "שנות המחקר", event: "מדידות, השוואות ופרסום בכתבי עת רפואיים" },
   { period: "2003", event: "פרסום המחקר המצוטט בעולם" },
   { period: "היום", event: "מתקן כריעה בפטנט בינלאומי, זמין לכל בית בישראל" },
@@ -28,7 +31,7 @@ export default function DoctorStory() {
               <span className="ltr-isolate">M.D.</span>
             </span>
             <span className="block text-night-ink-soft">
-              מומחה ברפואה פנימית · החוקר המצוטט בעולם בתחום תנוחת ההתרוקנות
+              מומחה ברפואה פנימית · חוקר מוביל בעולם בתחום תנוחת ההתרוקנות
             </span>
           </figcaption>
         </figure>
@@ -40,9 +43,9 @@ export default function DoctorStory() {
 
           <div className="mt-8 max-w-[42rem] space-y-5 text-night-ink/90">
             <p>
-              במהלך שירות מילואים בלבנון שם לב ד&quot;ר דב סיקירוב לתופעה
-              מוזרה: בשטח, בלי אסלות, כשכולם נאלצו לכרוע — ההתרוקנות הייתה
-              קלה יותר. בלי המאמץ המוכר מהבית.
+              במהלך שירות מילואים בלבנון שם לב ד&quot;ר דב סיקירוב לתופעה מוזרה:
+              בשטח, בלי אסלות, כשכולם נאלצו לכרוע — ההתרוקנות הייתה קלה יותר.
+              בלי המאמץ המוכר מהבית.
             </p>
             <p>רופא אחר היה שוכח מזה. ד&quot;ר סיקירוב החליט לבדוק.</p>
             <p>
@@ -51,9 +54,9 @@ export default function DoctorStory() {
                 Digestive Diseases and Sciences
               </span>
               , הראה שבכריעה ההתרוקנות אורכת בממוצע כדקה פחות מאשר בישיבה —
-              ובמאמץ קטן משמעותית. המחקר מצוטט עד היום על ידי חוקרים בכל
-              העולם, והוא ההשראה שמאחורי גל שלם של מוצרי תנוחה שנמכרו במיליוני
-              יחידות בארה&quot;ב.
+              ובמאמץ קטן משמעותית. המחקר מצוטט עד היום על ידי חוקרים בכל העולם,
+              והוא ההשראה שמאחורי גל שלם של מוצרי תנוחה שנמכרו במיליוני יחידות
+              בארה&quot;ב.
             </p>
             <p>
               אבל שרפרף פשוט לא הספיק לו. יחד עם מהנדסים פיתח ד&quot;ר סיקירוב
@@ -81,7 +84,7 @@ export default function DoctorStory() {
             href="/#form"
             className="mt-10 inline-block rounded-md bg-clay px-7 py-3.5 text-lg font-bold text-[#fff6ee] transition-colors hover:bg-clay-deep"
           >
-            רוצים לשמוע אם הפיתוח מתאים לכם? השאירו פרטים
+            השאירו טלפון — נחזור אליכם
           </Link>
         </div>
       </div>

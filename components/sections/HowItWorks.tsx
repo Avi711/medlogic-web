@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 
 const STEPS = [
@@ -22,37 +21,31 @@ export default function HowItWorks() {
     <section id="how-it-works" className="scroll-mt-20 bg-paper-deep py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <SectionHeading
-          index="02"
+          eyebrow="איך זה עובד"
           title="שלושה שלבים — והשירותים בבית חוזרים לעבוד בשביל הגוף שלכם"
         />
 
-        <ol className="grid gap-4 md:grid-cols-3 md:gap-6">
+        <ol className="grid gap-x-10 sm:grid-cols-3">
           {STEPS.map((step, i) => (
-            <li key={step.title}>
-              <Reveal className="h-full">
-                <article className="h-full rounded-sm border border-line bg-card p-6 shadow-card sm:p-7">
-                  <span
-                    aria-hidden="true"
-                    className="font-display text-5xl font-black leading-none text-amber sm:text-6xl"
-                  >
-                    {i + 1}
-                  </span>
-                  <h3 className="mt-4 font-display text-2xl font-bold text-ink">
-                    {step.title}
-                  </h3>
-                  <p className="mt-3 text-ink-soft">{step.body}</p>
-                </article>
-              </Reveal>
+            <li
+              key={step.title}
+              className="border-t-2 border-ink pt-4 max-sm:mb-8 max-sm:last:mb-0"
+            >
+              <h3 className="font-display text-2xl font-bold text-ink">
+                <span className="ltr-isolate text-pine">{i + 1}</span>{" "}
+                {step.title}
+              </h3>
+              <p className="mt-2 max-w-[34ch] text-ink-soft">{step.body}</p>
             </li>
           ))}
         </ol>
 
-        <div className="mt-12 text-center">
+        <div className="mt-12">
           <Link
             href="/#form"
             className="inline-block whitespace-nowrap rounded-md bg-clay px-8 py-4 text-xl font-bold text-white shadow-card transition-colors hover:bg-clay-deep"
           >
-            נשמע מעניין? דברו איתנו
+            השאירו טלפון — נחזור אליכם
           </Link>
         </div>
       </div>

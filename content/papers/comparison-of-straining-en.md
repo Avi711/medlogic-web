@@ -27,7 +27,7 @@ Twenty-eight volunteers (14 males, 14 females, age range 17– 66 years) with ap
 order that the cohort would represent the majority (as 95%) of a total population (2). The volunteers were instructed to interrupt
 the trial if they suffered from diarrhea and to resume when it had been resolved. Upon questioning for type of diet, it was found
 that it varied, very significantly, from person to person sometimes as can be expected. The volunteers were instructed not to change
-their usuual diets and defecation habits. They were supplied with a digital timer with a start/stop function for counting seconds and
+their usual diets and defecation habits. They were supplied with a digital timer with a start/stop function for counting seconds and
 minutes and were asked to record the net amount of time that had been needed for sensation of satisfactory bowel emptying on a
 predesigned form. Specifically, they were instructed to press the start button when they first began to strain and to press the stop
 button when they had finished emptying their bowels. The same form included a questionnaire for subjective assessment of any difficulties in defecation graded from very easy to very difficult. Four forms per participant had been prepared for the original four stages of the study: the completed form was

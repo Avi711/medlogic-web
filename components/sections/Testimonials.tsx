@@ -51,7 +51,7 @@ export default function Testimonials() {
   return (
     <section className="bg-paper py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading index="04" title="אנשים אמיתיים. תוצאות שמדברות בעד עצמן." />
+        <SectionHeading eyebrow="מהשטח" title="אנשים אמיתיים. תוצאות שמדברות בעד עצמן." />
 
         <div className="grid gap-8 lg:grid-cols-3">
           {TESTIMONIALS.map((t) => (

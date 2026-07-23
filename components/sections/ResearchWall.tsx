@@ -12,7 +12,7 @@ export default function ResearchWall() {
   return (
     <section id="research" className="scroll-mt-20 bg-paper-deep py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading index="05" title="לא מבטיחים. מוכיחים." />
+        <SectionHeading eyebrow="המחקר" title="לא מבטיחים. מוכיחים." />
         <p className="-mt-6 mb-10 max-w-[42rem] text-ink-soft sm:mb-14">
           מאחורי מתקן הכריעה עומדות עשרות שנות מחקר של ד&quot;ר סיקירוב — שישה
           מאמרים שפורסמו בכתבי עת רפואיים בינלאומיים עם ביקורת עמיתים. הנה הם,

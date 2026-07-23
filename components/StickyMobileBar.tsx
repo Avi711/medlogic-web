@@ -73,7 +73,7 @@ export default function StickyMobileBar() {
             href="/#form"
             className="flex-1 rounded-md bg-clay py-3.5 text-center font-bold text-white"
           >
-            לשיחת ייעוץ חינם
+            השאירו טלפון — נחזור אליכם
           </Link>
         )}
       </div>

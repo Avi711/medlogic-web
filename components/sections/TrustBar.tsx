@@ -1,64 +1,22 @@
-const TRUST_ITEMS = [
-  {
-    label: "פטנט בינלאומי רשום",
-    icon: (
-      <path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5-4.9-2.6-4.9 2.6.9-5.5-4-3.9 5.5-.8z" />
-    ),
-  },
-  {
-    label: "6 מחקרים בכתבי עת רפואיים",
-    icon: (
-      <>
-        <path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z" />
-        <path d="M9 9h6M9 13h6" />
-      </>
-    ),
-  },
-  {
-    label: "פותח ע״י רופא מומחה",
-    icon: (
-      <>
-        <circle cx="12" cy="8" r="4" />
-        <path d="M5 21c0-3.9 3.1-7 7-7s7 3.1 7 7" />
-      </>
-    ),
-  },
-  {
-    label: "מתאים לכל בית",
-    icon: (
-      <>
-        <path d="M6 3h9v7H6z" />
-        <path d="M4 10h14a6 6 0 0 1-6 6h-2a6 6 0 0 1-6-6z" />
-        <path d="M9 16v5" />
-      </>
-    ),
-  },
+const CLAIMS = [
+  "פטנט בינלאומי רשום",
+  "6 מחקרים בכתבי עת רפואיים",
+  "פותח על ידי רופא מומחה לרפואה פנימית",
+  "מתחבר לאינסטלציה הביתית",
 ];
 
 export default function TrustBar() {
   return (
-    <section className="border-y border-line bg-paper-deep">
-      <ul className="mx-auto grid max-w-6xl grid-cols-2 lg:grid-cols-4">
-        {TRUST_ITEMS.map((item, i) => (
-          <li
-            key={item.label}
-            className={`flex items-center justify-center gap-3 border-line px-4 py-6 text-center ${
-              i > 0 ? "border-s" : ""
-            } ${i === 2 ? "max-lg:border-s-0" : ""} ${i >= 2 ? "max-lg:border-t" : ""}`}
-          >
-            <svg
-              viewBox="0 0 24 24"
-              className="h-7 w-7 shrink-0 text-pine"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="1.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              {item.icon}
-            </svg>
-            <span className="font-semibold text-ink">{item.label}</span>
+    <section className="border-y border-ink/15 bg-paper-deep">
+      <ul className="mx-auto flex max-w-6xl flex-wrap gap-x-6 gap-y-1 px-4 py-4 text-base font-semibold text-ink-soft sm:px-6">
+        {CLAIMS.map((claim, i) => (
+          <li key={claim}>
+            {i > 0 && (
+              <span aria-hidden="true" className="me-6 text-line max-sm:hidden">
+                ·
+              </span>
+            )}
+            {claim}
           </li>
         ))}
       </ul>

@@ -59,7 +59,7 @@ export default function Faq() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
       />
       <div className="mx-auto max-w-[46rem] px-4 sm:px-6">
-        <SectionHeading index="06" title="שאלות ששואלים אותנו בטלפון" />
+        <SectionHeading eyebrow="שאלות ותשובות" title="שאלות ששואלים אותנו בטלפון" />
 
         <div className="divide-y divide-line border-y border-line">
           {FAQ_ITEMS.map((item) => (
@@ -86,7 +86,7 @@ export default function Faq() {
                     href="/#form"
                     className="mt-4 inline-block rounded-md bg-clay px-5 py-2.5 font-bold text-white transition-colors hover:bg-clay-deep"
                   >
-                    לקבלת מחיר מדויק בשיחה קצרה ←
+                    השאירו טלפון — נחזור אליכם עם מחיר מדויק
                   </Link>
                 )}
               </div>

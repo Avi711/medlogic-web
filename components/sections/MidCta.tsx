@@ -22,7 +22,7 @@ export default function MidCta() {
             href="/#form"
             className="mt-8 inline-block rounded-md bg-clay px-8 py-4 text-xl font-bold text-white shadow-card transition-colors hover:bg-clay-deep lg:hidden"
           >
-            להשארת פרטים לשיחה קצרה
+            השאירו טלפון — נחזור אליכם
           </Link>
         </div>
         <div className="hidden lg:block">

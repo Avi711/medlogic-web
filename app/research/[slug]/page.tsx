@@ -121,7 +121,7 @@ export default async function PaperPage({
                   href="/#form"
                   className="mt-4 inline-block rounded-md bg-clay px-5 py-3 font-bold text-white transition-colors hover:bg-clay-deep"
                 >
-                  לשיחת ייעוץ חינם
+                  השאירו טלפון — נחזור אליכם
                 </Link>
               </div>
 

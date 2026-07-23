@@ -6,7 +6,7 @@ export default function Problem() {
   return (
     <section id="problem" className="scroll-mt-20 py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading index="01" title="הבעיה היא לא אתם. הבעיה היא הזווית." />
+        <SectionHeading eyebrow="הסיבה" title="הבעיה היא לא אתם. הבעיה היא הזווית." />
 
         <div className="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
           <div className="max-w-[42rem] space-y-5">

@@ -73,8 +73,8 @@ export default function Header() {
             href="/#form"
             className="whitespace-nowrap rounded-md bg-clay px-3 py-2.5 text-base font-bold text-white transition-colors hover:bg-clay-deep sm:px-5 sm:text-lg"
           >
-            <span className="sm:hidden">ייעוץ חינם</span>
-            <span className="hidden sm:inline">לשיחת ייעוץ חינם</span>
+            <span className="sm:hidden">השאירו טלפון</span>
+            <span className="hidden sm:inline">השאירו טלפון — נחזור אליכם</span>
           </Link>
 
           <details ref={menuRef} className="relative md:hidden">
