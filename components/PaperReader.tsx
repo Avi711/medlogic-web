@@ -11,25 +11,26 @@ export default function PaperReader({
   bodyHe: string;
   bodyEn: string;
 }) {
-  const [lang, setLang] = useState<"he" | "en">("he");
+  // The papers were published in English — that is the authoritative text.
+  const [lang, setLang] = useState<"he" | "en">("en");
   const hasBoth = Boolean(bodyHe && bodyEn);
 
   return (
     <div>
       {hasBoth && (
         <div role="group" aria-label="בחירת שפת המאמר" className="mb-8 flex gap-2">
-          <ToggleButton active={lang === "he"} onClick={() => setLang("he")}>
-            עברית
-          </ToggleButton>
           <ToggleButton active={lang === "en"} onClick={() => setLang("en")}>
             English
           </ToggleButton>
+          <ToggleButton active={lang === "he"} onClick={() => setLang("he")}>
+            תרגום לעברית
+          </ToggleButton>
         </div>
       )}
-      {lang === "he" && bodyHe ? (
-        <PaperBody markdown={bodyHe} dir="rtl" />
-      ) : (
+      {lang === "en" && bodyEn ? (
         <PaperBody markdown={bodyEn} dir="ltr" />
+      ) : (
+        <PaperBody markdown={bodyHe} dir="rtl" />
       )}
     </div>
   );
