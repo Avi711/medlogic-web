@@ -1,4 +1,4 @@
----
+﻿---
 title: "Cardio-Vascular Events at Defecation: Are They Unavoidable?"
 authors:
   - "B. A. Sikirov"
@@ -10,7 +10,7 @@ source_url: "https://medlogic.co.il/cardio-vascular-events-at-defecation-are-the
 
 ## Cardio-Vascular Events at Defecation: Are They Unavoidable
 
-G. A. SIKIROV
+B. A. SIKIROV
 
 Abstract – Cardio-vascular events at defecation are to a considerable degree the consequence of an unnatural (for a human being) seating defecation posture on a common toilet bowl or bed pan. The excessive straining expressed in intensively repeated Valsalva Maneuvers is needed for emptying the bowels in sitting position. The Valsalva Maneuver adversely affecting the cardio-vascular system is the causative factor of defecation syncope and death. The cardiovascular system of a healthy man withstands the intensive and repeated straining at defecation, while the compromised cardio-vascular system may fail resulting in syncope or even death. The squatting defecation posture is associated with reduced amounts of straining and may prevent many of these tragic cases.
 

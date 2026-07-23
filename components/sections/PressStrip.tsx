@@ -23,10 +23,10 @@ const PRESS_ITEMS = [
 
 export default function PressStrip() {
   return (
-    <section aria-label="כתבו עלינו בתקשורת" className="border-y border-line bg-card py-12 sm:py-16">
+    <section aria-label="סיקור תקשורתי בנושא" className="border-y border-line bg-card py-12 sm:py-16">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         <p className="mb-8 text-center font-semibold tracking-wide text-ink-soft">
-          הנושא שמעסיק את התקשורת בישראל
+          מדברים על זה בתקשורת בישראל
         </p>
         <ul className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
           {PRESS_ITEMS.map((item) => (

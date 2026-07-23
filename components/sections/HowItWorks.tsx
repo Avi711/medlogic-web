@@ -1,19 +1,29 @@
+import Image from "next/image";
 import Link from "next/link";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
+import deviceIllustration from "@/public/images/illu-device.jpg";
+import stepUpIllustration from "@/public/images/illu-step-up.jpg";
+import squatIllustration from "@/public/images/illu-squat.jpg";
 
 const STEPS = [
   {
     title: "מתקינים פעם אחת",
-    body: "מתקן הכריעה מתחבר לכל אסלה ביתית סטנדרטית, בלי שיפוץ, בלי כלים מיוחדים ובלי לפגוע בשימוש הרגיל של שאר בני הבית.",
+    body: "מתחבר לכל אסלה ביתית סטנדרטית — בלי כלים, בלי שיפוץ, בלי להפריע לשאר בני הבית.",
+    image: deviceIllustration,
+    alt: "איור: מתקן הכריעה מוצב סביב אסלה ביתית רגילה, לצד ידית תמיכה",
   },
   {
     title: "עולים ונתמכים",
-    body: "עולים בבטחה על משטחי הדריכה היציבים, נאחזים בידיות התמיכה, ומתמקמים בתנוחת כריעה טבעית מעל האסלה. הגוף עושה את השאר.",
+    body: "משטחי דריכה יציבים וידית תמיכה נושאים חלק מהמשקל — עולים בבטחה, בלי שיווי משקל של ספורטאי.",
+    image: stepUpIllustration,
+    alt: "איור: אדם עולה בבטחה על משטח הדריכה כשידו אוחזת בידית התמיכה",
   },
   {
     title: "מתרוקנים בקלות",
-    body: "בתנוחת הכריעה הזווית נפתחת והמעי מתיישר. המאמץ פוחת, ההתרוקנות מלאה יותר — ורבים מהמשתמשים מדווחים על הקלה כבר בשימושים הראשונים.",
+    body: "בכריעה הזווית נפתחת והמעי מתיישר — פחות מאמץ, התרוקנות מלאה יותר.",
+    image: squatIllustration,
+    alt: "איור: תנוחת כריעה מלאה שבה מעבר היציאה ישר ופתוח",
   },
 ];
 
@@ -30,17 +40,27 @@ export default function HowItWorks() {
           {STEPS.map((step, i) => (
             <li key={step.title}>
               <Reveal className="h-full">
-                <article className="h-full rounded-sm border border-line bg-card p-7 shadow-card">
-                  <span
-                    aria-hidden="true"
-                    className="font-serif text-6xl font-black leading-none text-amber"
-                  >
-                    {i + 1}
-                  </span>
-                  <h3 className="mt-4 font-serif text-2xl font-bold text-ink">
-                    {step.title}
-                  </h3>
-                  <p className="mt-3 text-ink-soft">{step.body}</p>
+                <article className="h-full overflow-hidden rounded-sm border border-line bg-card shadow-card">
+                  <Image
+                    src={step.image}
+                    alt={step.alt}
+                    sizes="(min-width: 768px) 33vw, 100vw"
+                    className="h-auto w-full"
+                  />
+                  <div className="p-6 pt-4">
+                    <div className="flex items-baseline gap-3">
+                      <span
+                        aria-hidden="true"
+                        className="font-serif text-5xl font-black leading-none text-amber"
+                      >
+                        {i + 1}
+                      </span>
+                      <h3 className="font-serif text-2xl font-bold text-ink">
+                        {step.title}
+                      </h3>
+                    </div>
+                    <p className="mt-3 text-ink-soft">{step.body}</p>
+                  </div>
                 </article>
               </Reveal>
             </li>

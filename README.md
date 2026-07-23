@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MedLogic — medlogic.co.il
 
-## Getting Started
+Hebrew-native (RTL) lead-generation site for MedLogic's squatting-posture
+device, built on the research of Dr. Dov Sikirov. Next.js App Router,
+Tailwind CSS v4, no other runtime dependencies.
 
-First, run the development server:
+## Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Production:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build
+npm start
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Lead form
 
-## Learn More
+`POST /api/lead` validates submissions (name, Israeli phone, preferred
+call hour, optional message) and forwards them to any of the following —
+configure via environment variables:
 
-To learn more about Next.js, take a look at the following resources:
+| Variable | Purpose |
+| --- | --- |
+| `LEAD_WEBHOOK_URL` | Generic JSON webhook (Make / Zapier / Google Apps Script / CRM) |
+| `RESEND_API_KEY` | Resend API key for email delivery |
+| `LEAD_EMAIL_TO` | Recipient address for lead emails |
+| `LEAD_EMAIL_FROM` | Optional sender override (default `MedLogic <leads@medlogic.co.il>`) |
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Without any of these set, leads are only logged to the server console —
+set at least one before launch.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Before launch
 
-## Deploy on Vercel
+- Fill in the real phone / WhatsApp / email in `lib/site.ts` —
+  phone-related UI stays hidden while these are empty.
+- Configure a lead destination (see above).
+- Replace `public/images/hero.jpg` if a real product photo becomes
+  available (current image is an AI-generated ambience shot without the
+  device).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Content
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `content/papers/*.md` — the six published papers (Hebrew + English)
+  rendered at `/research/[slug]`; index and one-line summaries live in
+  `lib/papers.ts`.
+- Site-wide contact details: `lib/site.ts`.

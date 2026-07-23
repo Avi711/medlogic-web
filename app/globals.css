@@ -76,11 +76,16 @@ body {
   outline-offset: 2px;
 }
 
+/* Pine is near-invisible on the dark "evening clinic" sections */
+.bg-night :focus-visible,
+.bg-night-surface :focus-visible {
+  outline-color: var(--night-brand);
+}
+
 /* Latin digits and units inside RTL text must not flip */
-.ltr-isolate {
+@utility ltr-isolate {
   direction: ltr;
   unicode-bidi: isolate;
-  display: inline-block;
 }
 
 /* Scroll-driven entrance — progressive enhancement only */

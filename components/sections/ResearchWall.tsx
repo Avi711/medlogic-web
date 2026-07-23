@@ -12,7 +12,7 @@ export default function ResearchWall() {
   return (
     <section id="research" className="scroll-mt-20 bg-paper-deep py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading index="04" title="לא מבטיחים. מוכיחים." />
+        <SectionHeading index="05" title="לא מבטיחים. מוכיחים." />
         <p className="-mt-6 mb-10 max-w-[42rem] text-ink-soft sm:mb-14">
           מאחורי מתקן הכריעה עומדות עשרות שנות מחקר של ד&quot;ר סיקירוב — שישה
           מאמרים שפורסמו בכתבי עת רפואיים בינלאומיים עם ביקורת עמיתים. הנה הם,
@@ -25,7 +25,7 @@ export default function ResearchWall() {
               <Reveal className="h-full">
                 <Link
                   href={`/research/${paper.slug}`}
-                  className={`block h-full transition-transform duration-200 hover:-translate-y-1 ${
+                  className={`block h-full transition-transform duration-200 hover:-translate-y-1 hover:rotate-0 ${
                     ROTATIONS[i % ROTATIONS.length]
                   }`}
                 >

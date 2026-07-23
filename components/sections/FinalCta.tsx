@@ -1,5 +1,7 @@
+import Image from "next/image";
 import LeadForm from "@/components/LeadForm";
 import { site } from "@/lib/site";
+import calmIllustration from "@/public/images/illu-calm.jpg";
 
 const REASSURANCES = [
   "שיחת ייעוץ טלפונית חינם, בגובה העיניים",
@@ -41,6 +43,13 @@ export default function FinalCta() {
               </li>
             ))}
           </ul>
+
+          <Image
+            src={calmIllustration}
+            alt="איור: אדם רגוע בתנוחת התרוקנות טבעית ונתמכת"
+            sizes="(min-width: 640px) 16rem, 40vw"
+            className="mt-10 w-40 rounded-md sm:w-64"
+          />
 
           {site.whatsapp && (
             <a

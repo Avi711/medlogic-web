@@ -1,6 +1,14 @@
+import Link from "next/link";
 import SectionHeading from "@/components/SectionHeading";
 
-const FAQ_ITEMS = [
+type FaqItem = {
+  q: string;
+  a: string;
+  /** When true, the rendered answer ends with a CTA button to the form. */
+  cta?: boolean;
+};
+
+const FAQ_ITEMS: FaqItem[] = [
   {
     q: "האם ארגיש שיפור מיד?",
     a: "אצל רבים ההבדל מורגש כבר בשימושים הראשונים — פחות מאמץ ותחושת התרוקנות מלאה יותר. במצבים ותיקים יותר, כמו טחורים כרוניים, השיפור בדרך כלל הדרגתי ומצטבר לאורך שבועות. כל גוף בקצב שלו.",
@@ -22,24 +30,36 @@ const FAQ_ITEMS = [
     a: "המתקן פותח מתוך מחשבה על קהל מבוגר: ידיות אחיזה חזקות, משטחים מונעי החלקה ותנוחה נתמכת. עם זאת, אם יש מגבלה משמעותית בברכיים או בירכיים — נשוחח על זה בטלפון בכנות מלאה. אם זה לא מתאים לכם, נגיד לכם.",
   },
   {
-    q: "תוך כמה זמן רואים תוצאות?",
-    a: "הקלה במאמץ — לרוב מהשימושים הראשונים. שיפור בתסמינים כמו טחורים או דימומים — אצל משתמשים רבים מדובר בשבועות ספורים של שימוש קבוע. חשוב לזכור: המתקן מסייע ואינו תחליף לאבחון או טיפול רפואי.",
-  },
-  {
     q: "מה קורה אם המתקן לא יתאים לי?",
     a: "אנחנו עומדים מאחורי המוצר. בשיחת הטלפון נפרט את תנאי האחריות ותקופת ההתנסות — בשקיפות מלאה ולפני כל התחייבות מצדכם.",
   },
   {
     q: "כמה זה עולה?",
     a: "המחיר תלוי בדגם ובהתאמה לשירותים שלכם, ולכן אנחנו מעדיפים לתת לכם מחיר מדויק ולא מספר כללי. השאירו פרטים — ובשיחה קצרה תקבלו את כל המידע, בלי לחץ ובלי משחקים.",
+    cta: true,
   },
 ];
+
+/** FAQPage structured data — a cheap rich-result win for the search snippet. */
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: FAQ_ITEMS.map((item) => ({
+    "@type": "Question",
+    name: item.q,
+    acceptedAnswer: { "@type": "Answer", text: item.a },
+  })),
+};
 
 export default function Faq() {
   return (
     <section id="faq" className="scroll-mt-20 bg-paper-deep py-16 sm:py-24">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
       <div className="mx-auto max-w-[46rem] px-4 sm:px-6">
-        <SectionHeading index="05" title="שאלות ששואלים אותנו בטלפון" />
+        <SectionHeading index="06" title="שאלות ששואלים אותנו בטלפון" />
 
         <div className="divide-y divide-line border-y border-line">
           {FAQ_ITEMS.map((item) => (
@@ -59,7 +79,17 @@ export default function Faq() {
                   <path d="M6 9l6 6 6-6" />
                 </svg>
               </summary>
-              <p className="pb-5 pe-9 text-ink-soft">{item.a}</p>
+              <div className="pb-5 pe-9">
+                <p className="text-ink-soft">{item.a}</p>
+                {item.cta && (
+                  <Link
+                    href="/#form"
+                    className="mt-4 inline-block rounded-md bg-clay px-5 py-2.5 font-bold text-white transition-colors hover:bg-clay-deep"
+                  >
+                    לקבלת מחיר מדויק בשיחה קצרה ←
+                  </Link>
+                )}
+              </div>
             </details>
           ))}
         </div>

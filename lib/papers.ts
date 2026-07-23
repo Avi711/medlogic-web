@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { cache } from "react";
 
 export type Paper = {
   slug: string;
@@ -99,7 +100,7 @@ function stripQuotes(s: string): string {
   return s.replace(/^"(.*)"$/, "$1").replace(/\\"/g, '"').trim();
 }
 
-export function getPapers(): Paper[] {
+export const getPapers = cache((): Paper[] => {
   return PAPER_INDEX.map((entry) => {
     const he = parseDoc(path.join(PAPERS_DIR, `${entry.slug}-he.md`));
     const en = parseDoc(path.join(PAPERS_DIR, `${entry.slug}-en.md`));
@@ -116,7 +117,7 @@ export function getPapers(): Paper[] {
       bodyEn: en?.body ?? "",
     };
   }).filter((p) => p.bodyHe || p.bodyEn);
-}
+});
 
 export function getPaper(slug: string): Paper | undefined {
   return getPapers().find((p) => p.slug === slug);

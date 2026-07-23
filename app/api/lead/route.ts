@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { ISRAELI_PHONE_RE, normalizePhone } from "@/lib/validation";
 
 type LeadPayload = {
   name?: string;
@@ -8,30 +9,34 @@ type LeadPayload = {
   company?: string; // honeypot — real users never fill this
 };
 
-const PHONE_RE = /^0(5\d|[2-4]|[8-9]|7\d)-?\d{7}$/;
+const DELIVERY_TIMEOUT_MS = 5000;
 
 export async function POST(req: NextRequest) {
-  let body: LeadPayload;
+  let body: unknown;
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ ok: false, error: "bad-json" }, { status: 400 });
   }
+  if (typeof body !== "object" || body === null) {
+    return NextResponse.json({ ok: false, error: "bad-json" }, { status: 400 });
+  }
+  const payload = body as LeadPayload;
 
   // Honeypot: pretend success so bots don't adapt
-  if (body.company) {
+  if (payload.company) {
     return NextResponse.json({ ok: true });
   }
 
-  const name = (body.name ?? "").trim();
-  const phone = (body.phone ?? "").replace(/[\s-]/g, "");
-  const callHour = (body.callHour ?? "").trim();
-  const message = (body.message ?? "").trim().slice(0, 1000);
+  const name = (payload.name ?? "").trim().slice(0, 80);
+  const phone = normalizePhone(payload.phone ?? "");
+  const callHour = (payload.callHour ?? "").trim().slice(0, 100);
+  const message = (payload.message ?? "").trim().slice(0, 1000);
 
-  if (name.length < 2 || name.length > 80) {
+  if (name.length < 2) {
     return NextResponse.json({ ok: false, error: "name" }, { status: 422 });
   }
-  if (!PHONE_RE.test(phone)) {
+  if (!ISRAELI_PHONE_RE.test(phone)) {
     return NextResponse.json({ ok: false, error: "phone" }, { status: 422 });
   }
 
@@ -44,29 +49,27 @@ export async function POST(req: NextRequest) {
     page: req.headers.get("referer") ?? "",
   };
 
-  const results: string[] = [];
+  const deliveries: Promise<boolean>[] = [];
 
-  // 1) Generic webhook (Make / Zapier / Google Apps Script / CRM)
   const webhookUrl = process.env.LEAD_WEBHOOK_URL;
   if (webhookUrl) {
-    try {
-      const res = await fetch(webhookUrl, {
+    deliveries.push(
+      fetch(webhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(lead),
-      });
-      results.push(`webhook:${res.status}`);
-    } catch {
-      results.push("webhook:failed");
-    }
+        signal: AbortSignal.timeout(DELIVERY_TIMEOUT_MS),
+      })
+        .then((res) => res.ok)
+        .catch(() => false)
+    );
   }
 
-  // 2) Email via Resend (set RESEND_API_KEY + LEAD_EMAIL_TO)
   const resendKey = process.env.RESEND_API_KEY;
   const emailTo = process.env.LEAD_EMAIL_TO;
   if (resendKey && emailTo) {
-    try {
-      const res = await fetch("https://api.resend.com/emails", {
+    deliveries.push(
+      fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: {
           Authorization: `Bearer ${resendKey}`,
@@ -86,13 +89,26 @@ export async function POST(req: NextRequest) {
             .filter(Boolean)
             .join("\n"),
         }),
-      });
-      results.push(`email:${res.status}`);
-    } catch {
-      results.push("email:failed");
-    }
+        signal: AbortSignal.timeout(DELIVERY_TIMEOUT_MS),
+      })
+        .then((res) => res.ok)
+        .catch(() => false)
+    );
   }
 
-  console.log("[lead]", JSON.stringify(lead), results.join(","));
+  const results = await Promise.all(deliveries);
+  const delivered = results.some(Boolean);
+
+  const maskedPhone = phone.slice(0, 3) + "****" + phone.slice(-3);
+  console.log(
+    `[lead] ${name} ${maskedPhone} hour="${callHour}" channels=${results.length} delivered=${delivered}`
+  );
+
+  // If delivery channels exist but every one failed, surface the failure so
+  // the visitor sees the retry message instead of a false success.
+  if (deliveries.length > 0 && !delivered) {
+    return NextResponse.json({ ok: false, error: "delivery" }, { status: 502 });
+  }
+
   return NextResponse.json({ ok: true });
 }

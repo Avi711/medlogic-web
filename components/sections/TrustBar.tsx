@@ -42,9 +42,9 @@ export default function TrustBar() {
         {TRUST_ITEMS.map((item, i) => (
           <li
             key={item.label}
-            className={`flex items-center justify-center gap-3 px-4 py-6 text-center ${
-              i > 0 ? "border-s border-line" : ""
-            } ${i === 2 ? "max-lg:border-s-0" : ""}`}
+            className={`flex items-center justify-center gap-3 border-line px-4 py-6 text-center ${
+              i > 0 ? "border-s" : ""
+            } ${i === 2 ? "max-lg:border-s-0" : ""} ${i >= 2 ? "max-lg:border-t" : ""}`}
           >
             <svg
               viewBox="0 0 24 24"

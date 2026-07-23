@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/site";
 
 const NAV_LINKS = [
@@ -12,6 +12,7 @@ const NAV_LINKS = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const menuRef = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 8);
@@ -46,21 +47,55 @@ export default function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-3 sm:gap-4">
           {site.phoneE164 && site.phoneDisplay && (
             <a
               href={`tel:${site.phoneE164}`}
-              className="hidden sm:inline-block font-bold text-pine text-lg ltr-isolate"
+              className="ltr-isolate hidden sm:inline font-bold text-pine text-lg"
             >
               {site.phoneDisplay}
             </a>
           )}
           <Link
             href="/#form"
-            className="rounded-md bg-clay px-5 py-2.5 font-bold text-white transition-colors hover:bg-clay-deep"
+            className="rounded-md bg-clay px-4 py-2.5 font-bold text-white transition-colors hover:bg-clay-deep sm:px-5"
           >
             לשיחת ייעוץ חינם
           </Link>
+
+          <details ref={menuRef} className="relative md:hidden">
+            <summary
+              aria-label="תפריט ניווט"
+              className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-md border border-line [&::-webkit-details-marker]:hidden"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                className="h-6 w-6 text-pine"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                aria-hidden="true"
+              >
+                <path d="M4 7h16M4 12h16M4 17h16" />
+              </svg>
+            </summary>
+            <nav
+              aria-label="ניווט נייד"
+              className="absolute start-auto end-0 top-full mt-2 w-52 rounded-md border border-line bg-card p-2 shadow-card"
+            >
+              {NAV_LINKS.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => menuRef.current?.removeAttribute("open")}
+                  className="block rounded-md px-4 py-3 font-semibold text-ink hover:bg-sage-wash"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </nav>
+          </details>
         </div>
       </div>
     </header>
@@ -70,11 +105,7 @@ export default function Header() {
 /** Small 35° angle mark — the brand glyph. */
 function AngleGlyph() {
   return (
-    <svg
-      viewBox="0 0 28 28"
-      className="h-7 w-7 text-pine"
-      aria-hidden="true"
-    >
+    <svg viewBox="0 0 28 28" className="h-7 w-7 text-pine" aria-hidden="true">
       <line x1="3" y1="23" x2="25" y2="23" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
       <line x1="3" y1="23" x2="21" y2="8" stroke="var(--amber)" strokeWidth="2.5" strokeLinecap="round" />
       <path d="M 12 23 A 9 9 0 0 0 10.5 17.5" fill="none" stroke="currentColor" strokeWidth="1.8" />

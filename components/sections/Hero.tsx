@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import heroImage from "@/public/images/hero.jpg";
+import heroIllustration from "@/public/images/illu-supported.jpg";
 
 export default function Hero() {
   return (
@@ -10,14 +10,12 @@ export default function Hero() {
           <h1 className="font-serif text-[2.375rem] font-black leading-[1.15] text-ink sm:text-[3.5rem]">
             סובלים מעצירות או טחורים?
             <br />
-            <span className="text-pine">
-              ייתכן שהבעיה היא לא בגוף שלכם — אלא בזווית הישיבה.
-            </span>
+            <span className="text-pine">הבעיה אינה בגוף שלכם — אלא בזווית.</span>
           </h1>
           <p className="mt-6 max-w-xl text-xl leading-relaxed text-ink-soft sm:text-[1.375rem]">
-            מתקן הכריעה של MedLogic הופך כל אסלה ביתית לתנוחת התרוקנות טבעית
-            ומלאה — הפיתוח של ד&quot;ר דב סיקירוב, מומחה ברפואה פנימית והחוקר
-            המוביל בעולם בתחום תנוחת ההתרוקנות.
+            מתקן הכריעה של MedLogic מאפשר בכל אסלה ביתית התרוקנות טבעית ומלאה
+            בתנוחת כריעה — הפיתוח של ד&quot;ר דב סיקירוב, מומחה ברפואה פנימית
+            והחוקר המוביל בעולם בתחום תנוחת ההתרוקנות.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -31,7 +29,7 @@ export default function Hero() {
               href="/#problem"
               className="font-semibold text-pine underline-offset-4 hover:underline"
             >
-              איך זה עובד? ↓
+              למה זה קורה? ↓
             </Link>
           </div>
           <p className="mt-3 text-base text-ink-soft">
@@ -45,19 +43,18 @@ export default function Hero() {
           </div>
         </div>
 
-        <div
-          className="relative aspect-[4/3] overflow-hidden lg:aspect-auto lg:h-full lg:min-h-[480px]"
-          style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%, 12% 100%)" }}
-        >
+        <figure className="mx-auto w-full max-w-md lg:max-w-none">
           <Image
-            src={heroImage}
-            alt="חדר אמבטיה ביתי רגוע באור בוקר, אסלה לבנה ליד קיר ירוק-מרווה"
-            fill
+            src={heroIllustration}
+            alt="איור: אדם על אסלה ביתית רגילה כשרגליו מוגבהות על משטח הדריכה וידיו אוחזות בידית התמיכה"
             priority
-            sizes="(min-width: 1024px) 45vw, 100vw"
-            className="object-cover"
+            sizes="(min-width: 1024px) 45vw, (min-width: 640px) 28rem, 100vw"
+            className="h-auto w-full"
           />
-        </div>
+          <figcaption className="mt-2 text-center text-base text-ink-soft">
+            התנוחה הטבעית — על האסלה הרגילה שלכם
+          </figcaption>
+        </figure>
       </div>
     </section>
   );

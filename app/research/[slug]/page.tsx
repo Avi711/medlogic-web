@@ -36,7 +36,7 @@ export default async function PaperPage({
   return (
     <>
       <Header />
-      <main className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
+      <main id="main" className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
         <Link
           href="/#research"
           className="font-semibold text-pine underline-offset-4 hover:underline"
