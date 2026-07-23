@@ -1,4 +1,3 @@
-import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 
 const TESTIMONIALS = [
@@ -34,49 +33,35 @@ const TESTIMONIALS = [
   },
 ];
 
-function QuoteMark() {
-  return (
-    <svg
-      viewBox="0 0 24 16"
-      className="h-7 w-10 text-amber"
-      fill="currentColor"
-      aria-hidden="true"
-    >
-      <path d="M4.5 0C2 2.2 0.5 5 0.5 8.5c0 4 2.3 7 5.6 7 2.5 0 4.3-1.8 4.3-4.2 0-2.3-1.7-4-3.9-4-.4 0-.9.1-1.1.2.3-2.4 1.7-4.6 3.6-6L4.5 0zm13 0C15 2.2 13.5 5 13.5 8.5c0 4 2.3 7 5.6 7 2.5 0 4.4-1.8 4.4-4.2 0-2.3-1.8-4-4-4-.4 0-.8.1-1 .2.3-2.4 1.6-4.6 3.5-6L17.5 0z" />
-    </svg>
-  );
-}
-
+/** Letters column: dense, ruled, no cards and no quotation ornaments. */
 export default function Testimonials() {
   return (
-    <section className="bg-paper py-16 sm:py-24">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
-        <SectionHeading eyebrow="מהשטח" title="אנשים אמיתיים. תוצאות שמדברות בעד עצמן." />
+    <section className="shell py-14 sm:py-20">
+      <SectionHeading
+        eyebrow="מכתבים"
+        title="אנשים אמיתיים. תוצאות שמדברות בעד עצמן."
+        meta="6 עדויות משתמשים"
+        lede="העדויות משקפות חוויה אישית של משתמשים. התוצאות עשויות להשתנות מאדם לאדם."
+      />
 
-        <div className="grid gap-8 lg:grid-cols-3">
-          {TESTIMONIALS.map((t) => (
-            <Reveal key={t.source} className="h-full">
-              <figure className="flex h-full flex-col border-t-2 border-amber pt-6">
-                <QuoteMark />
-                <blockquote className="mt-4 grow">
-                  <p className="font-display text-2xl font-medium leading-snug text-ink">
-                    {t.headline}
-                  </p>
-                  <p className="mt-4 text-ink-soft">{t.body}</p>
-                </blockquote>
-                <figcaption className="mt-5 font-semibold text-ink">
-                  — {t.source}
-                </figcaption>
-              </figure>
-            </Reveal>
-          ))}
-        </div>
-
-        <p className="mt-10 text-base text-ink-soft">
-          העדויות משקפות חוויה אישית של משתמשים. התוצאות עשויות להשתנות מאדם
-          לאדם.
-        </p>
+      <div className="mt-9 grid gap-x-11 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
+        {TESTIMONIALS.map((t) => (
+          <figure key={t.source} className="border-t-2 border-ink pt-4">
+            <blockquote>
+              <p className="font-display text-[1.3125rem] font-bold leading-tight text-pine">
+                {t.headline}
+              </p>
+              <p className="mt-3 text-[1.0625rem] leading-relaxed text-ink-soft">
+                {t.body}
+              </p>
+            </blockquote>
+            <figcaption className="mt-3 border-t border-ink/20 pt-2 text-[1rem] font-semibold text-ink">
+              — {t.source}
+            </figcaption>
+          </figure>
+        ))}
       </div>
+
     </section>
   );
 }

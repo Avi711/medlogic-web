@@ -7,10 +7,12 @@ import { site } from "@/lib/site";
 
 const NAV_LINKS = [
   { href: "/#how-it-works", label: "איך זה עובד" },
-  { href: "/#research", label: "המחקר" },
+  { href: "/#research", label: "המחקרים" },
+  { href: "/#doctor", label: "ד״ר סיקירוב" },
   { href: "/#faq", label: "שאלות נפוצות" },
 ];
 
+/** The masthead: wordmark, standing rules, contents line, one action. */
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const menuRef = useRef<HTMLDetailsElement>(null);
@@ -36,42 +38,54 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 bg-paper border-b border-sage-wash transition-shadow duration-200 ${
-        scrolled ? "shadow-card" : ""
+      className={`sticky top-0 z-50 border-b-4 border-double border-ink bg-paper ${
+        scrolled ? "shadow-[0_10px_20px_-18px_rgba(32,36,31,0.9)]" : ""
       }`}
     >
-      <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2.5 shrink-0">
-          <LogoMark className="h-10 w-10 sm:h-11 sm:w-11" />
-          <span className="font-display text-2xl font-bold text-pine sm:text-[1.75rem]">
+      <div className="shell flex h-[66px] items-center justify-between gap-4 sm:h-[74px]">
+        <Link href="/" className="flex shrink-0 items-center gap-2.5">
+          <LogoMark className="h-9 w-9 sm:h-10 sm:w-10" />
+          <span className="font-display text-[1.6rem] font-black tracking-[-0.03em] text-ink sm:text-[1.9rem]">
             {site.name}
+          </span>
+          <span
+            aria-hidden="true"
+            className="mx-1 hidden h-8 w-px bg-ink/25 lg:block"
+          />
+          <span className="hidden max-w-[15ch] text-[0.9375rem] leading-tight text-ink-soft lg:block">
+            מתקן הכריעה של ד״ר סיקירוב
           </span>
         </Link>
 
-        <nav aria-label="ניווט ראשי" className="hidden md:flex items-center gap-7">
-          {NAV_LINKS.map((link) => (
+        <nav
+          aria-label="ניווט ראשי"
+          className="hidden items-center md:flex"
+        >
+          {NAV_LINKS.map((link, i) => (
             <Link
               key={link.href}
               href={link.href}
-              className="font-semibold text-ink-soft hover:text-pine transition-colors"
+              className={`px-4 py-2 text-[1.0625rem] font-semibold text-ink-soft transition-colors hover:text-pine ${
+                i > 0 ? "border-s border-line" : ""
+              }`}
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-3 sm:gap-4">
+        <div className="flex items-center gap-3">
           {site.phoneE164 && site.phoneDisplay && (
             <a
               href={`tel:${site.phoneE164}`}
-              className="ltr-isolate hidden sm:inline font-bold text-pine text-lg"
+              className="ltr-isolate hidden text-lg font-bold text-pine sm:inline"
             >
               {site.phoneDisplay}
             </a>
           )}
           <Link
             href="/#form"
-            className="whitespace-nowrap rounded-md bg-clay px-3 py-2.5 text-base font-bold text-white transition-colors hover:bg-clay-deep sm:px-5 sm:text-lg"
+            className="flex min-h-11 items-center whitespace-nowrap bg-clay px-3.5 text-[1.0625rem] font-bold text-[#fff6ee] transition-colors hover:bg-clay-deep sm:px-5"
           >
             <span className="sm:hidden">השאירו טלפון</span>
             <span className="hidden sm:inline">השאירו טלפון — נחזור אליכם</span>
@@ -80,11 +94,11 @@ export default function Header() {
           <details ref={menuRef} className="relative md:hidden">
             <summary
               aria-label="תפריט ניווט"
-              className="flex h-12 w-12 cursor-pointer list-none items-center justify-center rounded-md border border-line [&::-webkit-details-marker]:hidden"
+              className="flex h-11 w-11 cursor-pointer list-none items-center justify-center border border-ink/40 [&::-webkit-details-marker]:hidden"
             >
               <svg
                 viewBox="0 0 24 24"
-                className="h-6 w-6 text-pine"
+                className="h-6 w-6 text-ink"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
@@ -96,14 +110,16 @@ export default function Header() {
             </summary>
             <nav
               aria-label="ניווט נייד"
-              className="absolute start-auto end-0 top-full mt-2 w-52 rounded-md border border-line bg-card p-2 shadow-card"
+              className="absolute end-0 start-auto top-full mt-2 w-56 border-2 border-ink bg-card"
             >
-              {NAV_LINKS.map((link) => (
+              {NAV_LINKS.map((link, i) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => menuRef.current?.removeAttribute("open")}
-                  className="block rounded-md px-4 py-3 font-semibold text-ink hover:bg-sage-wash"
+                  className={`block px-4 py-3.5 font-semibold text-ink hover:bg-sage-wash ${
+                    i > 0 ? "border-t border-line" : ""
+                  }`}
                 >
                   {link.label}
                 </Link>
@@ -115,4 +131,3 @@ export default function Header() {
     </header>
   );
 }
-
