@@ -74,12 +74,23 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
       company: String(data.get("company") ?? ""),
     };
 
+    // Bring the failing field back on screen — on mobile it can be far
+    // above the submit button.
+    const rejectField = (field: "name" | "phone") => {
+      setFieldError({ field, text: FIELD_ERRORS[field] });
+      const input = form.elements.namedItem(field);
+      if (input instanceof HTMLInputElement) {
+        input.scrollIntoView({ block: "center" });
+        input.focus({ preventScroll: true });
+      }
+    };
+
     if (payload.name.length < 2) {
-      setFieldError({ field: "name", text: FIELD_ERRORS.name });
+      rejectField("name");
       return;
     }
     if (!ISRAELI_PHONE_RE.test(normalizePhone(payload.phone))) {
-      setFieldError({ field: "phone", text: FIELD_ERRORS.phone });
+      rejectField("phone");
       return;
     }
 
@@ -94,7 +105,7 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
       if (res.status === 422) {
         const { error } = (await res.json()) as { error?: string };
         if (error === "name" || error === "phone") {
-          setFieldError({ field: error, text: FIELD_ERRORS[error] });
+          rejectField(error);
           setStatus("idle");
           return;
         }
@@ -163,6 +174,11 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
             aria-describedby={fieldError?.field === "name" ? "lead-error" : undefined}
             className={t.input}
           />
+          {fieldError?.field === "name" && (
+            <p id="lead-error" role="alert" className={`mt-1.5 font-semibold ${t.alert}`}>
+              {fieldError.text}
+            </p>
+          )}
         </label>
 
         <label className="block">
@@ -179,6 +195,11 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
             aria-describedby={fieldError?.field === "phone" ? "lead-error" : undefined}
             className={`${t.input} text-left`}
           />
+          {fieldError?.field === "phone" && (
+            <p id="lead-error" role="alert" className={`mt-1.5 font-semibold ${t.alert}`}>
+              {fieldError.text}
+            </p>
+          )}
         </label>
 
         <label className="block">
@@ -208,11 +229,6 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
         </label>
       </div>
 
-      {fieldError && (
-        <p id="lead-error" role="alert" className={`mt-4 font-semibold ${t.alert}`}>
-          {fieldError.text}
-        </p>
-      )}
       {status === "error" && (
         <p role="alert" className={`mt-4 font-semibold ${t.alert}`}>
           משהו השתבש בשליחה. נסו שוב בעוד רגע

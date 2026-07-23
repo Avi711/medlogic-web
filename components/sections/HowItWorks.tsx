@@ -45,7 +45,7 @@ export default function HowItWorks() {
                     src={step.image}
                     alt={step.alt}
                     sizes="(min-width: 768px) 33vw, 100vw"
-                    className="h-auto w-full"
+                    className="h-auto max-h-56 w-full object-cover object-top md:max-h-none"
                   />
                   <div className="p-6 pt-4">
                     <div className="flex items-baseline gap-3">

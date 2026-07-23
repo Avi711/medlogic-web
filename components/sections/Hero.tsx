@@ -7,7 +7,7 @@ export default function Hero() {
     <section id="hero" className="relative overflow-hidden">
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[11fr_9fr] lg:gap-14">
         <div>
-          <h1 className="font-serif text-[2.375rem] font-black leading-[1.15] text-ink sm:text-[3.5rem]">
+          <h1 className="font-serif text-[2rem] font-black leading-[1.15] text-ink min-[400px]:text-[2.375rem] sm:text-[3.5rem]">
             סובלים מעצירות או טחורים?
             <br />
             <span className="text-pine">הבעיה אינה בגוף שלכם — אלא בזווית.</span>
@@ -43,7 +43,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <figure className="mx-auto w-full max-w-md lg:max-w-none">
+        <figure className="mx-auto w-full max-w-xs sm:max-w-md lg:max-w-none">
           <Image
             src={heroIllustration}
             alt="איור: אדם על אסלה ביתית רגילה כשרגליו מוגבהות על משטח הדריכה וידיו אוחזות בידית התמיכה"

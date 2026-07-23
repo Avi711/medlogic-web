@@ -59,6 +59,13 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Anchor targets must land clear of the mobile sticky action bar */
+@media (max-width: 767px) {
+  html {
+    scroll-padding-bottom: 6rem;
+  }
+}
+
 body {
   background: var(--paper);
   color: var(--ink);

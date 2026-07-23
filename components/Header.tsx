@@ -21,6 +21,18 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Close the mobile menu when tapping anywhere outside it
+  useEffect(() => {
+    const onPointerDown = (e: PointerEvent) => {
+      const menu = menuRef.current;
+      if (menu?.open && !menu.contains(e.target as Node)) {
+        menu.removeAttribute("open");
+      }
+    };
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, []);
+
   return (
     <header
       className={`sticky top-0 z-50 bg-paper border-b border-sage-wash transition-shadow duration-200 ${
@@ -58,15 +70,16 @@ export default function Header() {
           )}
           <Link
             href="/#form"
-            className="rounded-md bg-clay px-4 py-2.5 font-bold text-white transition-colors hover:bg-clay-deep sm:px-5"
+            className="whitespace-nowrap rounded-md bg-clay px-3 py-2.5 text-base font-bold text-white transition-colors hover:bg-clay-deep sm:px-5 sm:text-lg"
           >
-            לשיחת ייעוץ חינם
+            <span className="sm:hidden">ייעוץ חינם</span>
+            <span className="hidden sm:inline">לשיחת ייעוץ חינם</span>
           </Link>
 
           <details ref={menuRef} className="relative md:hidden">
             <summary
               aria-label="תפריט ניווט"
-              className="flex h-11 w-11 cursor-pointer list-none items-center justify-center rounded-md border border-line [&::-webkit-details-marker]:hidden"
+              className="flex h-12 w-12 cursor-pointer list-none items-center justify-center rounded-md border border-line [&::-webkit-details-marker]:hidden"
             >
               <svg
                 viewBox="0 0 24 24"

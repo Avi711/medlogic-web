@@ -56,12 +56,15 @@ export default function Footer() {
                 </a>
               </li>
             )}
-            <li>ימים א׳–ה׳, 9:00–19:00</li>
+            <li>
+              ימים א׳–ה׳, <span className="ltr-isolate">9:00–19:00</span>
+            </li>
           </ul>
         </div>
       </div>
 
-      <div className="border-t border-paper/15">
+      {/* extra mobile bottom padding keeps the legal text clear of the sticky bar */}
+      <div className="border-t border-paper/15 pb-24 md:pb-0">
         <div className="mx-auto max-w-6xl space-y-4 px-4 py-8 sm:px-6">
           <p className="text-base leading-relaxed text-paper/60">
             המידע באתר זה נועד להרחבת ידע בלבד ואינו מהווה ייעוץ רפואי, אבחון

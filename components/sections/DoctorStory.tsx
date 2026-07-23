@@ -13,7 +13,7 @@ export default function DoctorStory() {
   return (
     <section id="doctor" className="scroll-mt-20 bg-night py-16 sm:py-24">
       <div className="mx-auto grid max-w-6xl items-start gap-10 px-4 sm:px-6 lg:grid-cols-[2fr_3fr] lg:gap-16">
-        <figure className="mx-auto w-full max-w-sm lg:sticky lg:top-24">
+        <figure className="mx-auto w-full max-w-[240px] sm:max-w-sm lg:sticky lg:top-24">
           <div className="border border-night-amber/40 p-2">
             <Image
               src={doctorImage}

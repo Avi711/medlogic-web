@@ -13,23 +13,28 @@ export default function StickyMobileBar() {
 
   useEffect(() => {
     const hero = document.getElementById("hero");
-    const form = document.getElementById("form");
-    if (!hero || !form) return;
+    const forms = document.querySelectorAll("form");
+    if (!hero) return;
 
     let pastHero = false;
-    let formVisible = false;
-    const update = () => setShow(pastHero && !formVisible);
+    const visibleForms = new Set<Element>();
+    const update = () => setShow(pastHero && visibleForms.size === 0);
 
     const heroObserver = new IntersectionObserver(([entry]) => {
       pastHero = !entry.isIntersecting;
       update();
     });
-    const formObserver = new IntersectionObserver(([entry]) => {
-      formVisible = entry.isIntersecting;
+    // Hide near ANY lead form (mid-page and final) so the bar never covers
+    // a form being filled in.
+    const formObserver = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) visibleForms.add(entry.target);
+        else visibleForms.delete(entry.target);
+      }
       update();
     });
     heroObserver.observe(hero);
-    formObserver.observe(form);
+    forms.forEach((form) => formObserver.observe(form));
     return () => {
       heroObserver.disconnect();
       formObserver.disconnect();
