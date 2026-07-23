@@ -37,7 +37,7 @@ export default function AngleDiagram() {
           className="relative overflow-hidden rounded-sm border border-line bg-card shadow-card"
         >
           <span
-            className={`ltr-isolate absolute end-3 top-3 rounded-md px-2.5 py-1 font-serif text-xl font-black sm:text-2xl ${panel.angleClass}`}
+            className={`ltr-isolate absolute end-3 top-3 rounded-sm px-2 py-1 font-serif text-lg font-black sm:px-2.5 sm:text-2xl ${panel.angleClass}`}
           >
             {panel.angle}
           </span>
@@ -47,7 +47,7 @@ export default function AngleDiagram() {
             sizes="(min-width: 1024px) 25vw, 50vw"
             className="h-auto w-full"
           />
-          <figcaption className="px-3 pb-5 text-center sm:px-5">
+          <figcaption className="px-3 pt-3 pb-5 text-center sm:px-5">
             <span className={`block font-serif text-xl font-bold ${panel.titleClass}`}>
               {panel.title}
             </span>

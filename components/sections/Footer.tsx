@@ -50,7 +50,11 @@ export default function Footer() {
         </nav>
 
         <div className="space-y-2">
-          <p className="font-bold">יצירת קשר</p>
+          {/* Without a phone/email a "contact" heading over bare opening
+              hours reads as unfinished — retitle it honestly. */}
+          <p className="font-bold">
+            {site.phoneE164 || site.email ? "יצירת קשר" : "שעות פעילות"}
+          </p>
           <ul className="space-y-2 text-paper/80">
             {site.phoneE164 && site.phoneDisplay && (
               <li>

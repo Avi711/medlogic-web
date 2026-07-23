@@ -14,7 +14,7 @@ export default function FinalCta() {
     <section id="form" className="scroll-mt-20 bg-night py-16 sm:py-24">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16">
         <div>
-          <h2 className="font-serif text-3xl font-bold leading-tight text-night-ink sm:text-[2.5rem]">
+          <h2 className="font-serif text-3xl font-bold leading-tight text-night-ink [text-wrap:balance] sm:text-[2.5rem]">
             עשרות שנות מחקר. פטנט בינלאומי. ושיחת טלפון אחת שמפרידה ביניכם
             לבין הקלה אמיתית.
           </h2>
@@ -47,8 +47,8 @@ export default function FinalCta() {
           <Image
             src={calmIllustration}
             alt="איור: אדם רגוע בתנוחת התרוקנות טבעית ונתמכת"
-            sizes="(min-width: 640px) 16rem, 40vw"
-            className="mt-10 w-40 rounded-md sm:w-64"
+            sizes="(min-width: 1024px) 16rem, 0px"
+            className="mt-10 hidden w-64 rounded-md border border-line lg:block"
           />
 
           {site.whatsapp && (

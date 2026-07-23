@@ -5,7 +5,7 @@ import doctorImage from "@/public/images/doctor.jpg";
 const TIMELINE = [
   { period: "שירות המילואים", event: "התצפית הראשונה: בכריעה — ההתרוקנות קלה יותר" },
   { period: "שנות המחקר", event: "מדידות, השוואות ופרסום בכתבי עת רפואיים" },
-  { period: "2003", event: "המחקר המצוטט בעולם — Digestive Diseases and Sciences" },
+  { period: "2003", event: "פרסום המחקר המצוטט בעולם" },
   { period: "היום", event: "מתקן כריעה בפטנט בינלאומי, זמין לכל בית בישראל" },
 ];
 
@@ -24,7 +24,8 @@ export default function DoctorStory() {
           </div>
           <figcaption className="mt-4 text-center">
             <span className="block font-serif text-xl font-bold text-night-ink">
-              ד&quot;ר דב (ברקו) סיקירוב, M.D.
+              ד&quot;ר דב (ברקו) סיקירוב,{" "}
+              <span className="ltr-isolate">M.D.</span>
             </span>
             <span className="block text-night-ink-soft">
               מומחה ברפואה פנימית · החוקר המצוטט בעולם בתחום תנוחת ההתרוקנות

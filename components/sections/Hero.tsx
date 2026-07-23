@@ -49,7 +49,7 @@ export default function Hero() {
             alt="איור: אדם על אסלה ביתית רגילה כשרגליו מוגבהות על משטח הדריכה וידיו אוחזות בידית התמיכה"
             priority
             sizes="(min-width: 1024px) 45vw, (min-width: 640px) 28rem, 100vw"
-            className="h-auto w-full"
+            className="h-auto w-full rounded-sm border border-line"
           />
           <figcaption className="mt-2 text-center text-base text-ink-soft">
             התנוחה הטבעית — על האסלה הרגילה שלכם
