@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import heroIllustration from "@/public/images/illu-supported.jpg";
+import productHero from "@/public/images/product-hero.jpg";
 
 export default function Hero() {
   return (
@@ -45,14 +45,14 @@ export default function Hero() {
 
         <figure className="mx-auto w-full max-w-xs sm:max-w-md lg:max-w-none">
           <Image
-            src={heroIllustration}
-            alt="איור: אדם על אסלה ביתית רגילה כשרגליו מוגבהות על משטח הדריכה וידיו אוחזות בידית התמיכה"
+            src={productHero}
+            alt="מתקן הכריעה של MedLogic מותקן על אסלה ביתית רגילה — שני משטחי דריכה ירוקים ומתקפלים לבנים במרכז"
             priority
             sizes="(min-width: 1024px) 45vw, (min-width: 640px) 28rem, 100vw"
             className="h-auto w-full rounded-sm border border-line"
           />
           <figcaption className="mt-2 text-center text-base text-ink-soft">
-            התנוחה הטבעית — על האסלה הרגילה שלכם
+            מתקן הכריעה — על האסלה הרגילה שלכם (הדמיה)
           </figcaption>
         </figure>
       </div>
