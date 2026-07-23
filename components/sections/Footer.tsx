@@ -36,6 +36,16 @@ export default function Footer() {
                 יצירת קשר
               </Link>
             </li>
+            <li>
+              <Link href="/privacy" className="hover:text-paper hover:underline">
+                מדיניות פרטיות
+              </Link>
+            </li>
+            <li>
+              <Link href="/accessibility" className="hover:text-paper hover:underline">
+                הצהרת נגישות
+              </Link>
+            </li>
           </ul>
         </nav>
 
