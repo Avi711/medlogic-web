@@ -23,7 +23,7 @@ export default function DoctorStory() {
             />
           </div>
           <figcaption className="mt-4 text-center">
-            <span className="block font-serif text-xl font-bold text-night-ink">
+            <span className="block font-display text-xl font-bold text-night-ink">
               ד&quot;ר דב (ברקו) סיקירוב,{" "}
               <span className="ltr-isolate">M.D.</span>
             </span>
@@ -34,7 +34,7 @@ export default function DoctorStory() {
         </figure>
 
         <div>
-          <h2 className="font-serif text-3xl font-bold leading-tight text-night-ink sm:text-[2.5rem]">
+          <h2 className="font-display text-3xl font-bold leading-tight text-night-ink sm:text-[2.5rem]">
             התגלית שהתחילה בשירות מילואים — והפכה למחקר שמצוטט בכל העולם
           </h2>
 
@@ -69,7 +69,7 @@ export default function DoctorStory() {
                   aria-hidden="true"
                   className="absolute -start-[5px] top-2 h-2 w-2 rounded-full bg-night-amber"
                 />
-                <span className="block font-serif text-lg font-bold text-night-amber">
+                <span className="block font-display text-lg font-bold text-night-amber">
                   {item.period}
                 </span>
                 <span className="block text-night-ink/90">{item.event}</span>

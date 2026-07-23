@@ -23,9 +23,9 @@ export default function Home() {
         <Hero />
         <TrustBar />
         <Problem />
+        <VideoSection />
         <HowItWorks />
         <DoctorStory />
-        <VideoSection />
         <Benefits />
         <PressStrip />
         <Testimonials />

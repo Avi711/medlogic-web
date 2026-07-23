@@ -13,7 +13,7 @@ export default function AccessibilityPage() {
     <>
       <Header />
       <main id="main" className="mx-auto max-w-3xl px-4 py-12 sm:px-6 sm:py-16">
-        <h1 className="font-serif text-3xl font-bold text-ink sm:text-4xl">
+        <h1 className="font-display text-3xl font-bold text-ink sm:text-4xl">
           הצהרת נגישות
         </h1>
         <div className="mt-8 max-w-[42rem] space-y-5 text-ink-soft">
@@ -24,7 +24,7 @@ export default function AccessibilityPage() {
             לשירות), התשע&quot;ג-2013, ובהנחיות התקן הישראלי (ת&quot;י 5568)
             לנגישות תכנים באינטרנט ברמה AA.
           </p>
-          <h2 className="pt-2 font-serif text-2xl font-bold text-pine">
+          <h2 className="pt-2 font-display text-2xl font-bold text-pine">
             התאמות הנגישות באתר
           </h2>
           <ul className="list-disc space-y-2 ps-6">
@@ -35,7 +35,7 @@ export default function AccessibilityPage() {
             <li>תמיכה בהעדפת צמצום אנימציות של מערכת ההפעלה</li>
             <li>טפסים עם תוויות ברורות והודעות שגיאה מקושרות לשדות</li>
           </ul>
-          <h2 className="pt-2 font-serif text-2xl font-bold text-pine">
+          <h2 className="pt-2 font-display text-2xl font-bold text-pine">
             נתקלתם בבעיה? ספרו לנו
           </h2>
           <p>

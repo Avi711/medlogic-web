@@ -59,7 +59,7 @@ export default function Testimonials() {
               <figure className="flex h-full flex-col border-t-2 border-amber pt-6">
                 <QuoteMark />
                 <blockquote className="mt-4 grow">
-                  <p className="font-serif text-2xl font-medium leading-snug text-ink">
+                  <p className="font-display text-2xl font-medium leading-snug text-ink">
                     {t.headline}
                   </p>
                   <p className="mt-4 text-ink-soft">{t.body}</p>

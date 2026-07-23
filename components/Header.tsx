@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import LogoMark from "@/components/Logo";
 import { site } from "@/lib/site";
 
 const NAV_LINKS = [
@@ -40,9 +41,9 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto flex h-[72px] max-w-6xl items-center justify-between gap-4 px-4 sm:px-6">
-        <Link href="/" className="flex items-center gap-2 shrink-0">
-          <AngleGlyph />
-          <span className="font-serif text-2xl font-bold text-pine">
+        <Link href="/" className="flex items-center gap-2.5 shrink-0">
+          <LogoMark className="h-10 w-10 sm:h-11 sm:w-11" />
+          <span className="font-display text-2xl font-bold text-pine sm:text-[1.75rem]">
             {site.name}
           </span>
         </Link>
@@ -115,13 +116,3 @@ export default function Header() {
   );
 }
 
-/** Small 35° angle mark — the brand glyph. */
-function AngleGlyph() {
-  return (
-    <svg viewBox="0 0 28 28" className="h-7 w-7 text-pine" aria-hidden="true">
-      <line x1="3" y1="23" x2="25" y2="23" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
-      <line x1="3" y1="23" x2="21" y2="8" stroke="var(--amber)" strokeWidth="2.5" strokeLinecap="round" />
-      <path d="M 12 23 A 9 9 0 0 0 10.5 17.5" fill="none" stroke="currentColor" strokeWidth="1.8" />
-    </svg>
-  );
-}

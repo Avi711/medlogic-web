@@ -12,7 +12,7 @@ export default function FinalCta() {
     <section id="form" className="scroll-mt-20 bg-night py-16 sm:py-24">
       <div className="mx-auto grid max-w-6xl items-center gap-12 px-4 sm:px-6 lg:grid-cols-2 lg:gap-16">
         <div>
-          <h2 className="font-serif text-3xl font-bold leading-tight text-night-ink [text-wrap:balance] sm:text-[2.5rem]">
+          <h2 className="font-display text-3xl font-bold leading-tight text-night-ink [text-wrap:balance] sm:text-[2.5rem]">
             עשרות שנות מחקר. פטנט בינלאומי. ושיחת טלפון אחת שמפרידה ביניכם
             לבין הקלה אמיתית.
           </h2>

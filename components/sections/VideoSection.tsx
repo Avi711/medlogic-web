@@ -5,7 +5,7 @@ export default function VideoSection() {
   return (
     <section className="py-16 sm:py-20">
       <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
-        <h2 className="font-serif text-3xl font-bold text-ink sm:text-[2.25rem]">
+        <h2 className="font-display text-3xl font-bold text-ink sm:text-[2.25rem]">
           צפו: כולנו עושים את זה — אבל האם נכון?
         </h2>
         <p className="mt-3 text-ink-soft">

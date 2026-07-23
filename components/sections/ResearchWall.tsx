@@ -33,7 +33,7 @@ export default function ResearchWall() {
                     <p className="text-sm font-semibold text-ink-soft">
                       <span className="ltr-isolate">{paper.journal}</span>
                     </p>
-                    <h3 className="mt-2 font-serif text-xl font-bold leading-snug text-pine">
+                    <h3 className="mt-2 font-display text-xl font-bold leading-snug text-pine">
                       <span className="ltr-isolate text-start block" dir="ltr">
                         {paper.titleEn}
                       </span>

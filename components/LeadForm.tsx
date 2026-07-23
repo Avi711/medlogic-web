@@ -134,7 +134,7 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
           <circle cx="12" cy="12" r="10" />
           <path d="M8 12.5l2.5 2.5L16 9" />
         </svg>
-        <p className={`font-serif text-2xl font-bold ${t.successTitle}`}>
+        <p className={`font-display text-2xl font-bold ${t.successTitle}`}>
           תודה! קיבלנו את הפרטים.
         </p>
         <p className={`mt-2 ${t.successBody}`}>
@@ -147,7 +147,7 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
 
   return (
     <form onSubmit={onSubmit} noValidate className={t.container}>
-      <h3 className={`mb-6 font-serif text-2xl font-bold ${t.heading}`}>
+      <h3 className={`mb-6 font-display text-2xl font-bold ${t.heading}`}>
         השאירו פרטים — נחזור אליכם בשעה שתבחרו
       </h3>
 

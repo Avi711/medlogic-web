@@ -2,6 +2,7 @@
 
 Everything a designer/builder needs. **Content only — no design instructions.**
 Language: Hebrew (RTL). Latin strings (`90°`, `M.D.`, journal names, times) must be bidi-isolated.
+Type: **Assistant** (body) and **Heebo** (headlines) only — no other font.
 
 ---
 
@@ -42,6 +43,8 @@ Base: `https://medlogic-web.vercel.app`
 | Press clip — הארץ | `/images/press/haaretz-clip.jpg` | Real newspaper screenshot |
 | Press clip — ynet | `/images/press/ynet-clip.jpg` | Real newspaper screenshot |
 | Press clip — מעריב | `/images/press/maariv-clip.jpg` | Real newspaper screenshot |
+| Brand mark / favicon | `/icon.svg`, `/apple-icon.png` | Microscope mark (the MedLogic logo) in pine + amber |
+| Original offprint (PDF) | `/papers/comparison-of-straining.pdf` | Scan of the 2003 study; linked from its research page |
 
 Video (YouTube, Dr. Sikirov explains): `https://www.youtube.com/watch?v=xRYNbIhHuO4`
 

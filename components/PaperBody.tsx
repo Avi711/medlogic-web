@@ -9,10 +9,15 @@ export default function PaperBody({
   markdown: string;
   dir: "rtl" | "ltr";
 }) {
-  const blocks = markdown
+  const allBlocks = markdown
     .split(/\r?\n\r?\n/)
     .map((b) => b.trim())
     .filter(Boolean);
+
+  // Each file opens with the title, subtitle and byline as headings. The page
+  // header already presents them, so skip that opening run of headings.
+  const firstProse = allBlocks.findIndex((b) => !b.startsWith("#"));
+  const blocks = firstProse > 0 ? allBlocks.slice(firstProse) : allBlocks;
 
   return (
     <div dir={dir} className="space-y-5">
@@ -21,11 +26,11 @@ export default function PaperBody({
         if (heading) {
           const text = heading[2].replace(/\r?\n/g, " ");
           return heading[1].length <= 2 ? (
-            <h2 key={i} className="pt-4 font-serif text-2xl font-bold text-pine">
+            <h2 key={i} className="pt-4 font-display text-2xl font-bold text-pine">
               {text}
             </h2>
           ) : (
-            <h3 key={i} className="pt-2 font-serif text-xl font-bold text-ink">
+            <h3 key={i} className="pt-2 font-display text-xl font-bold text-ink">
               {text}
             </h3>
           );

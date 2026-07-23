@@ -33,11 +33,11 @@ export default function HowItWorks() {
                 <article className="h-full rounded-sm border border-line bg-card p-6 shadow-card sm:p-7">
                   <span
                     aria-hidden="true"
-                    className="font-serif text-5xl font-black leading-none text-amber sm:text-6xl"
+                    className="font-display text-5xl font-black leading-none text-amber sm:text-6xl"
                   >
                     {i + 1}
                   </span>
-                  <h3 className="mt-4 font-serif text-2xl font-bold text-ink">
+                  <h3 className="mt-4 font-display text-2xl font-bold text-ink">
                     {step.title}
                   </h3>
                   <p className="mt-3 text-ink-soft">{step.body}</p>

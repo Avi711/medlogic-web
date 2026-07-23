@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="bg-ink text-paper">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div>
-          <p className="font-serif text-2xl font-bold">{site.name}</p>
+          <p className="font-display text-2xl font-bold">{site.name}</p>
           <p className="mt-3 text-paper/80">
             פיתוח ישראלי מבוסס מחקר להתרוקנות טבעית ובריאה. פטנט בינלאומי
             רשום.

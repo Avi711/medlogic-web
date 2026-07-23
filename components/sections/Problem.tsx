@@ -23,7 +23,7 @@ export default function Problem() {
             </p>
 
             <blockquote className="border-s-[3px] border-amber ps-5 pt-2">
-              <p className="font-serif text-2xl font-medium leading-snug text-pine sm:text-[1.75rem]">
+              <p className="font-display text-2xl font-medium leading-snug text-pine sm:text-[1.75rem]">
                 זו לא בעיה שלכם. זו בעיה של התנוחה.
                 <br />
                 ואת התנוחה — אפשר לשנות.

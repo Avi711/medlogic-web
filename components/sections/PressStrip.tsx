@@ -45,7 +45,7 @@ export default function PressStrip() {
   return (
     <section aria-label="סיקור תקשורתי בנושא" className="border-y border-line bg-paper-deep py-12 sm:py-16">
       <div className="mx-auto max-w-5xl px-4 sm:px-6">
-        <p className="mb-10 text-center font-serif text-2xl font-bold text-ink">
+        <p className="mb-10 text-center font-display text-2xl font-bold text-ink">
           מדברים על זה בתקשורת בישראל
         </p>
         <ul className="grid gap-8 sm:grid-cols-2">

@@ -12,6 +12,8 @@ export type Paper = {
   summary: string;
   bodyHe: string;
   bodyEn: string;
+  /** Public path of the original offprint, when one was supplied. */
+  pdf?: string;
 };
 
 type ParsedDoc = {
@@ -20,6 +22,7 @@ type ParsedDoc = {
 };
 
 const PAPERS_DIR = path.join(process.cwd(), "content", "papers");
+const PDF_DIR = path.join(process.cwd(), "public", "papers");
 
 /** Order + Hebrew one-line summaries for the research wall. */
 const PAPER_INDEX: {
@@ -115,6 +118,9 @@ export const getPapers = cache((): Paper[] => {
       summary: entry.summary,
       bodyHe: he?.body ?? "",
       bodyEn: en?.body ?? "",
+      pdf: fs.existsSync(path.join(PDF_DIR, `${entry.slug}.pdf`))
+        ? `/papers/${entry.slug}.pdf`
+        : undefined,
     };
   }).filter((p) => p.bodyHe || p.bodyEn);
 });

@@ -7,7 +7,7 @@ export default function Hero() {
     <section id="hero" className="relative overflow-hidden">
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 sm:px-6 sm:py-20 lg:grid-cols-[11fr_9fr] lg:gap-14">
         <div>
-          <h1 className="font-serif text-[2rem] font-black leading-[1.15] text-ink min-[400px]:text-[2.375rem] sm:text-[3.5rem]">
+          <h1 className="font-display text-[2rem] font-black leading-[1.15] text-ink min-[400px]:text-[2.375rem] sm:text-[3.5rem]">
             סובלים מעצירות או טחורים?
             <br />
             <span className="text-pine">הבעיה אינה בגוף שלכם — אלא בזווית.</span>
