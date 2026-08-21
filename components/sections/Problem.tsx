@@ -18,25 +18,22 @@ export default function Problem() {
       />
 
       <div className="mt-12 grid gap-x-14 gap-y-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-start">
-        <div className="max-w-[62ch] space-y-5 text-ink-soft">
+        {/*
+          Two short paragraphs, not four. The figure and the two anatomy panels
+          carry this argument better than prose does, and this audience skims.
+        */}
+        <div className="max-w-[54ch] space-y-5 text-[1.1875rem] leading-relaxed text-ink-soft">
           <p>
-            הישיבה בזווית של{" "}
-            <strong className="ltr-isolate font-bold text-ink">90°</strong>{" "}
-            מקפלת את צינור היציאה — כמו צינור השקיה מקופל. הלחץ שנדרש כדי
-            להתגבר על הקיפול הוא בדיוק מה שמחקרים קושרים לטחורים, לדימומים
-            ולתחושת התרוקנות לא מלאה.
+            בין הרקטום לתעלה האנאלית יש זווית טבעית של{" "}
+            <strong className="ltr-isolate font-bold text-ink">90°</strong> — והיא
+            שם בכוונה: היא סוגרת את המעבר ומונעת בריחה לאורך היום. הגוף אמור
+            לפתוח אותה רק ברגע הנכון,{" "}
+            <strong className="font-bold text-ink">וזה קורה בכריעה</strong>.
           </p>
           <p>
-            בכריעה קורה ההפך: כיפוף הירך מיישר את המעבר, והיציאה נדחקת החוצה
-            לאורך מוצא פתוח — פחות מאמץ, פחות זמן. זה ההבדל שד״ר סיקירוב מדד,
-            פרסם, ובנה סביבו מוצר.
-          </p>
-          <p>
-            השימוש הנרחב באסלות ישיבה במערב התחיל במאה ה־
-            <span className="ltr-isolate tnum">19</span>, כשמערכות ביוב נבנו כדי
-            לשפר את התברואה בערים שגדלו. באסיה ובאפריקה הכריעה נותרה הדרך
-            העיקרית — ושם, כפי שתיארו רופאים שעבדו באזורים הכפריים, טחורים,
-            עצירות ודיברטיקולוזיס כמעט לא נראו.
+            ישיבה על אסלה בגובה כיסא כמעט אינה פותחת אותה. המעבר נשאר מקופל,
+            והמאמץ שנדרש כדי להתגבר על הקיפול הוא מה שמחקרים קושרים לטחורים,
+            לדימומים ולתחושת התרוקנות לא מלאה.
           </p>
         </div>
 

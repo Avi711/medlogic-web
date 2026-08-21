@@ -137,13 +137,15 @@ type Reading = {
   square?: string;
   /** hatched wedge path, drawn only for the 35° reading */
   wedge?: string;
-  label: string;
-  labelAt: [number, number];
 };
 
 /**
  * The same construction laid over the anatomical illustrations, at the true
  * degree values. Coordinates are in the illustration's own 1200×1200 space.
+ *
+ * Only the geometry is drawn on the body. The numeral lives beside the
+ * illustration (AngleDiagram's corner badge) — a number printed over the
+ * abdomen read as a sticker, not a measurement.
  */
 export function AngleOverlay({
   reading,
@@ -201,20 +203,6 @@ export function AngleOverlay({
         stroke="var(--surface)"
         strokeWidth="4"
       />
-      <text
-        x={reading.labelAt[0]}
-        y={reading.labelAt[1]}
-        textAnchor="middle"
-        fontFamily="var(--font-display), Heebo, sans-serif"
-        fontWeight="900"
-        fontSize="82"
-        fill={stroke}
-        stroke="var(--surface)"
-        strokeWidth="14"
-        paintOrder="stroke"
-      >
-        {reading.label}
-      </text>
     </svg>
   );
 }
@@ -226,8 +214,6 @@ export const SITTING_READING: Reading = {
   thigh: [430, 715],
   arc: "M 700 565 A 150 150 0 0 0 550 715",
   square: "M 700 667 L 652 667 L 652 715",
-  label: "90°",
-  labelAt: [551, 596],
 };
 
 /** Trunk at 118°, thighs 35° from it — measured off the illustration. */
@@ -237,8 +223,6 @@ export const SQUAT_READING: Reading = {
   thigh: [442, 623],
   arc: "M 710.2 649.9 A 170 170 0 0 0 638.5 722.8",
   wedge: "M 790 800 L 710.2 649.9 A 170 170 0 0 0 638.5 722.8 Z",
-  label: "35°",
-  labelAt: [618, 660],
 };
 
 /**

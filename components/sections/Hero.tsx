@@ -34,11 +34,16 @@ export default function Hero() {
     <section id="hero" className="shell pt-3 pb-4 sm:pt-5">
       <div className="block-green grid lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)]">
         <div className="order-2 p-7 sm:p-11 lg:order-1 lg:p-14">
-          <span className="kicker bg-white/12 text-mint">
-            תנוחת ההתרוקנות · פיתוח ישראלי
-          </span>
+          {/*
+            The symptom question comes before the claim: a visitor who does not
+            recognise themselves in it has no reason to read the headline. The
+            category and provenance are carried by the trust strip directly below.
+          */}
+          <p className="font-display text-[1.25rem] font-bold text-mint sm:text-[1.5rem]">
+            סובלים מעצירות, טחורים, או עומדים לפני ניתוח?
+          </p>
 
-          <h1 className="display-1 mt-6 text-on-dark">
+          <h1 className="display-1 mt-4 text-on-dark">
             הבעיה אינה בגוף שלכם.{" "}
             <span className="text-mint">היא בזווית.</span>
           </h1>
