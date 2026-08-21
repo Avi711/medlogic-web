@@ -64,11 +64,13 @@ export const metadata: Metadata = {
     title: "מדלוג'יק – עוברים לכריעה, נפרדים מהמאמץ",
     description: copy.tagline,
     images: [
+      // The real kit in a bathroom — not the generic ambience shot — so a
+      // shared link shows the actual product.
       {
-        url: "/images/hero.jpg",
+        url: "/images/product-bathroom.jpg",
         width: 1920,
         height: 1072,
-        alt: "ערכת הכריעה של MedLogic: אסלה קרמית נמוכה ומעליה מתקן דריכה",
+        alt: "ערכת הכריעה של MedLogic: אסלה קרמית נמוכה ומעליה מתקן דריכה, בחדר רחצה",
       },
     ],
   },
@@ -76,7 +78,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "מדלוג'יק – עוברים לכריעה, נפרדים מהמאמץ",
     description: copy.tagline,
-    images: ["/images/hero.jpg"],
+    images: ["/images/product-bathroom.jpg"],
   },
   // Ownership tokens are optional env vars, so a missing one renders nothing.
   verification: {

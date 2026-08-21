@@ -105,7 +105,7 @@ export default function Header({ heroId }: { heroId?: string }) {
               heroVisible ? "btn-quiet" : "btn"
             }`}
           >
-            השאירו טלפון — נחזור אליכם
+            השאירו פרטים
           </Link>
 
           <details ref={menuRef} className="relative lg:hidden">

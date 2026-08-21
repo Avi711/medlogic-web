@@ -68,7 +68,7 @@ export default function HowItWorks() {
 
           <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3">
             <Link href="/#form" className="btn">
-              נשמע מתאים? השאירו טלפון
+              נשמע מתאים? השאירו פרטים
             </Link>
             <p className="text-[1.0625rem] text-on-dark-soft">
               נבדוק יחד את ההתאמה לשירותים שלכם.

@@ -5,6 +5,7 @@
  * user's behalf do not. Both are generated from the same facts the HTML is.
  */
 import { FAQ_ITEMS } from "./faq";
+import { KNOWLEDGE_QA, RELEVANCE } from "./knowledge";
 import { getPapers } from "./papers";
 import { PRESS_ITEMS } from "./press";
 import { CONTENT_UPDATED, copy } from "./seo";
@@ -75,6 +76,13 @@ export function llmsTxt(): string {
     "## וידאו / Video",
     "",
     `- [${copy.video.title}](https://www.youtube.com/watch?v=${site.youtubeVideoId}): ${copy.video.description}`,
+    "",
+    ...RELEVANCE,
+    "",
+    "## שאלות שהאתר עונה עליהן / Questions answered (full answers in llms-full.txt)",
+    "",
+    ...KNOWLEDGE_QA.map((q) => `- ${q.q}`),
+    ...FAQ_ITEMS.map((q) => `- ${q.q}`),
     "",
     ...LICENCE,
     "",
@@ -156,7 +164,12 @@ export function llmsFullTxt(): string {
     "",
     copy.video.description,
     "",
-    "## שאלות נפוצות",
+    ...RELEVANCE,
+    "",
+    "## שאלות שאנשים שואלים — ותשובות / Knowledge base",
+    "",
+    ...KNOWLEDGE_QA.flatMap((f) => [`### ${f.q}`, "", f.a, ""]),
+    "## שאלות נפוצות (מהאתר)",
     "",
     ...FAQ_ITEMS.flatMap((f) => [`### ${f.q}`, "", f.a, ""]),
     "## יצירת קשר",

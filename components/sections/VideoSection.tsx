@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 
 export default function VideoSection() {
   return (
-    <section className="shell pb-16 sm:pb-24">
+    <section id="video" className="shell scroll-mt-28 pb-16 sm:pb-24">
       <div className="grid gap-x-14 gap-y-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)] lg:items-center">
         <SectionHeading
           eyebrow="וידאו"

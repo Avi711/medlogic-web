@@ -38,7 +38,7 @@ Base: `https://medlogic-web.vercel.app`
 | Position reference — sitting | `/images/position-sitting.jpg` | From original site |
 | Position reference — squat | `/images/position-squat.jpg` | From original site |
 | Position reference — device | `/images/position-device.jpg` | From original site |
-| Generic hero/OG image | `/images/hero.jpg` | Used as OpenGraph image |
+| OG image | `/images/product-bathroom.jpg` | Real kit in a bathroom; used for OpenGraph/Twitter. `hero.jpg` is an unused AI ambience shot |
 | Press clip — TheMarker | `/images/press/themarker-clip.jpg` | Real newspaper screenshot |
 | Press clip — הארץ | `/images/press/haaretz-clip.jpg` | Real newspaper screenshot |
 | Press clip — ynet | `/images/press/ynet-clip.jpg` | Real newspaper screenshot |
@@ -235,7 +235,7 @@ Pages: `/` · `/research/[slug]` (6) · `/privacy` · `/accessibility`
 
 - Title: `מתקן כריעה לאסלה | הקלה בעצירות וטחורים | MedLogic` (sub-pages use the template `%s | MedLogic`)
 - Description: `אסלת הכריעה של ד"ר סיקירוב מאפשרת התרוקנות טבעית ומלאה בתנוחת כריעה. מבוסס על 6 מחקרים רפואיים, פטנט בינלאומי. השאירו פרטים לשיחת ייעוץ ללא התחייבות.`
-- OG title: `מדלוג'יק – עוברים לכריעה, נפרדים מהמאמץ` · OG image: `/images/hero.jpg` (1920×1072)
+- OG title: `מדלוג'יק – עוברים לכריעה, נפרדים מהמאמץ` · OG image: `/images/product-bathroom.jpg` (1920×1072, real photo)
 - `lang="he" dir="rtl"`, canonical on every page, `robots: index,follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1`
 - JSON-LD (`lib/seo.ts`): Organization + founder Person + WebSite + Product + VideoObject + FAQPage + 6× ScholarlyArticle on `/`; ScholarlyArticle + BreadcrumbList on `/research/*`
 - `/robots.txt` (all AI crawlers allowed by name, Content-Signal all-yes), `/sitemap.xml` (image + video), `/llms.txt`, `/llms-full.txt`, `/manifest.webmanifest`

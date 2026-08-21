@@ -181,7 +181,8 @@ body {
 @utility display-1 {
   font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(2.6rem, 5.4vw, 4.75rem);
+  /* Capped at 4rem: at 4.75rem a three-line Hebrew headline filled the hero and read as shouting. */
+  font-size: clamp(2.5rem, 4.6vw, 4rem);
   line-height: 1.02;
   letter-spacing: -0.03em;
   text-wrap: balance;

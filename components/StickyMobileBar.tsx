@@ -65,7 +65,7 @@ export default function StickyMobileBar() {
           </a>
         ) : (
           <Link href="/#form" className="btn flex-1">
-            השאירו טלפון — נחזור אליכם
+            השאירו פרטים
           </Link>
         )}
       </div>

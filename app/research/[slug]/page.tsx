@@ -134,7 +134,7 @@ export default async function PaperPage({
                   href="/#form"
                   className="btn mt-4 w-full"
                 >
-                  השאירו טלפון — נחזור אליכם
+                  השאירו פרטים
                 </Link>
               </div>
 

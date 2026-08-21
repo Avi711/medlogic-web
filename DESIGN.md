@@ -45,7 +45,7 @@ Tokens live in `app/globals.css`. Three grounds, one action:
 | --- | --- | --- |
 | Canvas | `--canvas` | the default; every long-form content section |
 | Green | `--green` | loud punctuation — **at most four blocks per page** |
-| Ink | `--ink` | the trust strip and the footer |
+| Ink | `--ink` | the footer (the trust strip is a light card — a dark bar under the dark hero read as one heavy mass) |
 
 - **Coral (`--action`) is reserved exclusively for the primary action.** If coral
   appears on something that is not clickable, it is a bug.

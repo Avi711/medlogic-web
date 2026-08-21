@@ -39,9 +39,8 @@ set at least one before launch.
 - Fill in the real phone / WhatsApp / email in `lib/site.ts` —
   phone-related UI stays hidden while these are empty.
 - Configure a lead destination (see above).
-- Replace `public/images/hero.jpg` if a real product photo becomes
-  available (current image is an AI-generated ambience shot without the
-  device).
+- `public/images/hero.jpg` is an unused AI-generated ambience shot; the
+  hero and the OG image use the real product photos.
 
 ## Search & AI discoverability
 
