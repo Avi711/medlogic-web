@@ -24,7 +24,7 @@ export default function AccessibilityPage() {
             לשירות), התשע&quot;ג-2013, ובהנחיות התקן הישראלי (ת&quot;י 5568)
             לנגישות תכנים באינטרנט ברמה AA.
           </p>
-          <h2 className="pt-2 font-display text-2xl font-bold text-pine">
+          <h2 className="pt-2 font-display text-2xl font-bold text-green">
             התאמות הנגישות באתר
           </h2>
           <ul className="list-disc space-y-2 ps-6">
@@ -35,7 +35,7 @@ export default function AccessibilityPage() {
             <li>תמיכה בהעדפת צמצום אנימציות של מערכת ההפעלה</li>
             <li>טפסים עם תוויות ברורות והודעות שגיאה מקושרות לשדות</li>
           </ul>
-          <h2 className="pt-2 font-display text-2xl font-bold text-pine">
+          <h2 className="pt-2 font-display text-2xl font-bold text-green">
             נתקלתם בבעיה? ספרו לנו
           </h2>
           <p>

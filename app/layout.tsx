@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Heebo, Assistant } from "next/font/google";
+import { Heebo, Google_Sans } from "next/font/google";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -10,11 +10,18 @@ const heebo = Heebo({
   display: "swap",
 });
 
-const assistant = Assistant({
+/*
+  Variable font — the weight axis is loaded whole, so no `weight` list.
+  Next has no metric-override data for Google Sans yet, so it cannot synthesise
+  a size-adjusted "Google Sans Fallback" the way it does for Heebo. Naming the
+  fallback explicitly at least makes the pre-swap render deterministic instead
+  of leaving it to each platform's default sans.
+*/
+const googleSans = Google_Sans({
   subsets: ["hebrew", "latin"],
-  weight: ["400", "600", "700"],
   variable: "--font-sans",
   display: "swap",
+  fallback: ["Arial Hebrew", "Arial", "sans-serif"],
 });
 
 export const metadata: Metadata = {
@@ -40,11 +47,11 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="he" dir="rtl" className={`${heebo.variable} ${assistant.variable}`}>
+    <html lang="he" dir="rtl" className={`${heebo.variable} ${googleSans.variable}`}>
       <body className="font-sans antialiased">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:rounded-md focus:bg-pine focus:px-4 focus:py-2 focus:text-paper"
+          className="sr-only focus:not-sr-only focus:absolute focus:z-[60] focus:rounded-md focus:bg-green focus:px-4 focus:py-2 focus:text-on-dark"
         >
           דלגו לתוכן
         </a>

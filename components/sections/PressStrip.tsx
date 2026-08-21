@@ -45,43 +45,48 @@ const PRESS_ITEMS: PressItem[] = [
   },
 ];
 
-/** Clippings, mounted flat: hairline frame, outlet, headline, link out. */
+/** Clippings shown whole, in colour — never cropped, never greyscaled. */
 export default function PressStrip() {
   return (
-    <section aria-label="סיקור תקשורתי" className="shell py-14 sm:py-20">
+    <section aria-label="סיקור תקשורתי" className="shell pb-16 sm:pb-24">
       <SectionHeading
         eyebrow="מהעיתונות"
         title="מדברים על זה בתקשורת בישראל"
         meta="4 כתבות · קישור למקור"
-        lede="ארבע כתבות שפורסמו בעיתונות הישראלית על תנוחת ההתרוקנות ועל הפיתוח של ד״ר סיקירוב. כל גזיר מוביל לכתבה המלאה באתר המקורי."
       />
 
-      <ul className="mt-9 grid gap-x-11 gap-y-9 sm:grid-cols-2">
+      <ul className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {PRESS_ITEMS.map((item) => (
           <li key={item.outlet}>
             <a
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group block"
+              className="card group flex h-full flex-col overflow-hidden transition-shadow hover:shadow-card"
             >
-              <figure>
+              {/*
+                Clippings run whole and in colour — never cropped, never
+                greyscaled. The frame keeps four different source aspect ratios
+                from turning the row into a ragged edge.
+              */}
+              <div className="relative aspect-[4/3] bg-white">
                 <Image
                   src={item.clip}
                   alt={item.alt}
-                  sizes="(min-width: 640px) 34rem, 100vw"
-                  className="h-auto w-full border border-ink/20 bg-white"
+                  fill
+                  sizes="(min-width: 1024px) 20rem, (min-width: 640px) 45vw, 92vw"
+                  className="object-contain"
                 />
-                <figcaption className="mt-3 border-t-2 border-ink pt-2.5">
-                  <span className="kicker block text-pine">{item.outlet}</span>
-                  <span className="mt-2 block font-display text-[1.0625rem] font-bold leading-snug text-ink group-hover:underline">
-                    {item.headline}
-                  </span>
-                  <span className="mt-1.5 block text-[0.9375rem] font-semibold text-clay">
-                    לכתבה המלאה ↗
-                  </span>
-                </figcaption>
-              </figure>
+              </div>
+              <div className="flex flex-1 flex-col border-t border-line p-5">
+                <span className="kicker">{item.outlet}</span>
+                <span className="mt-3 flex-1 font-display text-[1.0625rem] font-black leading-snug text-ink group-hover:underline">
+                  {item.headline}
+                </span>
+                <span className="caption mt-3 font-bold text-green">
+                  לכתבה המלאה ↗
+                </span>
+              </div>
             </a>
           </li>
         ))}

@@ -26,11 +26,11 @@ export default function PaperBody({
         if (heading) {
           const text = heading[2].replace(/\r?\n/g, " ");
           return heading[1].length <= 2 ? (
-            <h2 key={i} className="pt-4 font-display text-2xl font-bold text-pine">
+            <h2 key={i} className="pt-4 font-display text-[1.5rem] font-black tracking-[-0.025em] text-green">
               {text}
             </h2>
           ) : (
-            <h3 key={i} className="pt-2 font-display text-xl font-bold text-ink">
+            <h3 key={i} className="pt-2 font-display text-[1.25rem] font-black text-ink">
               {text}
             </h3>
           );

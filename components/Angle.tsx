@@ -3,8 +3,8 @@
  *
  * Geometry (shared by every instance on the page):
  *   vertex = the hip · one ray = the trunk · the other ray = the thighs
- *   90° (sitting)  is drawn in graphite — a dead, closed reading
- *   35° (squatting) is drawn in pine    — the page's only signal colour
+ *   90° (sitting)  is drawn in muted ink — a dead, closed reading
+ *   35° (squatting) is drawn in brand green — the one signal colour
  *
  * Everything is hand-authored vector work: hairlines, arcs, a right-angle
  * square, a hatched wedge and measured readings. No decoration that does not
@@ -27,7 +27,7 @@ function Hatch({ id }: { id: string }) {
           y1="0"
           x2="0"
           y2="9"
-          stroke="var(--pine)"
+          stroke="var(--green)"
           strokeWidth="1"
           opacity="0.32"
         />
@@ -56,7 +56,7 @@ export function AngleFigure({ className = "" }: { className?: string }) {
       <Hatch id="hatch-hero" />
 
       {/* construction lines — the drawing surface */}
-      <g stroke="var(--hair)" strokeWidth="1">
+      <g stroke="var(--line-strong)" strokeWidth="1">
         <line x1="330" y1="44" x2="330" y2="14" strokeDasharray="3 5" />
         <line x1="56" y1="300" x2="18" y2="300" strokeDasharray="3 5" />
         <line x1="18" y1="300" x2="402" y2="300" strokeDasharray="1 6" />
@@ -69,7 +69,7 @@ export function AngleFigure({ className = "" }: { className?: string }) {
       />
 
       {/* sitting: 90° */}
-      <g stroke="var(--graphite)">
+      <g stroke="var(--ink-faint)">
         <line x1="330" y1="300" x2="56" y2="300" strokeWidth="2" />
         <path d="M 330 182 A 118 118 0 0 0 212 300" strokeWidth="1" />
         <path d="M 330 274 L 304 274 L 304 300" strokeWidth="1.5" />
@@ -86,7 +86,7 @@ export function AngleFigure({ className = "" }: { className?: string }) {
       />
 
       {/* squatting: 35° */}
-      <g stroke="var(--pine)">
+      <g stroke="var(--green)">
         <line x1="330" y1="300" x2="183.2" y2="90.3" strokeWidth="3" />
         <path d="M 330 224 A 76 76 0 0 0 286.4 237.7" strokeWidth="1.5" />
       </g>
@@ -102,7 +102,7 @@ export function AngleFigure({ className = "" }: { className?: string }) {
         <text x="118" y="284" fontSize="34" fill="var(--ink-soft)">
           90°
         </text>
-        <text x="150" y="78" fontSize="44" fill="var(--pine)">
+        <text x="150" y="78" fontSize="44" fill="var(--green)">
           35°
         </text>
       </g>
@@ -116,7 +116,7 @@ export function AngleFigure({ className = "" }: { className?: string }) {
         <text x="118" y="326" fill="var(--ink-soft)">
           בישיבה
         </text>
-        <text x="150" y="104" fill="var(--pine)">
+        <text x="150" y="104" fill="var(--green)">
           בכריעה
         </text>
       </g>
@@ -150,16 +150,16 @@ export function AngleOverlay({
   tone,
 }: {
   reading: Reading;
-  tone: "graphite" | "pine";
+  tone: "muted" | "brand";
 }) {
-  const stroke = tone === "pine" ? "var(--pine)" : "var(--ink-soft)";
+  const stroke = tone === "brand" ? "var(--green)" : "var(--ink-soft)";
   const id = `hatch-${tone}`;
 
-  // The construction is drawn twice: once in paper as a halo so it stays
+  // The construction is drawn twice: once in white as a halo so it stays
   // readable over the illustration, once in ink on top.
   const construction = (halo: boolean) => (
     <g
-      stroke={halo ? "var(--paper)" : stroke}
+      stroke={halo ? "var(--surface)" : stroke}
       strokeLinecap="round"
       opacity={halo ? 0.85 : 1}
     >
@@ -198,7 +198,7 @@ export function AngleOverlay({
         cy={reading.v[1]}
         r="12"
         fill={stroke}
-        stroke="var(--paper)"
+        stroke="var(--surface)"
         strokeWidth="4"
       />
       <text
@@ -209,7 +209,7 @@ export function AngleOverlay({
         fontWeight="900"
         fontSize="82"
         fill={stroke}
-        stroke="var(--paper)"
+        stroke="var(--surface)"
         strokeWidth="14"
         paintOrder="stroke"
       >

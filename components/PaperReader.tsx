@@ -50,10 +50,10 @@ function ToggleButton({
       type="button"
       onClick={onClick}
       aria-pressed={active}
-      className={`rounded-md border px-5 py-2 font-semibold transition-colors ${
+      className={`min-h-11 rounded-full border-2 px-5 py-2 font-semibold transition-colors ${
         active
-          ? "border-pine bg-pine text-paper"
-          : "border-line bg-card text-ink-soft hover:border-pine hover:text-pine"
+          ? "border-green bg-green text-on-dark"
+          : "border-line bg-surface text-ink-soft hover:border-green hover:text-green"
       }`}
     >
       {children}

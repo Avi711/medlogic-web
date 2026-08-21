@@ -1,119 +1,162 @@
 @import "tailwindcss";
 
 /*
-  MedLogic design tokens — "printed health supplement".
-  Ink on newsprint, hairline rules, figure captions.
-  Clay (#b24a2a) is reserved exclusively for actionable elements.
+  MedLogic design tokens.
+
+  The system has exactly three grounds and one action colour:
+
+    canvas   cool off-white — the default, carries all long-form content
+    green    deep forest — the loud punctuation (hero, kit, mid-CTA, final)
+    ink      near-black — the trust strip and the footer
+
+  Coral is reserved exclusively for the primary action. If coral appears on
+  something that is not clickable, it is a bug. Read DESIGN.md before adding
+  anything here.
 */
 :root {
-  --paper: #f6f1e7;
-  --paper-deep: #efe7d8;
-  --card: #fcfaf4;
-  --ink: #20241f;
-  --ink-soft: #4a5148;
-  --pine: #1f4d3f;
-  --sage-wash: #dce5da;
-  --clay: #b24a2a;
-  --clay-deep: #943c21;
-  --amber: #c99a3c;
-  --line: #d9d0bd;
-  --hair: #c6bba2; /* construction hairline for the angle figure */
-  --graphite: #8d9088; /* the dead 90° reading — never a signal colour */
-  --success: #2e6e4c;
-  --error: #a83226;
+  /* grounds */
+  --canvas: #f4f6f2;
+  --canvas-sink: #eaeee7;
+  --surface: #ffffff;
+
+  /* ink */
+  --ink: #0e1a14;
+  --ink-soft: #4f5f56;
+  --ink-faint: #78877e;
+
+  /* brand green */
+  --green: #0f3d2e;
+  --green-lift: #17573f;
+  --green-deep: #08251b;
+  --mint: #cfe9d8;
+  --mint-wash: #e8f3ec;
+
+  /*
+    The one action colour. Text on it is --ink, never white: white on this
+    coral is 2.84:1 and fails AA at any weight, while ink on it is 6.5:1.
+  */
+  --action: #ff6a45;
+  --action-deep: #e14e27;
+  --action-wash: #ffeae3;
+
+  /* lines */
+  --line: #dfe5dd;
+  --line-strong: #c4cfc6;
+
+  /* text on the green and ink grounds */
+  --on-dark: #f1f7f3;
+  --on-dark-soft: #a9bcb1;
+
+  /* state */
+  --success: #16794f;
+  --error: #c2321f;
   --whatsapp: #1faf57;
 
-  /* dark "evening clinic" sections */
-  --night: #152a22;
-  --night-surface: #1e362c;
-  --night-ink: #f2ecdd;
-  --night-ink-soft: #b8c4b4;
-  --night-brand: #8fb8a3;
-  --night-amber: #d9ae55;
-
-  /* press furniture */
-  --rule-ink: color-mix(in srgb, var(--ink) 22%, transparent);
-  --font-display-stack: var(--font-display), "Heebo", "Arial Hebrew", sans-serif;
+  /*
+    Motion: one easing, two durations. Decelerate without overshoot — a bounce
+    reads as toy-like on a page about a medical device.
+  */
+  --dur-fast: 140ms;
+  --dur-slow: 420ms;
+  --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 @theme inline {
-  --color-paper: var(--paper);
-  --color-paper-deep: var(--paper-deep);
-  --color-card: var(--card);
+  --color-canvas: var(--canvas);
+  --color-canvas-sink: var(--canvas-sink);
+  --color-surface: var(--surface);
   --color-ink: var(--ink);
   --color-ink-soft: var(--ink-soft);
-  --color-pine: var(--pine);
-  --color-sage-wash: var(--sage-wash);
-  --color-clay: var(--clay);
-  --color-clay-deep: var(--clay-deep);
-  --color-amber: var(--amber);
+  --color-ink-faint: var(--ink-faint);
+  --color-green: var(--green);
+  --color-green-lift: var(--green-lift);
+  --color-green-deep: var(--green-deep);
+  --color-mint: var(--mint);
+  --color-mint-wash: var(--mint-wash);
+  --color-action: var(--action);
+  --color-action-deep: var(--action-deep);
+  --color-action-wash: var(--action-wash);
   --color-line: var(--line);
-  --color-hair: var(--hair);
-  --color-graphite: var(--graphite);
+  --color-line-strong: var(--line-strong);
+  --color-on-dark: var(--on-dark);
+  --color-on-dark-soft: var(--on-dark-soft);
   --color-success: var(--success);
   --color-error: var(--error);
   --color-whatsapp: var(--whatsapp);
-  --color-night: var(--night);
-  --color-night-surface: var(--night-surface);
-  --color-night-ink: var(--night-ink);
-  --color-night-ink-soft: var(--night-ink-soft);
-  --color-night-brand: var(--night-brand);
-  --color-night-amber: var(--night-amber);
-  /* Hebrew type is limited to two families: Assistant (body) and Heebo (display). */
-  --font-sans: var(--font-sans), "Assistant", "Arial Hebrew", sans-serif;
+
+  /* Two families only: Google Sans for body/UI, Heebo for display. */
+  --font-sans: var(--font-sans), sans-serif;
   --font-display: var(--font-display), "Heebo", "Arial Hebrew", sans-serif;
-  --shadow-card: 0 1px 2px rgb(32 36 31 / 6%), 0 8px 24px rgb(32 36 31 / 7%);
+
+  /*
+    Generous radii. This is the single clearest signal that the page was
+    designed after 2020 — but the scale stays coherent: chips are pills,
+    controls are md, cards are lg, full-width blocks are xl.
+  */
+  --radius-sm: 0.625rem;
+  --radius-md: 1rem;
+  --radius-lg: 1.5rem;
+  --radius-xl: 2.125rem;
+
+  /* Elevation, tinted green so shadows sit in the palette rather than on it. */
+  --shadow-soft: 0 1px 2px rgb(14 26 20 / 5%), 0 10px 30px -18px rgb(14 26 20 / 30%);
+  --shadow-card: 0 2px 4px rgb(14 26 20 / 5%), 0 24px 50px -30px rgb(14 26 20 / 38%);
+  --shadow-lift: 0 4px 8px rgb(14 26 20 / 8%), 0 34px 60px -28px rgb(14 26 20 / 45%);
+  --shadow-action: 0 2px 6px -2px rgb(14 26 20 / 12%);
 }
 
 html {
   scroll-behavior: smooth;
 }
 
-/* Anchor targets must land clear of the mobile sticky action bar */
+/* Anchor targets must land clear of the mobile sticky action bar. */
 @media (max-width: 767px) {
   html {
-    scroll-padding-bottom: 6rem;
+    scroll-padding-bottom: 6.5rem;
   }
 }
 
 body {
-  background: var(--paper);
+  background: var(--canvas);
   color: var(--ink);
-  font-size: 1.1875rem; /* 19px — older-audience readability */
-  line-height: 1.65;
-  text-rendering: optimizeLegibility;
+  font-size: 1.125rem; /* 18px floor — this audience is 45+ */
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
-  background: var(--sage-wash);
-  color: var(--pine);
+  background: var(--mint);
+  color: var(--green);
 }
 
 :focus-visible {
-  outline: 3px solid var(--pine);
+  outline: 3px solid var(--green);
   outline-offset: 2px;
+  border-radius: 2px;
 }
 
-/* Pine is near-invisible on the dark "evening clinic" sections */
-.bg-night :focus-visible,
-.bg-ink :focus-visible,
-.bg-night-surface :focus-visible {
-  outline-color: var(--night-brand);
+/* Green is near-invisible on the dark grounds. */
+.on-dark :focus-visible {
+  outline-color: var(--mint);
 }
 
-/* Latin digits and units inside RTL text must not flip */
+/* ── Primitives ────────────────────────────────────────────────── */
+
+/* Latin digits and units inside RTL text must not flip. */
 @utility ltr-isolate {
   direction: ltr;
   unicode-bidi: isolate;
 }
 
-/* ── Press furniture ───────────────────────────────────────────── */
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+}
 
 /* The page column. One measure, one gutter, everywhere. */
 @utility shell {
   margin-inline: auto;
   width: 100%;
-  max-width: 76rem;
+  max-width: 88rem;
   padding-inline: 1.25rem;
 }
 
@@ -123,95 +166,230 @@ body {
   }
 }
 
-/* Small tracked label used as a standing head / kicker. 16px floor. */
-@utility kicker {
-  font-family: var(--font-display-stack);
-  font-weight: 700;
-  font-size: 1rem;
-  line-height: 1.2;
-  letter-spacing: 0.11em;
+@media (min-width: 1600px) {
+  .shell {
+    padding-inline: 3rem;
+  }
 }
 
-/* Display scale — the front-page headline down to the standing heads. */
+/* ── Type scale ────────────────────────────────────────────────── */
+
+/*
+  Heebo carries every display size at 900. Google Sans stops at 700, so the
+  heavy weights must stay on Heebo — that is why display-* set the family.
+*/
 @utility display-1 {
-  font-family: var(--font-display-stack);
+  font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(2.45rem, 7.6vw, 5.25rem);
-  line-height: 0.98;
-  letter-spacing: -0.028em;
+  font-size: clamp(2.6rem, 5.4vw, 4.75rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
   text-wrap: balance;
 }
 
 @utility display-2 {
-  font-family: var(--font-display-stack);
+  font-family: var(--font-display);
   font-weight: 900;
-  font-size: clamp(1.85rem, 4.1vw, 3.1rem);
-  line-height: 1.05;
-  letter-spacing: -0.022em;
+  font-size: clamp(1.95rem, 3.6vw, 3.15rem);
+  line-height: 1.08;
+  letter-spacing: -0.028em;
   text-wrap: balance;
 }
 
 @utility display-3 {
-  font-family: var(--font-display-stack);
-  font-weight: 700;
-  font-size: clamp(1.35rem, 2.1vw, 1.6rem);
-  line-height: 1.2;
-  letter-spacing: -0.012em;
-}
-
-/* Pull quote — set large, breaks the column. */
-@utility pullquote {
-  font-family: var(--font-display-stack);
-  font-weight: 500;
-  font-size: clamp(1.65rem, 3.6vw, 2.7rem);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
   line-height: 1.18;
-  letter-spacing: -0.02em;
-  text-wrap: balance;
+  letter-spacing: -0.022em;
 }
 
-/* Newspaper text columns, with the rule between them. */
-@utility textcols {
-  column-gap: 2.75rem;
-  column-rule: 1px solid var(--line);
+/* Small tracked label above a heading. 15px floor. */
+@utility kicker {
+  display: inline-block;
+  width: fit-content;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.9375rem;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  border-radius: 999px;
+  padding: 0.5rem 0.875rem;
+  background: var(--mint-wash);
+  color: var(--green);
 }
 
-/* Enlarged initial letter. Hebrew has no descenders to fight. */
-@utility dropcap {
-  &::first-letter {
-    float: inline-start;
-    font-family: var(--font-display-stack);
-    font-weight: 900;
-    font-size: 3.3em;
-    line-height: 0.82;
-    color: var(--pine);
-    margin-inline-end: 0.06em;
-    padding-block-start: 0.04em;
+/* The standfirst under a section heading. */
+@utility lede {
+  font-size: 1.1875rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+
+/* Fine print / figure notes. Never below 15px. */
+@utility caption {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+}
+
+/* ── Surfaces ──────────────────────────────────────────────────── */
+
+/* The white content card. */
+@utility card {
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+}
+
+/* A full-width deep-green block. Rare by design — four per page, at most. */
+@utility block-green {
+  background: var(--green);
+  color: var(--on-dark);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+/* ── Controls ──────────────────────────────────────────────────── */
+
+/*
+  The primary action. Coral is the only colour on the page that means
+  "clickable", and the press is what sells it as a physical control.
+*/
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 3.25rem;
+  padding-inline: 1.75rem;
+  border-radius: 999px;
+  background: var(--action);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 1.0625rem;
+  text-align: center;
+  box-shadow: var(--shadow-action);
+  transition:
+    background-color var(--dur-fast) var(--ease-soft),
+    transform var(--dur-fast) var(--ease-soft),
+    box-shadow var(--dur-fast) var(--ease-soft);
+
+  &:hover {
+    background: var(--action-deep);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 14px -6px rgb(14 26 20 / 22%);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    transform: none;
+    box-shadow: none;
   }
 }
 
-/* Reply coupon — the printed slip you cut out and post back. */
-@utility coupon {
-  border: 2px dashed var(--ink);
-  background: var(--card);
+/* The same control, one size up — used where the action is the whole point. */
+@utility btn-lg {
+  min-height: 4rem;
+  padding-inline: 2.25rem;
+  font-size: 1.25rem;
 }
 
-@utility tnum {
-  font-variant-numeric: tabular-nums;
+/* Secondary action. Never coral — coral means primary. */
+@utility btn-quiet {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 3.25rem;
+  padding-inline: 1.625rem;
+  border-radius: 999px;
+  border: 2px solid var(--line-strong);
+  background: var(--surface);
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  transition:
+    border-color var(--dur-fast) var(--ease-soft),
+    background-color var(--dur-fast) var(--ease-soft);
+
+  &:hover {
+    border-color: var(--green);
+    background: var(--mint-wash);
+  }
 }
 
-/* Figure caption / legal type. Small by design, never below 15px. */
-@utility caption {
-  font-size: 0.9375rem;
-  line-height: 1.5;
+/* Secondary action sitting on a green or ink ground. */
+@utility btn-quiet-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  min-height: 3.25rem;
+  padding-inline: 1.625rem;
+  border-radius: 999px;
+  border: 2px solid rgb(255 255 255 / 26%);
+  background: transparent;
+  color: var(--on-dark);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  transition: background-color var(--dur-fast) var(--ease-soft);
+
+  &:hover {
+    background: rgb(255 255 255 / 10%);
+  }
 }
 
-/* Scroll-driven entrance — progressive enhancement only */
+/* Form control. */
+@utility field {
+  width: 100%;
+  min-height: 3.5rem;
+  border-radius: var(--radius-md);
+  border: 2px solid var(--line);
+  background: var(--surface);
+  padding-inline: 1.125rem;
+  padding-block: 0.75rem;
+  font-family: inherit;
+  font-size: 1.125rem;
+  color: var(--ink);
+  transition: border-color var(--dur-fast) var(--ease-soft);
+
+  &::placeholder {
+    color: var(--ink-soft);
+  }
+
+  &:hover {
+    border-color: var(--line-strong);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--green);
+    box-shadow: 0 0 0 4px var(--mint-wash);
+  }
+
+  &[aria-invalid="true"] {
+    border-color: var(--error);
+  }
+}
+
+/* ── Motion ────────────────────────────────────────────────────── */
+
+/* Scroll-driven entrance — progressive enhancement only. */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
     .reveal {
       animation: reveal-rise both;
       animation-timeline: view();
-      animation-range: entry 0% entry 45%;
+      animation-range: entry 0% entry 42%;
     }
   }
 }
@@ -219,7 +397,7 @@ body {
 @keyframes reveal-rise {
   from {
     opacity: 0;
-    transform: translateY(1rem);
+    transform: translateY(1.25rem);
   }
   to {
     opacity: 1;

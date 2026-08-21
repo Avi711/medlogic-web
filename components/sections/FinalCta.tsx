@@ -7,31 +7,39 @@ const REASSURANCES = [
   "בלי התחייבות ובלי לחץ — אם זה לא מתאים לכם, נגיד לכם",
 ];
 
-/** The back page: reversed out of black, with the coupon printed on it. */
+/** The last green block, and the page's real destination. */
 export default function FinalCta() {
   return (
-    <section id="form" className="scroll-mt-24 bg-ink py-14 text-paper sm:py-20">
-      <div className="shell grid items-center gap-x-14 gap-y-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)]">
+    <section id="form" className="shell scroll-mt-28 pb-16 sm:pb-24">
+      <div className="block-green grid items-center gap-x-14 gap-y-10 p-7 sm:p-11 lg:grid-cols-[minmax(0,6fr)_minmax(0,5fr)] lg:p-14">
         <div>
-          <p className="kicker border-b border-paper/30 pb-2.5 text-[#c8d8c9]">
-            יצירת קשר
-          </p>
-          <h2 className="display-2 mt-5 text-paper">
-            עשרות שנות מחקר. פטנט בין־לאומי. ושיחת טלפון אחת שמפרידה ביניכם
-            לבין הקלה אמיתית.
+          <span className="kicker bg-white/12 text-mint">יצירת קשר</span>
+          <h2 className="display-2 mt-5 max-w-[18ch] text-on-dark">
+            שיחת טלפון אחת מפרידה ביניכם לבין הקלה אמיתית.
           </h2>
-          <p className="mt-6 max-w-[38rem] text-paper/75">
+          <p className="lede mt-5 max-w-[46ch] text-on-dark-soft">
             השאירו פרטים ונציג מטעם MedLogic יחזור אליכם בשעה שנוחה לכם —
-            להסביר, לענות על כל שאלה ולבדוק יחד אם המתקן מתאים לכם. בלי
-            התחייבות.
+            להסביר, לענות על כל שאלה ולבדוק יחד אם המתקן מתאים לכם.
           </p>
 
-          <ul className="mt-8 border-t border-paper/25">
+          <ul className="mt-8 space-y-3 border-t border-white/15 pt-7">
             {REASSURANCES.map((line) => (
               <li
                 key={line}
-                className="border-b border-paper/25 py-3 text-[1.0625rem] leading-snug text-paper/90"
+                className="flex gap-3 text-[1.0625rem] leading-snug text-on-dark-soft"
               >
+                <svg
+                  viewBox="0 0 20 20"
+                  className="mt-1 h-[1.125rem] w-[1.125rem] shrink-0 text-mint"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M4 10.5 8 14.5 16 5.5" />
+                </svg>
                 {line}
               </li>
             ))}
@@ -44,14 +52,14 @@ export default function FinalCta() {
               )}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-8 flex min-h-[3.25rem] w-fit items-center bg-whatsapp px-6 font-bold text-white"
+              className="btn-quiet-dark mt-8"
             >
               עדיף לכם בוואטסאפ? דברו איתנו
             </a>
           )}
         </div>
 
-        <LeadForm theme="paper" />
+        <LeadForm />
       </div>
     </section>
   );

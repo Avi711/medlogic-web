@@ -21,7 +21,7 @@ export default function PrivacyPage() {
             הפרטיות שלכם חשובה לנו. מסמך זה מפרט איזה מידע נאסף באתר{" "}
             {site.name} וכיצד אנו משתמשים בו.
           </p>
-          <h2 className="pt-2 font-display text-2xl font-bold text-pine">
+          <h2 className="pt-2 font-display text-2xl font-bold text-green">
             איזה מידע אנחנו אוספים
           </h2>
           <p>
@@ -30,7 +30,7 @@ export default function PrivacyPage() {
             האתר אינו עושה שימוש בעוגיות פרסום ואינו מטמיע כלי מעקב של צדדים
             שלישיים; סרטון וידאו מוטמע נטען רק לאחר לחיצה מפורשת עליו.
           </p>
-          <h2 className="pt-2 font-display text-2xl font-bold text-pine">
+          <h2 className="pt-2 font-display text-2xl font-bold text-green">
             למה אנחנו משתמשים במידע
           </h2>
           <p>
@@ -38,7 +38,7 @@ export default function PrivacyPage() {
             למוצרי {site.name}. איננו שולחים דיוור פרסומי, איננו מעבירים את
             הפרטים לגורם שלישי לצורכי שיווק, ואיננו סוחרים בהם בשום צורה.
           </p>
-          <h2 className="pt-2 font-display text-2xl font-bold text-pine">
+          <h2 className="pt-2 font-display text-2xl font-bold text-green">
             שמירת מידע וזכויותיכם
           </h2>
           <p>

@@ -1,12 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
-import SectionHeading from "@/components/SectionHeading";
 import productBathroom from "@/public/images/product-bathroom.jpg";
 
 const STEPS = [
   {
     title: "מתקינים פעם אחת",
-    body: "מקבלים ערכה שלמה: אסלה קרמית נמוכה ייעודית ומעליה מתקן הדריכה — מתחברת לתשתית האינסטלציה הביתית בהתקנה פשוטה.",
+    body: "ערכה שלמה: אסלה קרמית נמוכה ייעודית ומעליה מתקן הדריכה — מתחברת לתשתית האינסטלציה הביתית בהתקנה פשוטה.",
   },
   {
     title: "עולים ונתמכים",
@@ -18,57 +17,63 @@ const STEPS = [
   },
 ];
 
+/** The second green block: what you actually get, shown in a real bathroom. */
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="scroll-mt-24 py-14 sm:py-20">
-      <div className="shell">
-        <SectionHeading
-          eyebrow="הערכה"
-          title="שלושה שלבים — והשירותים בבית חוזרים לעבוד בשביל הגוף שלכם"
-          meta="אסלה נמוכה + מתקן דריכה"
-          lede="מקבלים ערכה שלמה: אסלה קרמית נמוכה ייעודית ומעליה מתקן דריכה עם משטחים מונעי החלקה. הערכה מתחברת לתשתית האינסטלציה הביתית הרגילה בהתקנה פשוטה. אין ידיות אחיזה — התמיכה מגיעה מהמשטחים הרחבים ומהגובה הנמוך."
-        />
-      </div>
+    <section id="how-it-works" className="shell scroll-mt-28 pb-16 sm:pb-24">
+      <div className="block-green grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
+        <div className="relative order-1 min-h-[17rem] sm:min-h-[24rem] lg:min-h-full">
+          <Image
+            src={productBathroom}
+            alt="ערכת הכריעה מותקנת בחדר רחצה ביתי: אסלה קרמית נמוכה ומעליה מתקן דריכה עם שני משטחים רחבים מונעי החלקה"
+            fill
+            sizes="(min-width: 1024px) 46vw, 100vw"
+            className="object-cover"
+          />
+          <p className="absolute bottom-4 start-4 rounded-full bg-green/85 px-4 py-2 text-[0.9375rem] font-bold text-mint backdrop-blur-sm">
+            הדמיה של המוצר
+          </p>
+        </div>
 
-      <figure className="mt-9">
-        <Image
-          src={productBathroom}
-          alt="ערכת הכריעה מותקנת בחדר אמבטיה: אסלה קרמית נמוכה ומעליה מתקן דריכה עם שני משטחים רחבים מונעי החלקה"
-          sizes="100vw"
-          className="h-[15rem] w-full border-y border-ink/20 object-cover sm:h-[24rem] lg:h-[27rem]"
-        />
-        <figcaption className="shell caption mt-2.5 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 text-ink-soft">
-          <span>
-            הערכה מותקנת בחדר רחצה ביתי — האסלה הנמוכה ומעליה משטחי הדריכה.
-            ללא ידיות אחיזה.
-          </span>
-          <span className="font-semibold text-ink">הדמיה של המוצר</span>
-        </figcaption>
-      </figure>
+        <div className="order-2 p-7 sm:p-11 lg:p-14">
+          <span className="kicker bg-white/12 text-mint">הערכה</span>
+          <h2 className="display-2 mt-5 max-w-[16ch] text-on-dark">
+            אסלה נמוכה ומתקן דריכה — מערכת אחת.
+          </h2>
+          <p className="lede mt-5 max-w-[46ch] text-on-dark-soft">
+            לא אביזר שמניחים על אסלה קיימת. אין ידיות אחיזה — התמיכה מגיעה
+            מהמשטחים הרחבים ומהגובה הנמוך.
+          </p>
 
-      <div className="shell">
-        <ol className="mt-12 grid gap-x-10 gap-y-8 sm:grid-cols-3">
-          {STEPS.map((step, i) => (
-            <li key={step.title} className="border-t-2 border-ink pt-4">
-              <h3 className="display-3 text-ink">
-                <span className="ltr-isolate tnum text-pine">{i + 1}.</span>{" "}
-                {step.title}
-              </h3>
-              <p className="mt-2 text-[1.0625rem] leading-relaxed text-ink-soft">
-                {step.body}
-              </p>
-            </li>
-          ))}
-        </ol>
+          <ol className="mt-9 space-y-6 border-t border-white/15 pt-8">
+            {STEPS.map((step, i) => (
+              <li key={step.title} className="flex gap-4">
+                <span
+                  aria-hidden="true"
+                  className="ltr-isolate mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-mint font-display text-[1.0625rem] font-black text-green"
+                >
+                  {i + 1}
+                </span>
+                <div>
+                  <h3 className="font-display text-[1.1875rem] font-black text-on-dark">
+                    {step.title}
+                  </h3>
+                  <p className="mt-1.5 text-[1.0625rem] leading-relaxed text-on-dark-soft">
+                    {step.body}
+                  </p>
+                </div>
+              </li>
+            ))}
+          </ol>
 
-        <div className="mt-11 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-ink/25 pt-6">
-          <p className="display-3 text-ink">נשמע מעניין? דברו איתנו.</p>
-          <Link
-            href="/#form"
-            className="flex min-h-[3.25rem] items-center bg-clay px-7 text-[1.125rem] font-bold text-[#fff6ee] transition-colors hover:bg-clay-deep"
-          >
-            השאירו טלפון — נחזור אליכם
-          </Link>
+          <div className="mt-10 flex flex-wrap items-center gap-x-5 gap-y-3">
+            <Link href="/#form" className="btn">
+              נשמע מתאים? השאירו טלפון
+            </Link>
+            <p className="text-[1.0625rem] text-on-dark-soft">
+              נבדוק יחד את ההתאמה לשירותים שלכם.
+            </p>
+          </div>
         </div>
       </div>
     </section>

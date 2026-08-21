@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import Reveal from "@/components/Reveal";
 import StickyMobileBar from "@/components/StickyMobileBar";
 import Hero from "@/components/sections/Hero";
 import TrustBar from "@/components/sections/TrustBar";
@@ -19,22 +20,63 @@ import Footer from "@/components/sections/Footer";
 export default function Home() {
   return (
     <>
-      <Header />
+      <Header heroId="hero" />
       <main id="main">
+        {/*
+          Hero is deliberately NOT wrapped — it is above the fold, so a scroll-
+          driven entrance would either fire instantly or, worse, hold the
+          headline invisible. Everything below it rises in as it arrives.
+        */}
         <Hero />
-        <TrustBar />
-        <Problem />
-        <Evidence />
-        <HowItWorks />
-        <Benefits />
-        <VideoSection />
-        <DoctorStory />
-        <MidCta />
-        <Testimonials />
-        <PressStrip />
-        <ResearchWall />
+        <Reveal>
+          <TrustBar />
+        </Reveal>
+        {/*
+          Press sits this high on purpose. The first question a sceptical reader
+          has is "is this real?", not "how does it work?" — four named Israeli
+          outlets answer that faster than any argument the page can make, and
+          their headlines double as an explanation of the idea.
+        */}
+        <Reveal>
+          <PressStrip />
+        </Reveal>
+        <Reveal>
+          <Problem />
+        </Reveal>
+        <Reveal>
+          <Evidence />
+        </Reveal>
+        {/* Having read the claim and the numbers, hear it from the inventor. */}
+        <Reveal>
+          <VideoSection />
+        </Reveal>
+        <Reveal>
+          <HowItWorks />
+        </Reveal>
+        <Reveal>
+          <Benefits />
+        </Reveal>
+        <Reveal>
+          <DoctorStory />
+        </Reveal>
+        <Reveal>
+          <MidCta />
+        </Reveal>
+        <Reveal>
+          <Testimonials />
+        </Reveal>
+        <Reveal>
+          <ResearchWall />
+        </Reveal>
+        {/*
+          Faq is NOT wrapped: it contains a `lg:sticky` sidebar (Faq.tsx:70), and
+          the wrapper's transform would become its containing block and break the
+          stick. Not worth a fade.
+        */}
         <Faq />
-        <FinalCta />
+        <Reveal>
+          <FinalCta />
+        </Reveal>
       </main>
       <Footer />
       <StickyMobileBar />

@@ -7,14 +7,21 @@ import { site } from "@/lib/site";
 
 const NAV_LINKS = [
   { href: "/#how-it-works", label: "איך זה עובד" },
-  { href: "/#research", label: "המחקרים" },
+  { href: "/#evidence", label: "המחקר" },
   { href: "/#doctor", label: "ד״ר סיקירוב" },
   { href: "/#faq", label: "שאלות נפוצות" },
 ];
 
-/** The masthead: wordmark, standing rules, contents line, one action. */
-export default function Header() {
+/**
+ * `heroId` is the id of a section that carries its own primary action — the
+ * homepage hero. Two coral buttons in one viewport reads as shouting, so while
+ * that section is on screen this action stays quiet and takes over as the loud
+ * one once it scrolls away. Pages without such a section omit the prop and get
+ * the loud action throughout.
+ */
+export default function Header({ heroId }: { heroId?: string }) {
   const [scrolled, setScrolled] = useState(false);
+  const [heroVisible, setHeroVisible] = useState(Boolean(heroId));
   const menuRef = useRef<HTMLDetailsElement>(null);
 
   useEffect(() => {
@@ -24,7 +31,17 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close the mobile menu when tapping anywhere outside it
+  useEffect(() => {
+    const hero = heroId && document.getElementById(heroId);
+    if (!hero) return;
+    const observer = new IntersectionObserver(([entry]) =>
+      setHeroVisible(entry.isIntersecting)
+    );
+    observer.observe(hero);
+    return () => observer.disconnect();
+  }, [heroId]);
+
+  // Close the mobile menu when tapping anywhere outside it.
   useEffect(() => {
     const onPointerDown = (e: PointerEvent) => {
       const menu = menuRef.current;
@@ -38,70 +55,70 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b-4 border-double border-ink bg-paper ${
-        scrolled ? "shadow-[0_10px_20px_-18px_rgba(32,36,31,0.9)]" : ""
+      className={`sticky top-0 z-50 bg-canvas/85 backdrop-blur-xl transition-shadow ${
+        scrolled ? "shadow-[0_1px_0_var(--line),0_12px_28px_-24px_rgba(14,26,20,0.55)]" : ""
       }`}
     >
-      <div className="shell flex h-[66px] items-center justify-between gap-4 sm:h-[74px]">
+      {/*
+        Logo and nav are one group on the start side, actions on the end side.
+        Spreading all three with justify-between leaves the nav floating in the
+        middle of a wide screen, which reads as accidental rather than composed.
+      */}
+      <div className="shell flex h-[70px] items-center gap-4 sm:h-[82px]">
         <Link href="/" className="flex shrink-0 items-center gap-2.5">
-          <LogoMark className="h-9 w-9 sm:h-10 sm:w-10" />
-          <span className="font-display text-[1.6rem] font-black tracking-[-0.03em] text-ink sm:text-[1.9rem]">
+          <LogoMark className="h-10 w-10 sm:h-11 sm:w-11" />
+          <span className="font-display text-[1.55rem] font-black tracking-[-0.045em] text-ink sm:text-[1.8rem]">
             {site.name}
-          </span>
-          <span
-            aria-hidden="true"
-            className="mx-1 hidden h-8 w-px bg-ink/25 lg:block"
-          />
-          <span className="hidden max-w-[15ch] text-[0.9375rem] leading-tight text-ink-soft lg:block">
-            מתקן הכריעה של ד״ר סיקירוב
           </span>
         </Link>
 
-        <nav
-          aria-label="ניווט ראשי"
-          className="hidden items-center md:flex"
-        >
-          {NAV_LINKS.map((link, i) => (
+        <nav aria-label="ניווט ראשי" className="hidden items-center gap-1 lg:flex">
+          {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`px-4 py-2 text-[1.0625rem] font-semibold text-ink-soft transition-colors hover:text-pine ${
-                i > 0 ? "border-s border-line" : ""
-              }`}
+              className="rounded-full px-4 py-2.5 font-semibold text-ink-soft transition-colors hover:bg-mint-wash hover:text-green"
             >
               {link.label}
             </Link>
           ))}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2.5 ms-auto">
           {site.phoneE164 && site.phoneDisplay && (
             <a
               href={`tel:${site.phoneE164}`}
-              className="ltr-isolate hidden text-lg font-bold text-pine sm:inline"
+              className="ltr-isolate hidden font-display text-lg font-bold text-green hover:underline sm:inline"
             >
               {site.phoneDisplay}
             </a>
           )}
+          {/*
+            No action here below md: the sticky bottom bar already carries one,
+            in thumb reach, and stacking both put three coral buttons on one
+            phone screen. Above md there is no sticky bar, so this is the
+            persistent action.
+          */}
           <Link
             href="/#form"
-            className="flex min-h-11 items-center whitespace-nowrap bg-clay px-3.5 text-[1.0625rem] font-bold text-[#fff6ee] transition-colors hover:bg-clay-deep sm:px-5"
+            className={`max-md:hidden min-h-12 px-6 text-[1.0625rem] ${
+              heroVisible ? "btn-quiet" : "btn"
+            }`}
           >
-            <span className="sm:hidden">השאירו טלפון</span>
-            <span className="hidden sm:inline">השאירו טלפון — נחזור אליכם</span>
+            השאירו טלפון — נחזור אליכם
           </Link>
 
-          <details ref={menuRef} className="relative md:hidden">
+          <details ref={menuRef} className="relative lg:hidden">
             <summary
               aria-label="תפריט ניווט"
-              className="flex h-11 w-11 cursor-pointer list-none items-center justify-center border border-ink/40 [&::-webkit-details-marker]:hidden"
+              className="flex h-12 w-12 cursor-pointer list-none items-center justify-center rounded-full border-2 border-line-strong text-ink [&::-webkit-details-marker]:hidden"
             >
               <svg
                 viewBox="0 0 24 24"
-                className="h-6 w-6 text-ink"
+                className="h-6 w-6"
                 fill="none"
                 stroke="currentColor"
-                strokeWidth="2"
+                strokeWidth="2.2"
                 strokeLinecap="round"
                 aria-hidden="true"
               >
@@ -110,16 +127,14 @@ export default function Header() {
             </summary>
             <nav
               aria-label="ניווט נייד"
-              className="absolute end-0 start-auto top-full mt-2 w-56 border-2 border-ink bg-card"
+              className="card absolute end-0 start-auto top-full mt-3 w-60 overflow-hidden p-2 shadow-lift"
             >
-              {NAV_LINKS.map((link, i) => (
+              {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => menuRef.current?.removeAttribute("open")}
-                  className={`block px-4 py-3.5 font-semibold text-ink hover:bg-sage-wash ${
-                    i > 0 ? "border-t border-line" : ""
-                  }`}
+                  className="block rounded-xl px-4 py-3.5 font-semibold text-ink hover:bg-mint-wash"
                 >
                   {link.label}
                 </Link>

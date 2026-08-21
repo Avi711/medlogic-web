@@ -5,10 +5,10 @@
 export default function LogoMark({ className = "" }: { className?: string }) {
   return (
     <svg viewBox="0 0 64 64" className={className} aria-hidden="true">
-      <rect width="64" height="64" rx="14" fill="var(--pine)" />
+      <rect width="64" height="64" rx="18" fill="var(--green)" />
       <g
         fill="none"
-        stroke="var(--paper)"
+        stroke="var(--mint)"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
@@ -19,7 +19,7 @@ export default function LogoMark({ className = "" }: { className?: string }) {
       </g>
       <path
         d="M45 13 50 8"
-        stroke="var(--amber)"
+        stroke="var(--mint)"
         strokeWidth="6.5"
         strokeLinecap="round"
       />

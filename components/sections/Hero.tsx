@@ -1,73 +1,92 @@
+import Image from "next/image";
 import Link from "next/link";
-import { AngleFigure } from "@/components/Angle";
+import productHero from "@/public/images/product-hero.jpg";
+
+const PROOF = [
+  "פותח על ידי רופא מומחה לרפואה פנימית",
+  "פטנט בין־לאומי רשום",
+  "מתחבר לאינסטלציה הביתית",
+];
+
+function Tick() {
+  return (
+    <svg
+      viewBox="0 0 20 20"
+      className="mt-1 h-[1.125rem] w-[1.125rem] shrink-0 text-mint"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.4"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M4 10.5 8 14.5 16 5.5" />
+    </svg>
+  );
+}
 
 /**
- * The front page. A folio line, the headline at broadsheet scale and the
- * action in the start column; the angle — the page's one ownable idea —
- * drawn large in the end column with a ruled "איור 1" caption beneath it.
+ * The first green block. The product carries the fold; the headline states the
+ * one idea the whole page rests on, and the action sits directly under it.
  */
 export default function Hero() {
   return (
-    <section id="hero" className="shell pt-6 pb-12 sm:pt-9 sm:pb-16">
-      <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-1 border-b border-ink/30 pb-2.5">
-        <p className="kicker text-pine">בריאות · תנוחת ההתרוקנות</p>
-        <p className="kicker text-ink-soft max-sm:hidden">
-          פותח בישראל · פטנט בין־לאומי רשום
-        </p>
-      </div>
+    <section id="hero" className="shell pt-3 pb-4 sm:pt-5">
+      <div className="block-green grid lg:grid-cols-[minmax(0,1.04fr)_minmax(0,0.96fr)]">
+        <div className="order-2 p-7 sm:p-11 lg:order-1 lg:p-14">
+          <span className="kicker bg-white/12 text-mint">
+            תנוחת ההתרוקנות · פיתוח ישראלי
+          </span>
 
-      <h1 className="mt-7 sm:mt-9">
-        <span className="block font-display text-[1.375rem] font-bold text-ink-soft sm:text-[1.75rem]">
-          סובלים מעצירות או טחורים?
-        </span>
-        <span className="display-1 mt-2.5 block text-ink sm:mt-3">
-          הבעיה אינה בגוף שלכם — <span className="text-pine">אלא בזווית.</span>
-        </span>
-      </h1>
+          <h1 className="display-1 mt-6 text-on-dark">
+            הבעיה אינה בגוף שלכם.{" "}
+            <span className="text-mint">היא בזווית.</span>
+          </h1>
 
-      <div className="mt-9 grid items-center gap-x-14 gap-y-10 lg:mt-11 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
-        <div>
-          <p className="max-w-[36rem] text-[1.1875rem] leading-[1.6] text-ink-soft sm:text-[1.3125rem]">
-            אסלת הכריעה של MedLogic מחזירה לגוף התרוקנות טבעית ומלאה בתנוחת
-            כריעה — הפיתוח של ד&quot;ר דב סיקירוב, מומחה ברפואה פנימית והחוקר
-            המוביל בעולם בתחום תנוחת ההתרוקנות.
+          <p className="mt-6 max-w-[38ch] text-[1.1875rem] leading-relaxed text-on-dark-soft sm:text-[1.3125rem]">
+            אסלת הכריעה של MedLogic מחזירה לגוף את התנוחה שבה ההתרוקנות טבעית
+            ומלאה — הפיתוח של ד&quot;ר דב סיקירוב, מבוסס על שישה מחקרים שפורסמו
+            בכתבי עת רפואיים עם ביקורת עמיתים.
           </p>
 
-          <div className="mt-8 border-2 border-ink p-5">
-            <Link
-              href="/#form"
-              className="flex min-h-[3.75rem] items-center justify-center bg-clay px-6 text-center text-xl font-bold text-[#fff6ee] transition-colors hover:bg-clay-deep"
-            >
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <Link href="/#form" className="btn btn-lg">
               השאירו טלפון — נחזור אליכם
             </Link>
-            <p className="caption mt-3 text-center text-ink-soft">
-              שיחה קצרה, בלי התחייבות ובלי לחץ.
-            </p>
-          </div>
-
-          <p className="mt-6 border-t border-ink/25 pt-4 text-[1.0625rem] leading-snug text-ink">
-            <strong className="font-bold">
-              מבוסס על <span className="ltr-isolate tnum">6</span> מחקרים
-            </strong>{" "}
-            שפורסמו בכתבי עת רפואיים בין־לאומיים עם ביקורת עמיתים.{" "}
-            <Link
-              href="/#problem"
-              className="font-semibold text-pine underline underline-offset-4 hover:text-clay"
-            >
-              למה זה קורה? ↓
+            <Link href="/#how-it-works" className="btn-quiet-dark min-h-16 px-7 text-[1.125rem]">
+              איך זה עובד
             </Link>
+          </div>
+          <p className="mt-4 text-[1.0625rem] text-on-dark-soft">
+            שיחה קצרה, בלי התחייבות ובלי לחץ.
           </p>
+
+          <ul className="mt-9 grid gap-2.5 border-t border-white/15 pt-7">
+            {PROOF.map((line) => (
+              <li key={line} className="flex gap-2.5 text-[1.0625rem] text-on-dark-soft">
+                <Tick />
+                {line}
+              </li>
+            ))}
+          </ul>
         </div>
 
-        <figure>
-          <AngleFigure className="mx-auto block h-auto w-full max-w-[26rem] lg:max-w-none" />
-          <figcaption className="caption mt-3 border-t border-ink/25 pt-2.5 text-ink-soft">
-            <span className="font-bold text-ink">איור 1:</span> הזווית שבין הגו
-            לירכיים — <span className="ltr-isolate tnum">90°</span> על אסלה
-            בגובה כיסא, <span className="ltr-isolate tnum">35°</span> בכריעה
-            מלאה. זה כל ההבדל — וכל השאר בדף הזה נשען עליו.
-          </figcaption>
-        </figure>
+        <div className="relative order-1 min-h-[19rem] sm:min-h-[26rem] lg:order-2 lg:min-h-full">
+          <Image
+            src={productHero}
+            alt="ערכת הכריעה של MedLogic: אסלה קרמית נמוכה ומעליה מתקן דריכה עם שני משטחים רחבים מונעי החלקה"
+            fill
+            priority
+            sizes="(min-width: 1024px) 47vw, 100vw"
+            className="object-cover"
+          />
+          <p className="absolute top-5 start-5 rounded-full bg-surface/95 px-4 py-2 font-display text-[1.375rem] font-black text-green shadow-soft backdrop-blur-sm sm:top-7 sm:start-7">
+            <span className="ltr-isolate">35°</span>
+            <span className="ms-2 align-middle text-[0.9375rem] font-bold text-ink-soft">
+              הזווית שפותחת
+            </span>
+          </p>
+        </div>
       </div>
     </section>
   );

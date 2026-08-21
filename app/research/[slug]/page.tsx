@@ -37,29 +37,27 @@ export default async function PaperPage({
   return (
     <>
       <Header />
-      <main id="main" className="bg-paper-deep py-10 sm:py-14">
+      <main id="main" className="bg-canvas-sink py-10 sm:py-14">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <Link
             href="/#research"
-            className="font-semibold text-pine underline-offset-4 hover:underline"
+            className="font-semibold text-green underline-offset-4 hover:underline"
           >
             → חזרה לכל המחקרים
           </Link>
 
-          <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_19rem] lg:items-start">
-            {/* The article is presented as a printed offprint — a paper on paper. */}
-            <article className="border border-line bg-card px-5 py-8 shadow-card sm:px-10 sm:py-12 lg:px-14">
+          <div className="mt-6 grid gap-8 lg:grid-cols-[minmax(0,1fr)_19rem] lg:items-start">            <article className="card px-5 py-8 shadow-card sm:px-10 sm:py-12 lg:px-14">
               <header dir="ltr" className="text-left">
-                <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-ink pb-3">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-line pb-4">
                   <p className="text-sm font-semibold uppercase tracking-wide text-ink-soft">
                     {paper.journal}
                   </p>
-                  <span className="rounded-sm bg-sage-wash px-2 py-0.5 text-sm font-semibold text-pine">
+                  <span className="rounded-full bg-mint-wash px-3 py-1 text-sm font-semibold text-green">
                     Peer-reviewed · {paper.year}
                   </span>
                 </div>
 
-                <h1 className="mt-8 max-w-[26ch] font-display text-3xl font-bold leading-tight text-ink sm:text-4xl">
+                <h1 className="mt-8 max-w-[26ch] font-display text-[2rem] font-black leading-[1.08] tracking-[-0.035em] text-ink sm:text-[2.5rem]">
                   {paper.titleEn}
                 </h1>
                 <p
@@ -84,7 +82,7 @@ export default async function PaperPage({
             </article>
 
             <aside className="space-y-6 lg:sticky lg:top-24">
-              <div className="border border-line bg-card p-6">
+              <div className="card p-6">
                 <h2 className="font-display text-lg font-bold text-ink">
                   פרטי הפרסום
                 </h2>
@@ -110,7 +108,7 @@ export default async function PaperPage({
                 {paper.pdf && <PdfLink href={paper.pdf} />}
               </div>
 
-              <div className="border border-line bg-card p-6">
+              <div className="card p-6">
                 <p className="font-display text-lg font-bold text-ink">
                   רוצים לדעת אם מתקן הכריעה מתאים לכם?
                 </p>
@@ -119,7 +117,7 @@ export default async function PaperPage({
                 </p>
                 <Link
                   href="/#form"
-                  className="mt-4 inline-block rounded-md bg-clay px-5 py-3 font-bold text-white transition-colors hover:bg-clay-deep"
+                  className="btn mt-4 w-full"
                 >
                   השאירו טלפון — נחזור אליכם
                 </Link>
@@ -127,7 +125,7 @@ export default async function PaperPage({
 
               <nav
                 aria-label="מחקרים נוספים"
-                className="border border-line bg-card p-6"
+                className="card p-6"
               >
                 <h2 className="font-display text-lg font-bold text-ink">
                   מחקרים נוספים
@@ -138,7 +136,7 @@ export default async function PaperPage({
                       <Link href={`/research/${other.slug}`} className="group block">
                         <span
                           dir="ltr"
-                          className="block text-start text-base font-semibold text-pine group-hover:underline"
+                          className="block text-start text-base font-semibold text-green group-hover:underline"
                         >
                           {other.titleEn}
                         </span>
@@ -166,7 +164,7 @@ function PdfLink({ href }: { href: string }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="mt-6 flex items-center justify-center gap-2 rounded-md border-2 border-pine px-4 py-3 font-bold text-pine transition-colors hover:bg-pine hover:text-paper"
+      className="mt-6 flex min-h-[3.25rem] items-center justify-center gap-2 rounded-full border-2 border-green px-4 py-3 font-bold text-green transition-colors hover:bg-green hover:text-on-dark"
     >
       <svg
         viewBox="0 0 24 24"

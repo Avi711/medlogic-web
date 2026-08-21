@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { insertLead, leadsConfigured } from "@/lib/leads";
 import { ISRAELI_PHONE_RE, normalizePhone } from "@/lib/validation";
 
 type LeadPayload = {
@@ -65,6 +66,23 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  if (leadsConfigured()) {
+    deliveries.push(
+      insertLead({
+        name,
+        phone,
+        callHour,
+        message,
+        page: lead.page,
+      })
+        .then(() => true)
+        .catch((error) => {
+          console.error("[lead] database insert failed", error);
+          return false;
+        })
+    );
+  }
+
   const resendKey = process.env.RESEND_API_KEY;
   const emailTo = process.env.LEAD_EMAIL_TO;
   if (resendKey && emailTo) {
@@ -103,6 +121,15 @@ export async function POST(req: NextRequest) {
   console.log(
     `[lead] ${name} ${maskedPhone} hour="${callHour}" channels=${results.length} delivered=${delivered}`
   );
+
+  // The visitor is told "קיבלנו את הפרטים" either way, so a misconfigured
+  // deployment loses leads in silence. Make that loud in the log at least.
+  if (deliveries.length === 0) {
+    console.warn(
+      "[lead] NO DELIVERY CHANNEL CONFIGURED — this lead exists only in this log. " +
+        "Set LEAD_WEBHOOK_URL, or RESEND_API_KEY + LEAD_EMAIL_TO."
+    );
+  }
 
   // If delivery channels exist but every one failed, surface the failure so
   // the visitor sees the retry message instead of a false success.

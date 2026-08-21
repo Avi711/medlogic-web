@@ -5,8 +5,8 @@ import { useEffect, useState } from "react";
 import { site } from "@/lib/site";
 
 /**
- * Mobile bottom action bar: appears after the hero, hides while the final
- * form is on screen so it never covers it.
+ * Mobile bottom action bar: appears after the hero, hides while a lead form is
+ * on screen so it never covers one being filled in.
  */
 export default function StickyMobileBar() {
   const [show, setShow] = useState(false);
@@ -24,8 +24,6 @@ export default function StickyMobileBar() {
       pastHero = !entry.isIntersecting;
       update();
     });
-    // Hide near ANY lead form (mid-page and final) so the bar never covers
-    // a form being filled in.
     const formObserver = new IntersectionObserver((entries) => {
       for (const entry of entries) {
         if (entry.isIntersecting) visibleForms.add(entry.target);
@@ -44,7 +42,7 @@ export default function StickyMobileBar() {
   return (
     <div
       inert={!show || undefined}
-      className={`fixed inset-x-0 bottom-0 z-40 border-t-2 border-ink bg-paper px-3 pt-2.5 pb-[max(0.625rem,env(safe-area-inset-bottom))] transition-transform duration-300 md:hidden ${
+      className={`fixed inset-x-0 bottom-0 z-40 border-t border-line bg-canvas/95 px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur-xl transition-transform duration-300 md:hidden ${
         show ? "translate-y-0" : "translate-y-full"
       }`}
     >
@@ -56,28 +54,22 @@ export default function StickyMobileBar() {
             )}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex min-h-[3.25rem] flex-1 items-center justify-center bg-whatsapp font-bold text-white"
+            className="flex min-h-[3.25rem] flex-1 items-center justify-center rounded-full bg-whatsapp font-display font-bold text-ink"
           >
             וואטסאפ
           </a>
         )}
         {site.phoneE164 ? (
-          <a
-            href={`tel:${site.phoneE164}`}
-            className="flex min-h-[3.25rem] flex-1 items-center justify-center bg-clay font-bold text-[#fff6ee]"
-          >
+          <a href={`tel:${site.phoneE164}`} className="btn flex-1">
             חייגו עכשיו
           </a>
         ) : (
-          <Link
-            href="/#form"
-            className="flex min-h-[3.25rem] flex-1 items-center justify-center bg-clay font-bold text-[#fff6ee]"
-          >
+          <Link href="/#form" className="btn flex-1">
             השאירו טלפון — נחזור אליכם
           </Link>
         )}
       </div>
-      <p className="mt-1.5 text-center text-[0.875rem] text-ink-soft">
+      <p className="caption mt-2 text-center">
         שיחה קצרה, בלי התחייבות ובלי לחץ
       </p>
     </div>

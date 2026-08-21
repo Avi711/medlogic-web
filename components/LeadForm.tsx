@@ -18,50 +18,19 @@ const CALL_HOURS = [
 
 type Status = "idle" | "sending" | "success" | "error";
 type FieldError = { field: "name" | "phone"; text: string } | null;
-type Theme = "night" | "paper";
 
 const FIELD_ERRORS = {
   name: "נשמח לדעת איך לפנות אליכם — הזינו שם מלא",
   phone: "מספר הטלפון לא נראה תקין — בדקו אותו שוב רגע",
 } as const;
 
-const INPUT =
-  "w-full border-2 border-ink/35 bg-paper px-4 py-3 text-lg text-ink placeholder:text-ink-soft/55 focus:border-pine focus:outline-none aria-invalid:border-error";
-
-const THEMES = {
-  night: {
-    container: "bg-night-surface p-6 sm:p-8",
-    heading: "text-night-ink",
-    label: "text-night-ink",
-    labelSoft: "text-night-ink-soft",
-    input: INPUT,
-    alert: "text-night-amber",
-    microcopy: "text-night-ink-soft",
-    success: "border-2 border-night-brand/50 bg-night-surface p-8",
-    successIcon: "text-night-brand",
-    successTitle: "text-night-ink",
-    successBody: "text-night-ink-soft",
-  },
-  /* The reply coupon: a slip of paper with a cut-here rule around it. */
-  paper: {
-    container: "coupon p-5 sm:p-7",
-    heading: "text-ink",
-    label: "text-ink",
-    labelSoft: "text-ink-soft",
-    input: INPUT,
-    alert: "text-error",
-    microcopy: "text-ink-soft",
-    success: "coupon p-8",
-    successIcon: "text-success",
-    successTitle: "text-ink",
-    successBody: "text-ink-soft",
-  },
-} satisfies Record<Theme, Record<string, string>>;
-
-export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
+/**
+ * The one conversion surface on the site. Always a white card so it reads the
+ * same wherever it sits — on the green blocks and on the ink footer alike.
+ */
+export default function LeadForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [fieldError, setFieldError] = useState<FieldError>(null);
-  const t = THEMES[theme];
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -121,24 +90,25 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
 
   if (status === "success") {
     return (
-      <div role="status" className={t.success}>
-        <svg
-          viewBox="0 0 24 24"
-          className={`mb-4 h-12 w-12 ${t.successIcon}`}
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          aria-hidden="true"
-        >
-          <circle cx="12" cy="12" r="10" />
-          <path d="M8 12.5l2.5 2.5L16 9" />
-        </svg>
-        <p className={`font-display text-2xl font-bold ${t.successTitle}`}>
+      <div role="status" className="card p-8 sm:p-10">
+        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-mint text-green">
+          <svg
+            viewBox="0 0 24 24"
+            className="h-8 w-8"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.4"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M5 12.5 10 17.5 19 7" />
+          </svg>
+        </span>
+        <p className="mt-5 font-display text-[1.625rem] font-black tracking-[-0.03em] text-ink">
           תודה! קיבלנו את הפרטים.
         </p>
-        <p className={`mt-2 ${t.successBody}`}>
+        <p className="mt-2 text-ink-soft">
           נציג מטעמנו יחזור אליכם בשעה שביקשתם. בינתיים, אם מתחשק לכם — גללו
           למעלה וקראו על המחקרים של ד&quot;ר סיקירוב.
         </p>
@@ -147,19 +117,8 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate className={t.container}>
-      <p
-        className={`kicker border-b pb-2.5 ${
-          theme === "paper"
-            ? "border-ink/25 text-pine"
-            : "border-night-ink/25 text-night-brand"
-        }`}
-      >
-        טופס פנייה
-      </p>
-      <h3 className={`mt-3.5 mb-6 display-3 ${t.heading}`}>
-        השאירו פרטים — נחזור אליכם בשעה שתבחרו
-      </h3>
+    <form onSubmit={onSubmit} noValidate className="card p-6 sm:p-9">
+      <h3 className="display-3 text-ink">השאירו פרטים — נחזור אליכם בשעה שתבחרו</h3>
 
       {/* honeypot — invisible to real users, catches naive bots */}
       <input
@@ -171,9 +130,9 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
         className="pointer-events-none absolute h-0 w-0 opacity-0"
       />
 
-      <div className="space-y-5">
+      <div className="mt-7 space-y-5">
         <label className="block">
-          <span className={`mb-1.5 block font-semibold ${t.label}`}>שם מלא</span>
+          <span className="mb-2 block font-semibold text-ink">שם מלא</span>
           <input
             type="text"
             name="name"
@@ -182,17 +141,17 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
             placeholder="לדוגמה: רחל כהן"
             aria-invalid={fieldError?.field === "name" || undefined}
             aria-describedby={fieldError?.field === "name" ? "lead-error" : undefined}
-            className={t.input}
+            className="field"
           />
           {fieldError?.field === "name" && (
-            <p id="lead-error" role="alert" className={`mt-1.5 font-semibold ${t.alert}`}>
+            <p id="lead-error" role="alert" className="mt-2 font-semibold text-error">
               {fieldError.text}
             </p>
           )}
         </label>
 
         <label className="block">
-          <span className={`mb-1.5 block font-semibold ${t.label}`}>טלפון</span>
+          <span className="mb-2 block font-semibold text-ink">טלפון</span>
           <input
             type="tel"
             name="phone"
@@ -203,20 +162,18 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
             placeholder="050-1234567"
             aria-invalid={fieldError?.field === "phone" || undefined}
             aria-describedby={fieldError?.field === "phone" ? "lead-error" : undefined}
-            className={`${t.input} text-left`}
+            className="field text-left"
           />
           {fieldError?.field === "phone" && (
-            <p id="lead-error" role="alert" className={`mt-1.5 font-semibold ${t.alert}`}>
+            <p id="lead-error" role="alert" className="mt-2 font-semibold text-error">
               {fieldError.text}
             </p>
           )}
         </label>
 
         <label className="block">
-          <span className={`mb-1.5 block font-semibold ${t.label}`}>
-            שעה נוחה לשיחה
-          </span>
-          <select name="callHour" className={t.input}>
+          <span className="mb-2 block font-semibold text-ink">שעה נוחה לשיחה</span>
+          <select name="callHour" className="field">
             {CALL_HOURS.map((hour) => (
               <option key={hour.value} value={hour.value}>
                 {hour.label}
@@ -226,21 +183,21 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
         </label>
 
         <label className="block">
-          <span className={`mb-1.5 block font-semibold ${t.label}`}>
+          <span className="mb-2 block font-semibold text-ink">
             משהו שכדאי שנדע?{" "}
-            <span className={`font-normal ${t.labelSoft}`}>(לא חובה)</span>
+            <span className="font-normal text-ink-faint">(לא חובה)</span>
           </span>
           <textarea
             name="message"
             rows={2}
             placeholder="למשל: עצירות כרונית, לפני ניתוח, שאלה על התקנה..."
-            className={`${t.input} resize-none`}
+            className="field resize-none"
           />
         </label>
       </div>
 
       {status === "error" && (
-        <p role="alert" className={`mt-4 font-semibold ${t.alert}`}>
+        <p role="alert" className="mt-4 font-semibold text-error">
           משהו השתבש בשליחה. נסו שוב בעוד רגע
           {site.phoneE164 && site.phoneDisplay ? (
             <>
@@ -259,15 +216,11 @@ export default function LeadForm({ theme = "night" }: { theme?: Theme }) {
         </p>
       )}
 
-      <button
-        type="submit"
-        disabled={status === "sending"}
-        className="mt-6 min-h-[3.75rem] w-full bg-clay text-xl font-bold text-[#fff6ee] transition-colors hover:bg-clay-deep disabled:opacity-60"
-      >
+      <button type="submit" disabled={status === "sending"} className="btn btn-lg mt-7 w-full">
         {status === "sending" ? "שולחים..." : "חזרו אליי לשיחה קצרה"}
       </button>
 
-      <p className={`mt-3 text-[0.9375rem] leading-relaxed ${t.microcopy}`}>
+      <p className="caption mt-4">
         אנחנו חוזרים בדרך כלל תוך מספר שעות, בשעות הפעילות.
         <br />
         הפרטים ישמשו אך ורק לחזרה אליכם — בלי דיוור ובלי העברה לגורם שלישי.

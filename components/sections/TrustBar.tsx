@@ -1,27 +1,21 @@
 const CLAIMS = [
-  "פטנט בין־לאומי רשום",
   "6 מחקרים בכתבי עת רפואיים",
-  "פותח ע״י רופא מומחה לרפואה פנימית",
-  "מתחבר לאינסטלציה הביתית",
+  "פטנט בין־לאומי רשום",
+  "פותח על ידי ד״ר דב סיקירוב",
+  "סוקר ב־ynet, הארץ ומעריב",
 ];
 
-/** The index strip under the front page: four facts, hairline-divided. */
+/** The dark rule under the hero: four facts, no ornament. */
 export default function TrustBar() {
   return (
-    <section
-      aria-label="עובדות מפתח"
-      className="border-y-2 border-ink bg-paper-deep"
-    >
-      <ul className="shell grid grid-cols-2 lg:grid-cols-4">
-        {CLAIMS.map((claim, i) => (
+    <section aria-label="עובדות מפתח" className="shell pb-4">
+      <ul className="on-dark flex flex-wrap items-center justify-between gap-x-8 gap-y-3 rounded-[var(--radius-lg)] bg-ink px-6 py-5 sm:px-9">
+        {CLAIMS.map((claim) => (
           <li
             key={claim}
-            className={`py-3 text-[1.0625rem] font-semibold leading-snug text-ink lg:py-3.5 ${
-              i % 2 === 1 ? "ps-4 border-s border-ink/20" : "pe-4"
-            } ${i >= 2 ? "border-t border-ink/20 lg:border-t-0" : ""} ${
-              i >= 1 ? "lg:ps-6 lg:border-s lg:border-ink/20" : ""
-            } ${i < 3 ? "lg:pe-6" : "lg:pe-0"}`}
+            className="flex items-center gap-2.5 font-display text-[1.0625rem] font-bold text-on-dark"
           >
+            <span aria-hidden="true" className="h-2 w-2 shrink-0 rounded-full bg-mint" />
             {claim}
           </li>
         ))}
