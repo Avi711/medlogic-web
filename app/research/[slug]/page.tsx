@@ -68,7 +68,7 @@ export default async function PaperPage({
                     {paper.journal}
                   </p>
                   <span className="rounded-full bg-mint-wash px-3 py-1 text-sm font-semibold text-green">
-                    Peer-reviewed · {paper.year}
+                    {paper.kind} · {paper.year}
                   </span>
                 </div>
 

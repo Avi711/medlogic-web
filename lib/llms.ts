@@ -54,17 +54,17 @@ export function llmsTxt(): string {
     "## עמודים ראשיים / Pages",
     "",
     `- [דף הבית — מתקן כריעה לאסלה](${site.domain}): הבעיה (הזווית הרקטואנלית), איך זה עובד, המחקר, ד"ר סיקירוב, שאלות נפוצות וטופס יצירת קשר.`,
-    `- [המחקרים](${abs("/#research")}): שישה מאמרים בכתבי עת רפואיים עם ביקורת עמיתים, 1987–2021.`,
+    `- [המחקרים](${abs("/#research")}): שישה פרסומים בכתבי עת רפואיים, 1987–2021 — בהם מחקר קליני שעבר ביקורת עמיתים (2003), מאמר ב־Israel Journal of Medical Sciences, שלושה מאמרי השערה ב־Medical Hypotheses ומכתב למערכת ב־IMAJ.`,
     `- [ד"ר דב סיקירוב](${abs("/#doctor")}): ${copy.person.nameEn} — ${copy.person.jobTitleEn}.`,
     `- [שאלות נפוצות](${abs("/#faq")}): ${FAQ_ITEMS.length} שאלות שנשאלות בטלפון.`,
     `- [מדיניות פרטיות](${abs("/privacy")})`,
     `- [הצהרת נגישות](${abs("/accessibility")})`,
     "",
-    "## מאמרים מדעיים / Peer-reviewed papers (author: Dr. Dov Sikirov)",
+    "## פרסומים מדעיים / Publications (author: Dr. Dov Sikirov)",
     "",
     ...papers.map(
       (p) =>
-        `- [${p.titleEn}](${abs(`/research/${p.slug}`)}): ${p.journal}, ${p.year}. ${p.summary}${
+        `- [${p.titleEn}](${abs(`/research/${p.slug}`)}): ${p.kind}. ${p.journal}, ${p.year}. ${p.summary}${
           p.pdf ? ` סריקת המקור: ${abs(p.pdf)}` : ""
         }`,
     ),
@@ -146,6 +146,7 @@ export function llmsFullTxt(): string {
       `### ${p.titleEn}`,
       "",
       `- בעברית: ${p.title}`,
+      `- סוג: ${p.kind}`,
       `- כתב עת: ${p.journal} (${p.year})`,
       `- עמוד באתר (עברית + אנגלית): ${abs(`/research/${p.slug}`)}`,
       ...(p.pdf ? [`- סריקת המאמר המקורי (PDF): ${abs(p.pdf)}`] : []),

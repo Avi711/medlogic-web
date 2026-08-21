@@ -9,6 +9,12 @@ export type Paper = {
   authors: string[];
   journal: string;
   year: number;
+  /**
+   * What the publication is. Only the 2003 study is a peer-reviewed clinical
+   * study; Medical Hypotheses was editorially reviewed (no external peer
+   * review until 2010) and the 2021 IMAJ item is a letter. Said plainly.
+   */
+  kind: string;
   summary: string;
   bodyHe: string;
   bodyEn: string;
@@ -28,16 +34,19 @@ const PDF_DIR = path.join(process.cwd(), "public", "papers");
 const PAPER_INDEX: {
   slug: string;
   titleEn: string;
+  kind: string;
   summary: string;
 }[] = [
   {
     slug: "comparison-of-straining",
     titleEn: "Comparison of Straining During Defecation in Three Positions",
+    kind: "Peer-reviewed clinical study",
     summary:
       "המחקר המרכזי: 28 נבדקים נמדדו בשלוש תנוחות — בכריעה נדרשו שליש מהזמן וכמעט ללא מאמץ, עם תחושת התרוקנות מלאה.",
   },
   {
     slug: "symptoms-of-hemorrhoids",
+    kind: "Letter to the editor",
     titleEn:
       "Symptoms of Hemorrhoids Diminished Significantly or Ceased Completely by Changing to the Squatting Position",
     summary:
@@ -46,24 +55,28 @@ const PAPER_INDEX: {
   {
     slug: "cardio-vascular-events",
     titleEn: "Cardio-Vascular Events at Defecation: Are They Unavoidable?",
+    kind: "Hypothesis paper",
     summary:
       "המאמץ בישיבה מפעיל שוב ושוב את תמרון ולסלבה ומעמיס על הלב — בכריעה המאמץ פוחת באופן ניכר.",
   },
   {
     slug: "primary-constipation",
     titleEn: "Primary Constipation: An Underlying Mechanism",
+    kind: "Hypothesis paper",
     summary:
       "עצירות ראשונית מוסברת כתוצאה של התרוקנות לא שלמה בישיבה — יישור הזווית בכריעה מאפשר ריקון טבעי ומלא.",
   },
   {
     slug: "etiology-of-diverticulosis-coli",
     titleEn: "Etiology and Pathogenesis of Diverticulosis Coli: A New Approach",
+    kind: "Hypothesis paper",
     summary:
       "לחצים מוגברים במעי בעת מאמץ בישיבה נקשרים להיווצרות סעיפים (דיברטיקולות) — ממצא נדיר בעמים שנוהגים לכרוע.",
   },
   {
     slug: "management-of-hemorrhoids",
     titleEn: "Management of Hemorrhoids: A New Approach",
+    kind: "Journal article",
     summary:
       "מעקב אחר חולי טחורים שעברו לכריעה: הקלה מהירה בתסמינים ללא ניתוח וללא תרופות.",
   },
@@ -112,6 +125,7 @@ export const getPapers = cache((): Paper[] => {
       slug: entry.slug,
       title: (meta.title as string) ?? entry.titleEn,
       titleEn: entry.titleEn,
+      kind: entry.kind,
       authors: Array.isArray(meta.authors) ? meta.authors : [],
       journal: (meta.journal as string) ?? "",
       year: Number(meta.year ?? 0),

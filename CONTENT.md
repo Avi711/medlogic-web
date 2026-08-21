@@ -185,7 +185,7 @@ POST `/api/lead` → delivers via `LEAD_WEBHOOK_URL` and/or Resend (`RESEND_API_
 
 ---
 
-## 5. Research papers (6, peer-reviewed)
+## 5. Research papers (6 publications — only the 2003 study is a peer-reviewed clinical study; Medical Hypotheses was editorially reviewed until 2010; the 2021 IMAJ item is a letter)
 
 Full texts (Hebrew + English) live in `content/papers/*.md`. Pages default to English.
 

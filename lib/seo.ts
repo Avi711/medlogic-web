@@ -31,9 +31,9 @@ export const copy = {
     name: "ערכת אסלת הכריעה של MedLogic",
     nameEn: "MedLogic squatting toilet kit",
     description:
-      "ערכה שלמה להתרוקנות בתנוחת כריעה מלאה: אסלה קרמית נמוכה ייעודית (כ־20 ס״מ) ומעליה מתקן דריכה עם משטחים רחבים מונעי החלקה. מתחברת לתשתית האינסטלציה הביתית הרגילה בהתקנה פשוטה. פותחה על ידי ד״ר דב סיקירוב, מומחה ברפואה פנימית, על בסיס שישה מחקרים שפורסמו בכתבי עת רפואיים עם ביקורת עמיתים. פטנט בין־לאומי רשום. אינה שרפרף או תוספת לאסלה רגילה.",
+      "ערכה שלמה להתרוקנות בתנוחת כריעה מלאה: אסלה קרמית נמוכה ייעודית (כ־20 ס״מ) ומעליה מתקן דריכה עם משטחים רחבים מונעי החלקה. מתחברת לתשתית האינסטלציה הביתית הרגילה בהתקנה פשוטה. פותחה על ידי ד״ר דב סיקירוב, מומחה ברפואה פנימית, על בסיס שישה פרסומים בכתבי עת רפואיים, בהם מחקר קליני שעבר ביקורת עמיתים (2003). פטנט בין־לאומי רשום. אינה שרפרף או תוספת לאסלה רגילה.",
     descriptionEn:
-      "A complete kit for full-squat defecation: a dedicated low ceramic toilet (about 20 cm) with a stepping platform mounted above it, wide non-slip footrests, connects to standard household plumbing. Developed by Dr. Dov Sikirov, M.D., internal medicine specialist, on the basis of six peer-reviewed publications. Internationally patented. Not a stool or an add-on for a regular-height toilet.",
+      "A complete kit for full-squat defecation: a dedicated low ceramic toilet (about 20 cm) with a stepping platform mounted above it, wide non-slip footrests, connects to standard household plumbing. Developed by Dr. Dov Sikirov, M.D., internal medicine specialist, on the basis of six publications in medical journals, including a peer-reviewed clinical study (2003). Internationally patented. Not a stool or an add-on for a regular-height toilet.",
   },
   person: {
     name: "ד״ר דב (ברקו) סיקירוב",

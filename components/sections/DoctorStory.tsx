@@ -38,8 +38,7 @@ export default function DoctorStory() {
               <span className="ltr-isolate">M.D.</span>
             </span>
             <span className="caption mt-1 block">
-              מומחה ברפואה פנימית · שישה מאמרים בכתבי עת רפואיים עם ביקורת
-              עמיתים, הראשון ב־
+              מומחה ברפואה פנימית · שישה פרסומים בכתבי עת רפואיים, הראשון ב־
               <span className="ltr-isolate tnum">1987</span>
             </span>
           </figcaption>
