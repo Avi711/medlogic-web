@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import productHero from "@/public/images/product-hero.jpg";
+import productBathroom from "@/public/images/product-bathroom.jpg";
 
 const PROOF = [
   "פותח על ידי רופא מומחה לרפואה פנימית",
@@ -89,13 +89,15 @@ export default function Hero() {
         </div>
 
         {/*
-          The photo is square; on large screens the text column is kept short
-          enough that the panel stays near-square and the kit reads whole.
+          The bathroom image, not the studio close-up: in context the kit reads
+          as a toilet at a glance — the detail photo lives in the kit section.
+          This one is a render of the real product, so it carries the
+          "הדמיה" tag (CONTENT.md compliance rule); the studio photo does not.
         */}
         <div className="relative order-1 aspect-[4/3] sm:aspect-[3/2] lg:order-2 lg:aspect-auto lg:min-h-full">
           <Image
-            src={productHero}
-            alt="ערכת הכריעה של MedLogic: אסלה קרמית נמוכה ומעליה מתקן דריכה עם שני משטחים רחבים מונעי החלקה"
+            src={productBathroom}
+            alt="הדמיה: ערכת הכריעה של MedLogic בחדר רחצה ביתי — אסלה קרמית נמוכה ומעליה מתקן דריכה עם שני משטחים רחבים מונעי החלקה"
             fill
             priority
             sizes="(min-width: 1024px) 47vw, 100vw"
@@ -106,6 +108,9 @@ export default function Hero() {
             <span className="ms-2 align-middle text-[0.9375rem] font-bold text-ink-soft">
               הזווית שפותחת
             </span>
+          </p>
+          <p className="absolute bottom-4 start-4 rounded-full bg-green/85 px-3.5 py-1.5 text-[0.875rem] font-bold text-mint backdrop-blur-sm sm:bottom-5 sm:start-5">
+            הדמיה של המוצר
           </p>
         </div>
       </div>

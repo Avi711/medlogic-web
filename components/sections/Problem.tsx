@@ -3,10 +3,9 @@ import AngleDiagram from "@/components/AngleDiagram";
 import SectionHeading from "@/components/SectionHeading";
 
 /**
- * Order is the argument: the claim ("it's the angle"), then the two bodies
- * that show it — nothing in between — then the short explanation with the
- * measured drawing beside it. A reader who stops after the pictures has
- * still got the point.
+ * Order is the argument: the claim, then the two bodies — which need no
+ * explanation — then the "why" with the measured drawing beside it for
+ * whoever wants the mechanism. Self-explanatory first, abstraction second.
  */
 export default function Problem() {
   return (
@@ -25,17 +24,10 @@ export default function Problem() {
 
       <div className="mt-10 sm:mt-12">
         <AngleDiagram />
-        <p className="caption mt-4 max-w-[70ch]">
-          ככל שכיפוף הירך גדול יותר — כך הזווית הרקטואנלית ישרה יותר, ופחות
-          מאמץ נדרש כדי לרוקן את המעי.
-        </p>
       </div>
 
-      <div className="mt-14 grid gap-x-14 gap-y-8 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center">
-        {/*
-          Two short paragraphs, not four. The pictures above carry the
-          argument; this is the "why" for whoever wants it.
-        */}
+      {/* The mechanism, with the measured drawing beside it. */}
+      <div className="mt-12 grid gap-x-14 gap-y-8 sm:mt-14 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:items-center">
         <div className="max-w-[54ch] space-y-5 text-[1.1875rem] leading-relaxed text-ink-soft">
           <p className="font-display text-[1.375rem] font-black leading-snug tracking-[-0.025em] text-green">
             למה הזווית קובעת?
@@ -50,7 +42,8 @@ export default function Problem() {
           <p>
             ישיבה על אסלה בגובה כיסא כמעט אינה פותחת אותה. המעבר נשאר מקופל,
             והמאמץ שנדרש כדי להתגבר על הקיפול הוא מה שמחקרים קושרים לטחורים,
-            לדימומים ולתחושת התרוקנות לא מלאה. ואת התנוחה — אפשר לשנות.
+            לדימומים ולתחושת התרוקנות לא מלאה. ככל שכיפוף הירך גדול יותר — כך
+            הזווית ישרה יותר, ופחות מאמץ נדרש. ואת התנוחה — אפשר לשנות.
           </p>
         </div>
 

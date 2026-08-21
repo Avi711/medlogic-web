@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import productBathroom from "@/public/images/product-bathroom.jpg";
+import productHero from "@/public/images/product-hero.jpg";
 
 const STEPS = [
   {
@@ -24,15 +24,12 @@ export default function HowItWorks() {
       <div className="block-green grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)]">
         <div className="relative order-1 min-h-[17rem] sm:min-h-[24rem] lg:min-h-full">
           <Image
-            src={productBathroom}
-            alt="ערכת הכריעה מותקנת בחדר רחצה ביתי: אסלה קרמית נמוכה ומעליה מתקן דריכה עם שני משטחים רחבים מונעי החלקה"
+            src={productHero}
+            alt="ערכת הכריעה מקרוב: אסלה קרמית נמוכה ומעליה מתקן דריכה עם שני משטחים רחבים מונעי החלקה"
             fill
             sizes="(min-width: 1024px) 46vw, 100vw"
             className="object-cover"
           />
-          <p className="absolute bottom-4 start-4 rounded-full bg-green/85 px-4 py-2 text-[0.9375rem] font-bold text-mint backdrop-blur-sm">
-            הדמיה של המוצר
-          </p>
         </div>
 
         <div className="order-2 p-7 sm:p-11 lg:p-14">

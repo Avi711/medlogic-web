@@ -312,7 +312,7 @@ export function homeGraph() {
         name: "מתקן כריעה לאסלה | הקלה בעצירות וטחורים | MedLogic",
         isPartOf: { "@id": WEBSITE_ID },
         about: { "@id": PRODUCT_ID },
-        primaryImageOfPage: abs("/images/product-hero.jpg"),
+        primaryImageOfPage: abs("/images/product-bathroom.jpg"),
         inLanguage: "he",
         dateModified: CONTENT_UPDATED,
         // Medical disclaimer carried into the graph, not just the footer.

@@ -30,7 +30,7 @@ Base: `https://medlogic-web.vercel.app`
 
 | Purpose | URL | Notes |
 |---|---|---|
-| Product kit (hero) | `/images/product-hero.jpg` | Approved retouched **real** photo of the kit — low toilet + step device |
+| Product kit (detail, kit section) | `/images/product-hero.jpg` | Approved retouched **real** photo of the kit — low toilet + step device |
 | Dr. Sikirov portrait | `/images/doctor.jpg` | Real photo |
 | Logo | `/images/logo.png` | |
 | Anatomy — sitting 90° | `/images/illu-sitting.jpg` | Kinked passage, red |
@@ -38,7 +38,7 @@ Base: `https://medlogic-web.vercel.app`
 | Position reference — sitting | `/images/position-sitting.jpg` | From original site |
 | Position reference — squat | `/images/position-squat.jpg` | From original site |
 | Position reference — device | `/images/position-device.jpg` | From original site |
-| OG image | `/images/product-bathroom.jpg` | Real kit in a bathroom; used for OpenGraph/Twitter. `hero.jpg` is an unused AI ambience shot |
+| Hero + OG image | `/images/product-bathroom.jpg` | Render of the real kit in a bathroom — **must carry the הדמיה tag** wherever shown. `hero.jpg` is an unused AI ambience shot |
 | Press clip — TheMarker | `/images/press/themarker-clip.jpg` | Real newspaper screenshot |
 | Press clip — הארץ | `/images/press/haaretz-clip.jpg` | Real newspaper screenshot |
 | Press clip — ynet | `/images/press/ynet-clip.jpg` | Real newspaper screenshot |

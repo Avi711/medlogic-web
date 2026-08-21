@@ -1,5 +1,4 @@
 import Image, { type StaticImageData } from "next/image";
-import SectionHeading from "@/components/SectionHeading";
 import { PRESS_ITEMS } from "@/lib/press";
 import haaretzClip from "@/public/images/press/haaretz-clip.jpg";
 import maarivClip from "@/public/images/press/maariv-clip.jpg";
@@ -29,14 +28,14 @@ const CLIPS: Record<string, { clip: StaticImageData; alt: string }> = {
 /** Clippings shown whole, in colour — never cropped, never greyscaled. */
 export default function PressStrip() {
   return (
-    <section aria-label="סיקור תקשורתי" className="shell pb-16 sm:pb-24">
-      <SectionHeading
-        eyebrow="מהעיתונות"
-        title="מדברים על זה בתקשורת בישראל"
-        meta="4 כתבות · קישור למקור"
-      />
+    <section aria-label="סיקור תקשורתי" className="shell pt-16 pb-16 sm:pt-24 sm:pb-24">
+      {/* A label, not a headline: the four clippings are the statement. */}
+      <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
+        <h2 className="display-3 text-ink">מהעיתונות</h2>
+        <span className="caption font-semibold text-ink-soft">4 כתבות · קישור למקור</span>
+      </div>
 
-      <ul className="mt-9 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <ul className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {PRESS_ITEMS.map((item) => (
           <li key={item.outlet}>
             <a
