@@ -1,28 +1,20 @@
 import Image from "next/image";
-import {
-  AngleOverlay,
-  SITTING_READING,
-  SQUAT_READING,
-} from "@/components/Angle";
 import sittingIllustration from "@/public/images/illu-sitting.jpg";
 import squatIllustration from "@/public/images/illu-squat.jpg";
 
 /**
- * The whole argument in two panels. The angle is drawn onto the body at its
- * true value, so the difference between 90° and 35° is the thing you actually
- * look at; the numeral sits in a corner badge beside the figure (the same
- * pill as the hero), never printed over the body.
+ * The whole argument in two panels. The illustrations are left clean — the
+ * anatomy is the picture — and the reading sits in a corner badge beside the
+ * figure (the same pill as the hero). The measured construction lives in
+ * AngleFigure above; it is not redrawn over the bodies.
  *
  * RTL: the problem panel renders first, so it sits on the right and is read
- * first. The overlay coordinates are measured against these exact 1200×1200
- * illustrations — replacing an image means re-measuring its reading in Angle.tsx.
+ * first.
  */
 const PANELS = [
   {
     image: sittingIllustration,
     alt: "איור אנטומי: בישיבה על אסלה בגובה כיסא צינור היציאה מתקפל בזווית חדה",
-    reading: SITTING_READING,
-    tone: "muted" as const,
     angle: "90°",
     title: "בישיבה",
     caption: "המעבר מקופל — היציאה דורשת מאמץ",
@@ -31,8 +23,6 @@ const PANELS = [
   {
     image: squatIllustration,
     alt: "איור אנטומי: בכריעה מלאה צינור היציאה מתיישר ונפתח",
-    reading: SQUAT_READING,
-    tone: "brand" as const,
     angle: "35°",
     title: "בכריעה",
     caption: "המעבר פתוח — היציאה קלה וטבעית",
@@ -57,7 +47,6 @@ export default function AngleDiagram() {
               sizes="(min-width: 640px) 36vw, 92vw"
               className="h-auto w-full"
             />
-            <AngleOverlay reading={panel.reading} tone={panel.tone} />
             {/* The reading, beside the body — the top-start corner is empty in both illustrations. */}
             <p
               className={`ltr-isolate absolute top-4 start-4 rounded-full bg-surface/95 px-4 py-1.5 font-display text-[1.75rem] font-black leading-none shadow-soft backdrop-blur-sm sm:top-5 sm:start-5 sm:px-5 sm:py-2 sm:text-[2.25rem] ${
