@@ -1,49 +1,30 @@
 import Image, { type StaticImageData } from "next/image";
 import SectionHeading from "@/components/SectionHeading";
+import { PRESS_ITEMS } from "@/lib/press";
 import haaretzClip from "@/public/images/press/haaretz-clip.jpg";
 import maarivClip from "@/public/images/press/maariv-clip.jpg";
 import themarkerClip from "@/public/images/press/themarker-clip.jpg";
 import ynetClip from "@/public/images/press/ynet-clip.jpg";
 
-type PressItem = {
-  outlet: string;
-  headline: string;
-  clip: StaticImageData;
-  alt: string;
-  url: string;
-};
-
-const PRESS_ITEMS: PressItem[] = [
-  {
-    outlet: "TheMarker",
-    headline:
-      "אתם יושבים טוב? ככה באמת היינו אמורים לבלות בשירותים — פטנט גאוני ממציא מחדש את בית השימוש",
+/** Clippings by outlet. The facts (headline, url, date) live in lib/press. */
+const CLIPS: Record<string, { clip: StaticImageData; alt: string }> = {
+  TheMarker: {
     clip: themarkerClip,
     alt: "כתבה ב-TheMarker: אתם יושבים טוב? ככה באמת היינו אמורים לבלות בשירותים — פטנט גאוני ממציא מחדש את בית השימוש",
-    url: "https://www.themarker.com/labels/2019-03-13/ty-article-labels/0000017f-f88b-d47e-a37f-f9bf25c50000",
   },
-  {
-    outlet: "הארץ",
-    headline: "יכול להיות שאנחנו עושים קקי לא נכון?",
+  "הארץ": {
     clip: haaretzClip,
     alt: "כתבה בהארץ: יכול להיות שאנחנו עושים קקי לא נכון?",
-    url: "https://www.haaretz.co.il/magazine/2019-04-03/ty-article-magazine/.premium/0000017f-e007-d804-ad7f-f1ffc2630000",
   },
-  {
-    outlet: "ynet",
-    headline: "10 הטעויות שאתם עושים בשירותים — שעלולות להזיק לבריאות",
+  ynet: {
     clip: ynetClip,
     alt: "כתבה ב-ynet: 10 הטעויות שאתם עושים בשירותים — שעלולות להזיק לבריאות",
-    url: "https://www.ynet.co.il/articles/0,7340,L-5291707,00.html",
   },
-  {
-    outlet: "מעריב",
-    headline: "יציאת מצרים — איך מטפלים בעצירות שאחרי הפסח?",
+  "מעריב": {
     clip: maarivClip,
     alt: "כתבה במעריב: יציאת מצרים — איך מטפלים בעצירות שאחרי הפסח?",
-    url: "https://www.maariv.co.il/news/health/article-1095397",
   },
-];
+};
 
 /** Clippings shown whole, in colour — never cropped, never greyscaled. */
 export default function PressStrip() {
@@ -71,8 +52,8 @@ export default function PressStrip() {
               */}
               <div className="relative aspect-[4/3] bg-white">
                 <Image
-                  src={item.clip}
-                  alt={item.alt}
+                  src={CLIPS[item.outlet].clip}
+                  alt={CLIPS[item.outlet].alt}
                   fill
                   sizes="(min-width: 1024px) 20rem, (min-width: 640px) 45vw, 92vw"
                   className="object-contain"

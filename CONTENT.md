@@ -231,14 +231,15 @@ Pages: `/` · `/research/[slug]` (6) · `/privacy` · `/accessibility`
 
 ---
 
-## 8. SEO
+## 8. SEO & AI discoverability
 
-- Title: `מתקן כריעה לאסלה | הקלה בעצירות וטחורים | MedLogic`
+- Title: `מתקן כריעה לאסלה | הקלה בעצירות וטחורים | MedLogic` (sub-pages use the template `%s | MedLogic`)
 - Description: `אסלת הכריעה של ד"ר סיקירוב מאפשרת התרוקנות טבעית ומלאה בתנוחת כריעה. מבוסס על 6 מחקרים רפואיים, פטנט בינלאומי. השאירו פרטים לשיחת ייעוץ ללא התחייבות.`
-- OG title: `מדלוג'יק – עוברים לכריעה, נפרדים מהמאמץ`
-- OG image: `/images/hero.jpg`
-- `lang="he" dir="rtl"`, canonical `https://medlogic.co.il`
-- JSON-LD: FAQPage (from §3 FAQ).
+- OG title: `מדלוג'יק – עוברים לכריעה, נפרדים מהמאמץ` · OG image: `/images/hero.jpg` (1920×1072)
+- `lang="he" dir="rtl"`, canonical on every page, `robots: index,follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1`
+- JSON-LD (`lib/seo.ts`): Organization + founder Person + WebSite + Product + VideoObject + FAQPage + 6× ScholarlyArticle on `/`; ScholarlyArticle + BreadcrumbList on `/research/*`
+- `/robots.txt` (all AI crawlers allowed by name, Content-Signal all-yes), `/sitemap.xml` (image + video), `/llms.txt`, `/llms-full.txt`, `/manifest.webmanifest`
+- Owner: add the YouTube `uploadDate` to `videoNode()` in `lib/seo.ts`; verify in Search Console + Bing Webmaster Tools.
 
 ---
 

@@ -4,8 +4,10 @@ import Footer from "@/components/sections/Footer";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "מדיניות פרטיות | MedLogic",
-  description: "מדיניות הפרטיות של אתר MedLogic",
+  title: "מדיניות פרטיות",
+  description:
+    "מדיניות הפרטיות של אתר MedLogic: איזה מידע נאסף בטופס יצירת הקשר, למה הוא משמש, וכיצד לבקש עיון, תיקון או מחיקה.",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

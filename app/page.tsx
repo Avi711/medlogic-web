@@ -1,4 +1,5 @@
 import Header from "@/components/Header";
+import JsonLd from "@/components/JsonLd";
 import Reveal from "@/components/Reveal";
 import StickyMobileBar from "@/components/StickyMobileBar";
 import Hero from "@/components/sections/Hero";
@@ -16,10 +17,13 @@ import ResearchWall from "@/components/sections/ResearchWall";
 import Faq from "@/components/sections/Faq";
 import FinalCta from "@/components/sections/FinalCta";
 import Footer from "@/components/sections/Footer";
+import { homeGraph } from "@/lib/seo";
 
 export default function Home() {
   return (
     <>
+      {/* Organization, founder, product, video, FAQ and the six papers — one linked graph. */}
+      <JsonLd data={homeGraph()} />
       <Header heroId="hero" />
       <main id="main">
         {/*

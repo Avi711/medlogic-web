@@ -2,9 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Header from "@/components/Header";
+import JsonLd from "@/components/JsonLd";
 import PaperReader from "@/components/PaperReader";
 import Footer from "@/components/sections/Footer";
 import { getPaper, getPapers } from "@/lib/papers";
+import { paperGraph } from "@/lib/seo";
 
 type Params = { slug: string };
 
@@ -19,9 +21,21 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const paper = getPaper((await params).slug);
   if (!paper) return {};
+  const path = `/research/${paper.slug}`;
   return {
-    title: `${paper.titleEn} | MedLogic`,
+    // Root layout appends " | MedLogic" via its title template.
+    title: paper.titleEn,
     description: paper.summary,
+    alternates: { canonical: path },
+    openGraph: {
+      type: "article",
+      url: path,
+      title: paper.titleEn,
+      description: paper.summary,
+      publishedTime: String(paper.year),
+      authors: ["Dr. Dov Sikirov"],
+      images: [{ url: "/images/doctor.jpg", width: 480, height: 720, alt: "ד״ר דב סיקירוב" }],
+    },
   };
 }
 
@@ -36,6 +50,7 @@ export default async function PaperPage({
 
   return (
     <>
+      <JsonLd data={paperGraph(paper)} />
       <Header />
       <main id="main" className="bg-canvas-sink py-10 sm:py-14">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">

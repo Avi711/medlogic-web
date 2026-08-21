@@ -4,8 +4,10 @@ import Footer from "@/components/sections/Footer";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "הצהרת נגישות | MedLogic",
-  description: "הצהרת הנגישות של אתר MedLogic",
+  title: "הצהרת נגישות",
+  description:
+    "הצהרת הנגישות של אתר MedLogic: התאמות הנגישות באתר לפי ת״י 5568 ברמה AA, ודרכי פנייה במקרה של קושי.",
+  alternates: { canonical: "/accessibility" },
 };
 
 export default function AccessibilityPage() {

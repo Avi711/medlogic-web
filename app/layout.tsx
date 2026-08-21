@@ -1,5 +1,6 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Heebo, Google_Sans } from "next/font/google";
+import { copy, keywords } from "@/lib/seo";
 import { site } from "@/lib/site";
 import "./globals.css";
 
@@ -24,23 +25,74 @@ const googleSans = Google_Sans({
   fallback: ["Arial Hebrew", "Arial", "sans-serif"],
 });
 
+const TITLE = "מתקן כריעה לאסלה | הקלה בעצירות וטחורים | MedLogic";
+const DESCRIPTION =
+  "אסלת הכריעה של ד\"ר סיקירוב מאפשרת התרוקנות טבעית ומלאה בתנוחת כריעה. מבוסס על 6 מחקרים רפואיים, פטנט בינלאומי. השאירו פרטים לשיחת ייעוץ ללא התחייבות.";
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.domain),
-  title: "מתקן כריעה לאסלה | הקלה בעצירות וטחורים | MedLogic",
-  description:
-    "אסלת הכריעה של ד\"ר סיקירוב מאפשרת התרוקנות טבעית ומלאה בתנוחת כריעה. מבוסס על 6 מחקרים רפואיים, פטנט בינלאומי. השאירו פרטים לשיחת ייעוץ ללא התחייבות.",
+  title: { default: TITLE, template: `%s | ${site.nameEn}` },
+  description: DESCRIPTION,
+  applicationName: site.nameEn,
+  keywords,
+  authors: [{ name: site.nameEn, url: site.domain }],
+  creator: site.nameEn,
+  publisher: site.nameEn,
+  category: "health",
   alternates: { canonical: "/" },
+  /*
+    Explicit, permissive preview controls. Google's generative features (AI
+    Overviews, AI Mode) use the same snippet controls as classic Search, so a
+    restrictive default here would quietly shrink what they may quote.
+  */
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
-    title: "מדלוג'יק – עוברים לכריעה, נפרדים מהמאמץ",
-    description:
-      "הפתרון הפיזיולוגי לעצירות וטחורים, מבוסס על 6 מחקרים שפורסמו בספרות הרפואית.",
-    locale: "he_IL",
     type: "website",
-    images: [{ url: "/images/hero.jpg", width: 1920, height: 1088 }],
+    locale: "he_IL",
+    url: site.domain,
+    siteName: site.nameEn,
+    title: "מדלוג'יק – עוברים לכריעה, נפרדים מהמאמץ",
+    description: copy.tagline,
+    images: [
+      {
+        url: "/images/hero.jpg",
+        width: 1920,
+        height: 1072,
+        alt: "ערכת הכריעה של MedLogic: אסלה קרמית נמוכה ומעליה מתקן דריכה",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
+    title: "מדלוג'יק – עוברים לכריעה, נפרדים מהמאמץ",
+    description: copy.tagline,
+    images: ["/images/hero.jpg"],
   },
+  // Ownership tokens are optional env vars, so a missing one renders nothing.
+  verification: {
+    ...(process.env.GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+      : {}),
+    ...(process.env.BING_SITE_VERIFICATION
+      ? { other: { "msvalidate.01": process.env.BING_SITE_VERIFICATION } }
+      : {}),
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0f3d2e",
 };
 
 export default function RootLayout({

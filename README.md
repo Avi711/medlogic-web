@@ -43,6 +43,27 @@ set at least one before launch.
   available (current image is an AI-generated ambience shot without the
   device).
 
+## Search & AI discoverability
+
+Everything a crawler or language model reads is generated from one set of
+facts in `lib/seo.ts` (+ `lib/faq.ts`, `lib/press.ts`, `lib/papers.ts`):
+
+| URL | Source | What it is |
+| --- | --- | --- |
+| `/robots.txt` | `app/robots.txt/route.ts` | Allows everything but `/admin` and `/api/`; names every documented AI crawler explicitly; `Content-Signal: search=yes, ai-input=yes, ai-train=yes` |
+| `/sitemap.xml` | `app/sitemap.ts` | All public pages with `<lastmod>`, plus image and video extensions on the homepage |
+| `/llms.txt`, `/llms-full.txt` | `app/llms*.txt/route.ts`, `lib/llms.ts` | Curated / full Markdown per llmstxt.org, with an explicit attribution licence |
+| `/manifest.webmanifest` | `app/manifest.ts` | Web app manifest (name, icons, theme colour, RTL) |
+| JSON-LD on `/` | `homeGraph()` | Organization, founder Person, WebSite, Product, VideoObject, FAQPage, WebPage, six ScholarlyArticles — one `@id`-linked graph |
+| JSON-LD on `/research/*` | `paperGraph()` | ScholarlyArticle with journal/volume/issue/pages, BreadcrumbList |
+
+Bump `CONTENT_UPDATED` in `lib/seo.ts` when public copy changes — it is the
+sitemap `<lastmod>` and the "updated" line in llms.txt. Optional ownership
+tokens: `GOOGLE_SITE_VERIFICATION`, `BING_SITE_VERIFICATION` (see
+`.env.example`). After launch: verify the domain in Google Search Console and
+Bing Webmaster Tools and submit `/sitemap.xml` to both — Bing's index is what
+ChatGPT search and Copilot read.
+
 ## Content
 
 - `content/papers/*.md` — the six published papers (Hebrew + English)
