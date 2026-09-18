@@ -30,7 +30,8 @@ export default async function AdminPage() {
   let leads: Lead[];
   try {
     leads = await listLeads();
-  } catch {
+  } catch (error) {
+    console.error("admin: listLeads failed", error);
     return (
       <Shell pending={0} total={0}>
         <Notice
